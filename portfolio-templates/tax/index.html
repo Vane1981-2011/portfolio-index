@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>土地增值税清算模型 + 税务风险看板（示例）· 作品模板</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="top-nav no-print">
+  <a href="../index.html">← 返回作品集</a>
+  <span>示例数据 / 公开数据案例 · 作品模板</span>
+</div>
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Portfolio Template · Tax Director</div>
+    <h1>土地增值税清算模型（示例）</h1>
+    <div class="sub">从收入分业态、五项扣除、开发费用 A/B 口径，到四级超率累进与普通住宅 20% 测试</div>
+    <div class="meta">
+      <span>项目：<b>某房地产开发项目（示例）</b></span>
+      <span>基准日：<b>2026-09-30</b></span>
+      <span>金额单位：<b>万元</b></span>
+      <span>清算状态：<b>已达可要求清算（已售 >85%）</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge">示例数据 · 脱敏模拟 · 非真实项目</span>
+      <span class="badge red">方法论演示 · 不构成税务意见</span>
+      <span class="badge blue">政策依据待主管税务机关确认</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">165,380<small>万元</small></div><div class="l">转让收入（不含增值税）</div></div>
+    <div class="kpi"><div class="v">116,769<small>万元</small></div><div class="l">项目扣除合计（口径 A）</div></div>
+    <div class="kpi"><div class="v">50.53%</div><div class="l">整体增值率（分类计算）</div></div>
+    <div class="kpi red"><div class="v">17,974.9<small>万元</small></div><div class="l">应纳土增税（分类合计）</div></div>
+  </div>
+
+  <div class="card">
+    <h3>项目概况 <span class="hint">先定清算单位与口径</span></h3>
+    <div class="grid-3">
+      <div><b>开发主体：</b>某开发公司（示例）</div>
+      <div><b>项目所在地：</b>某二线城市</div>
+      <div><b>业态：</b>普通住宅 / 非普通住宅 / 商业 / 车位</div>
+      <div><b>可售面积：</b>128,600 ㎡</div>
+      <div><b>已售面积：</b>121,000 ㎡</div>
+      <div><b>销售比例（面积）：</b>94.09%</div>
+      <div><b>清算单位：</b>整体项目（一个单位）</div>
+      <div><b>清算状态：</b>已达可要求清算（已售 >85%）</div>
+      <div><b>主管税务机关：</b>主管税务机关</div>
+    </div>
+    <div class="table-note">清算单位按审批/备案项目；分期按分期项目；普通住宅与其他业态分别计算。85% 是“可要求清算”条件之一，不是“应当清算”。</div>
+  </div>
+
+  <div class="card">
+    <h3>收入表 <span class="hint">分业态 + 视同销售</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>业态</th><th class="num">已售面积（㎡）</th><th class="num">单价（元/㎡）</th><th class="num">金额（万元）</th><th>说明</th></tr>
+        <tr><td>普通住宅</td><td class="num">78,000</td><td class="num">12,000</td><td class="num">93,600</td><td>单独核算</td></tr>
+        <tr><td>非普通住宅</td><td class="num">26,000</td><td class="num">13,800</td><td class="num">35,880</td><td>并入其他业态</td></tr>
+        <tr><td>商业</td><td class="num">8,300</td><td class="num">22,000</td><td class="num">18,260</td><td>底商，已售罄</td></tr>
+        <tr><td>车位</td><td class="num">4,000</td><td class="num">30,000</td><td class="num">12,000</td><td>有产权车位</td></tr>
+        <tr><td>视同销售（回迁安置）</td><td class="num">4,700</td><td class="num">12,000</td><td class="num">5,640</td><td>按同类均价确认</td></tr>
+        <tr class="total"><td>合计</td><td class="num">121,000</td><td class="num">—</td><td class="num">165,380</td><td>不含增值税口径</td></tr>
+      </table>
+    </div>
+    <div class="table-note">视同销售（福利、投资、分配、抵债、回迁等）在所有权转移时确认；价格按同类同期均价或评估价确定。</div>
+  </div>
+
+  <div class="card">
+    <h3>扣除项目五项 <span class="hint">开发费用 A/B 二选一，且不是自由选择</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:30%">扣除项目</th><th class="num">口径 A（利息据实+其他5%）</th><th class="num">口径 B（整体10%）</th><th>说明</th></tr>
+        <tr><td>1. 取得土地使用权所支付的金额</td><td class="num">32,000</td><td class="num">32,000</td><td>含契税；与拆迁补偿费不得重复</td></tr>
+        <tr><td>2. 房地产开发成本</td><td class="num">58,000</td><td class="num">58,000</td><td>前期/建安/基础设施/配套/间接费</td></tr>
+        <tr><td>3. 房地产开发费用</td><td class="num">6,900</td><td class="num">9,000</td><td>A：利息 2,400 +（土地+成本）×5%；B：（土地+成本）×10%</td></tr>
+        <tr><td>4. 与转让房地产有关的税金</td><td class="num">1,869</td><td class="num">1,869</td><td>城建税/教育费附加/地方教育附加/可扣印花税；增值税不计入</td></tr>
+        <tr><td>5. 加计 20% 扣除</td><td class="num">18,000</td><td class="num">18,000</td><td>（土地款 + 开发成本）×20%；仅房地产开发企业</td></tr>
+        <tr class="total"><td>扣除合计</td><td class="num">116,769</td><td class="num">118,869</td><td>A 比 B 少扣除 2,100 万元</td></tr>
+      </table>
+    </div>
+    <div class="table-note">利息能按项目分摊并提供金融机构证明的，<b>必须</b>据实扣除（A）；不能提供证明才按 10%（B）。本例适用 A，B 仅作参考。</div>
+  </div>
+
+  <div class="card">
+    <h3>税额计算 <span class="hint">普通住宅单独核算 · 四级超率累进</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:24%">清算对象</th><th class="num">收入</th><th class="num">分摊扣除</th><th class="num">增值额</th><th class="num">增值率</th><th>档次</th><th class="num">税率</th><th class="num">速算扣除</th><th class="num">税额</th></tr>
+        <tr><td><b>普通住宅（单独核算）</b></td><td class="num">93,600</td><td class="num">70,824.1</td><td class="num">22,775.9</td><td class="num">32.16%</td><td>≤50%</td><td class="num">30.00%</td><td class="num">0.00%</td><td class="num">6,832.8</td></tr>
+        <tr><td><b>其他业态（合并核算）</b></td><td class="num">71,780</td><td class="num">39,044.1</td><td class="num">32,735.9</td><td class="num">83.84%</td><td>50%–100%</td><td class="num">40.00%</td><td class="num">5.00%</td><td class="num">11,142.2</td></tr>
+        <tr class="total"><td>已售部分合计（口径 A）</td><td class="num">165,380</td><td class="num">109,868.2</td><td class="num">55,511.8</td><td class="num">50.53%</td><td>分类计税</td><td class="num">—</td><td class="num">—</td><td class="num">17,974.9</td></tr>
+        <tr><td>已预缴税额</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">6,500</td></tr>
+        <tr class="sub"><td>应补（退）税额</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">11,474.9</td></tr>
+      </table>
+    </div>
+    <div class="table-note">成本按可售面积均摊、<b>仅扣除已售部分</b>：普通住宅 78,000㎡ 全部售出；其他业态已售 43,000㎡ / 可售 50,600㎡；未售车位 7,600㎡ 对应扣除 6,900.8 万元暂不扣除。</div>
+    <div class="callout red">
+      <p><b>普通标准住宅 20% 测试：</b>普通住宅收入 93,600 万元、分摊扣除 70,824.1 万元、增值额 22,775.9 万元、增值率 <b>32.16%</b>。超过 20%，<b>未免征，按全部增值额计税</b>；高出 20% 线 12.16%，需重点复核普通住宅认定与成本归集。</p>
+    </div>
+    <div class="callout blue">
+      <p><b>口径对比（仅参考，不作申报数）：</b>若改用 B，分类税额 17,276.8 万元，较 A 少 698.1 万元；但本例可提供证明，应适用 A。把 B 写成“可选节税方案”是常见错误。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>多情景对比 <span class="hint">基准 / 保守 / 乐观</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>情景</th><th class="num">收入</th><th class="num">开发成本</th><th class="num">已售扣除 A</th><th class="num">增值额</th><th class="num">增值率</th><th class="num">税额</th><th class="num">税后净利</th></tr>
+        <tr><td><b>基准</b></td><td class="num">165,380</td><td class="num">58,000</td><td class="num">109,868.2</td><td class="num">55,511.8</td><td class="num">50.53%</td><td class="num">17,974.9</td><td class="num">55,536.1</td></tr>
+        <tr><td><b>保守</b></td><td class="num">157,111</td><td class="num">60,900</td><td class="num">113,191.0</td><td class="num">43,920.0</td><td class="num">38.80%</td><td class="num">13,961.4</td><td class="num">48,474.1</td></tr>
+        <tr><td><b>乐观</b></td><td class="num">173,649</td><td class="num">56,260</td><td class="num">107,909.7</td><td class="num">65,739.3</td><td class="num">60.92%</td><td class="num">21,506.5</td><td class="num">61,920.1</td></tr>
+      </table>
+    </div>
+    <div class="table-note">保守=收入 −5%、成本 +5%；乐观=收入 +5%、成本 −3%；利息、土地款与税率不变，税额按分类重算。增值率为已售整体概览，不作计税依据；净利为简化口径，仅作情景比较。</div>
+  </div>
+
+  <div class="callout">
+    <p><b>三条结论：</b>按分类计算应纳土地增值税 17,974.9 万元，已预缴 6,500 万元，应补 11,474.9 万元；普通住宅增值率 32.16%，超过 20% 免征线 12.16%；口径 A 比 B 少扣除 2,100 万元（项目总额），税额反而高 698.1 万元；但本例可提供利息证明，按现行口径必须适用 A，B 不能作为可选择方案；收入下降 5% 且成本上升 5% 时，税额降至 13,961.4 万元（较基准 -22.33%）；收入上升 5% 时升至 21,506.5 万元。税负对收入与建安成本高度敏感，清算前应先锁定收入确认与成本归集口径。</p>
+  </div>
+
+  <div class="disclaimer">
+    <b>政策依据与边界：</b>《土地增值税暂行条例》及实施细则、国税发〔2006〕187号、国税发〔2009〕91号、国税函〔2010〕220号、财税〔2006〕21号、财税字〔1995〕48号；2026年第3号公告<b>引用前核对原文</b>。普通住宅标准由省级政府规定，本项目按示例口径。示例数据与方法论演示，不构成税务意见，实际以主管税务机关口径为准。
+  </div>
+
+  <div class="footer">
+    <span>示例数据 · 非真实项目 · 方法论演示</span>
+    <span>Portfolio Template · Tax · 2026-10</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>税务风险看板（示例）</h1>
+      <div class="sub">2026 年 1—9 月 · 某建安 / 地产企业（示例） · 单位：万元</div>
+    </div>
+    <div class="right">示例数据 · 脱敏模拟<br>阈值来自稽查实务经验，非官方</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi "><div class="v">2.86%</div><div class="l">增值税税负率</div></div>
+    <div class="kpi red"><div class="v">+1.8pp</div><div class="l">进项抵扣偏离</div></div>
+    <div class="kpi "><div class="v">0.9%</div><div class="l">发票异常率</div></div>
+    <div class="kpi green"><div class="v">18.6%</div><div class="l">有效税率</div></div>
+    <div class="kpi red"><div class="v">176.5%</div><div class="l">土增预缴 / 清算差异</div></div>
+    <div class="kpi "><div class="v">12.4%</div><div class="l">印花税差异</div></div>
+    <div class="kpi green"><div class="v">8.2%</div><div class="l">关联销售占比</div></div>
+    <div class="kpi "><div class="v">2</div><div class="l">待核政策数</div></div>
+  </div>
+
+  <div class="card">
+    <h3>风险指标明细 <span class="hint">12 项 · 绿/黄/红三色</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr><th style="width:17%">指标</th><th style="width:22%">公式 / 口径</th><th class="num">本期值</th><th style="width:16%">阈值</th><th style="width:6%">灯</th><th style="width:16%">稽查风险</th><th>建议动作</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b>增值税税负率</b></td><td>应交增值税 ÷ 营业收入</td><td class="num">2.86%</td><td>3.0%–4.5%（建安）</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>税负偏低易被关注</td><td>核查进项结构与跨区域预缴</td>
+        </tr>
+        <tr>
+          <td><b>进项抵扣偏离</b></td><td>进项税 ÷ 成本 − 行业均值</td><td class="num">+1.8pp</td><td>±1.0pp</td>
+          <td><span class="pill red">红</span></td>
+          <td>虚开 / 异常抵扣</td><td>抽查前 50 大供应商发票三流</td>
+        </tr>
+        <tr>
+          <td><b>发票异常率</b></td><td>异常发票 ÷ 查验发票</td><td class="num">0.9%</td><td>< 0.5%</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>失控票 / 作废红冲</td><td>建立发票查验台账，月度复核</td>
+        </tr>
+        <tr>
+          <td><b>有效税率</b></td><td>所得税费用 ÷ 利润总额</td><td class="num">18.6%</td><td>15%–25%</td>
+          <td><span class="pill green">绿</span></td>
+          <td>—</td><td>维持，关注优惠资质到期</td>
+        </tr>
+        <tr>
+          <td><b>土增预缴 / 清算差异</b></td><td>(清算税额 − 已预缴) ÷ 已预缴</td><td class="num">176.5%</td><td>< 30%</td>
+          <td><span class="pill red">红</span></td>
+          <td>补税 + 滞纳金</td><td>提前测算，申请分期或调整预缴</td>
+        </tr>
+        <tr>
+          <td><b>印花税差异</b></td><td>(应缴 − 已缴) ÷ 应缴</td><td class="num">12.4%</td><td>< 5%</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>合同漏贴花</td><td>补缴并建立合同台账</td>
+        </tr>
+        <tr>
+          <td><b>关联销售占比</b></td><td>关联方销售 ÷ 营业收入</td><td class="num">8.2%</td><td>< 10%（复核阈值）</td>
+          <td><span class="pill green">绿</span></td>
+          <td>转让定价调整</td><td>留存同期资料，年度复核定价</td>
+        </tr>
+        <tr>
+          <td><b>其他应付款占比</b></td><td>其他应付款 ÷ 负债总额</td><td class="num">21.5%</td><td>< 15%</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>股东借款 / 视同分红</td><td>清理往来，评估个人所得税</td>
+        </tr>
+        <tr>
+          <td><b>工资薪金偏离</b></td><td>人均工资 ÷ 行业均值</td><td class="num">1.35 倍</td><td>0.7–1.3 倍</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>个税 / 社保基数</td><td>核对申报口径与人员结构</td>
+        </tr>
+        <tr>
+          <td><b>预收账款 / 收入</b></td><td>预收账款 ÷ 营业收入</td><td class="num">0.18</td><td>0.1–0.3</td>
+          <td><span class="pill green">绿</span></td>
+          <td>收入确认时点</td><td>维持，按履约进度确认</td>
+        </tr>
+        <tr>
+          <td><b>现金收款占比</b></td><td>现金收款 ÷ 营业收入</td><td class="num">0.6%</td><td>< 1%</td>
+          <td><span class="pill green">绿</span></td>
+          <td>账外收入</td><td>维持，保留收款凭证</td>
+        </tr>
+        <tr>
+          <td><b>跨区域预缴偏差</b></td><td>|预缴 − 应预缴| ÷ 应预缴</td><td class="num">6.8%</td><td>< 3%</td>
+          <td><span class="pill amber">黄</span></td>
+          <td>预缴不足</td><td>建立项目预缴台账，按季核对</td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">阈值来源：税务稽查实务经验与行业对标，非官方公布值；不同地区、不同业态需重新校准。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>高风险清单 <span class="hint">按影响金额排序</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:18%">风险</th><th>证据</th><th class="num">影响金额</th><th style="width:22%">整改动作</th></tr>
+          <tr><td><b>土增清算补税</b></td><td>清算测算税额 17,974.9 万元，已预缴 6,500 万元，差异 176.5%</td><td class="num">11,475</td><td>提前 6 个月测算，申请分期缴纳</td></tr>
+          <tr><td><b>其他应付款挂账</b></td><td>其他应付款 12,600 万元，占负债 21.5%，其中股东借款 7,400 万元</td><td class="num">1,480</td><td>制定还款计划，评估视同分红个税</td></tr>
+          <tr><td><b>进项抵扣异常</b></td><td>进项税占成本比比行业均值高 1.8pp，3 户供应商成立不足 1 年</td><td class="num">820</td><td>暂停问题供应商付款，补充三流证据</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>政策变动 / 待核事项 <span class="hint">不编文号、不编日期</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:28%">政策 / 事项</th><th style="width:14%">状态</th><th>影响</th><th style="width:22%">动作</th></tr>
+          <tr><td><b>土地增值税清算管理规程（国税发〔2009〕91号）</b></td><td><span class="pill green">现行</span></td><td>明确清算条件、申报资料与核定征收情形</td><td>按规程准备清算资料</td></tr>
+          <tr><td><b>房地产开发企业土地增值税清算有关问题（国税函〔2010〕220号）</b></td><td><span class="pill green">现行</span></td><td>利息据实扣除与 10% 计算的选择前提</td><td>确认利息证明文件完整性</td></tr>
+          <tr><td><b>2026 年第 3 号公告（印花税 / 地方教育附加 / 尾盘销售口径）</b></td><td><span class="pill amber">待核</span></td><td>可能影响税金扣除与尾盘销售计算</td><td>引用前核对原文与施行日期</td></tr>
+          <tr><td><b>普通标准住宅具体标准（省级政府规定）</b></td><td><span class="pill amber">待核</span></td><td>决定 20% 免征是否适用</td><td>核对项目所在地现行标准</td></tr>
+          <tr><td><b>关联交易同期资料准备门槛</b></td><td><span class="pill green">现行</span></td><td>关联销售 8.2%，需判断是否达到准备门槛</td><td>按年度关联购销金额复核</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>总体判断 <span class="hint">加权评分口径</span></h3>
+      <div class="callout red">
+        <p><b>风险等级：中高</b>（加权得分 50.0/100）。两项红灯分别影响 11,475 万元与 820 万元；其他应付款挂账（黄灯）另影响 1,480 万元。四项绿灯为结构性健康项，不构成风险缓释。</p>
+      </div>
+      <div class="table-note">评分口径：每项指标按绿/黄/红赋 0/1/2 分，加权得分 = Σ(权重×分值) ÷ Σ权重 ÷ 2 × 100；权重与阈值均为示例，可按集团税务风险偏好调整。</div>
+    </div>
+    <div class="card">
+      <h3>前三大动作 <span class="hint">按优先级</span></h3>
+      <ol>
+        <li>先处理土增清算差异：以项目为单位重算应缴、已预缴与资金缺口，制定分期或融资方案。</li>
+        <li>再处理进项抵扣：锁定 3 户高风险供应商，暂停付款并补齐合同、物流、资金流证据。</li>
+        <li>同步清理其他应付款：股东借款制定还款计划，评估视同分红个人所得税影响。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>整改路线图 <span class="hint">30 / 60 / 90 天</span></h3>
+    <div class="grid-3">
+      <div>
+        <b>30 天 · 止血</b>
+        <ul>
+          <li>锁定 3 户高风险供应商，暂停付款并补三流证据</li>
+          <li>完成土增清算复算，评估资金缺口与分期方案</li>
+        </ul>
+      </div>
+      <div>
+        <b>60 天 · 建制</b>
+        <ul>
+          <li>建立项目预缴台账与发票查验台账</li>
+          <li>清理其他应付款，股东借款制定还款计划</li>
+        </ul>
+      </div>
+      <div>
+        <b>90 天 · 固化</b>
+        <ul>
+          <li>季度税务风险复盘会写入制度</li>
+          <li>关联定价同期资料归档，年度复核</li>
+        </ul>
+      </div>
+    </div>
+    <div class="table-note">先处理影响金额最大的两项，再补台账与制度，最后用例会与归档把动作固化。</div>
+  </div>
+
+  <div class="disclaimer">
+    <b>诚实边界：</b>本页为示例数据与方法论演示，非真实企业税务风险结论；阈值来自稽查实务经验，非官方公布值；政策状态与文号需在引用前核对原文；关联交易阈值是风险复核阈值，不是税法安全港；本页不构成税务意见，实际处理以主管税务机关口径和持证税务师意见为准。
+  </div>
+
+  <div class="footer">
+    <span>示例数据 · 非真实企业 · 方法论演示</span>
+    <span>Portfolio Template · Tax Risk Dashboard · 2026-10</span>
+  </div>
+</div>
+</body>
+</html>

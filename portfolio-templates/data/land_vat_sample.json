@@ -1,0 +1,79 @@
+{
+  "project": {
+    "name": "某房地产开发项目（示例）",
+    "developer": "某开发公司（示例）",
+    "location": "某二线城市",
+    "types": "普通住宅 / 非普通住宅 / 商业 / 车位",
+    "base_date": "2026-09-30",
+    "unit": "万元",
+    "saleable_area": 128600,
+    "sold_area": 121000,
+    "unit_scope": "整体项目（一个单位）",
+    "status": "已达可要求清算（已售 >85%）",
+    "tax_authority": "主管税务机关"
+  },
+  "revenues": [
+    {
+      "name": "普通住宅",
+      "area": 78000,
+      "price": 12000,
+      "note": "单独核算",
+      "ordinary": true,
+      "saleable": 78000
+    },
+    {
+      "name": "非普通住宅",
+      "area": 26000,
+      "price": 13800,
+      "note": "并入其他业态",
+      "ordinary": false,
+      "saleable": 26000
+    },
+    {
+      "name": "商业",
+      "area": 8300,
+      "price": 22000,
+      "note": "底商，已售罄",
+      "ordinary": false,
+      "saleable": 8300
+    },
+    {
+      "name": "车位",
+      "area": 4000,
+      "price": 30000,
+      "note": "有产权车位",
+      "ordinary": false,
+      "saleable": 11600
+    },
+    {
+      "name": "视同销售（回迁安置）",
+      "area": 4700,
+      "price": 12000,
+      "note": "按同类均价确认",
+      "ordinary": false,
+      "saleable": 4700
+    }
+  ],
+  "land": 32000,
+  "dev_cost": 58000,
+  "interest": 2400,
+  "taxes": 1869,
+  "prepaid": 6500,
+  "scenarios": [
+    {
+      "name": "基准",
+      "revenue_factor": 1.0,
+      "cost_factor": 1.0
+    },
+    {
+      "name": "保守",
+      "revenue_factor": 0.95,
+      "cost_factor": 1.05
+    },
+    {
+      "name": "乐观",
+      "revenue_factor": 1.05,
+      "cost_factor": 0.97
+    }
+  ]
+}

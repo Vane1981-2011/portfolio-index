@@ -1,0 +1,240 @@
+{% extends "base.html.j2" %}
+{% block content %}
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Portfolio Template · Tax Director</div>
+    <h1>土地增值税清算模型（示例）</h1>
+    <div class="sub">从收入分业态、五项扣除、开发费用 A/B 口径，到四级超率累进与普通住宅 20% 测试</div>
+    <div class="meta">
+      <span>项目：<b>{{ tax.project.name }}</b></span>
+      <span>基准日：<b>{{ tax.project.base_date }}</b></span>
+      <span>金额单位：<b>{{ tax.project.unit }}</b></span>
+      <span>清算状态：<b>{{ tax.project.status }}</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge">示例数据 · 脱敏模拟 · 非真实项目</span>
+      <span class="badge red">方法论演示 · 不构成税务意见</span>
+      <span class="badge blue">政策依据待主管税务机关确认</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">{{ tax.revenue_total|num }}<small>万元</small></div><div class="l">转让收入（不含增值税）</div></div>
+    <div class="kpi"><div class="v">{{ tax.deduction_a|num }}<small>万元</small></div><div class="l">项目扣除合计（口径 A）</div></div>
+    <div class="kpi"><div class="v">{{ tax.ratio_total|pct }}</div><div class="l">整体增值率（分类计算）</div></div>
+    <div class="kpi red"><div class="v">{{ tax.tax_total|num }}<small>万元</small></div><div class="l">应纳土增税（分类合计）</div></div>
+  </div>
+
+  <div class="card">
+    <h3>项目概况 <span class="hint">先定清算单位与口径</span></h3>
+    <div class="grid-3">
+      <div><b>开发主体：</b>{{ tax.project.developer }}</div>
+      <div><b>项目所在地：</b>{{ tax.project.location }}</div>
+      <div><b>业态：</b>{{ tax.project.types }}</div>
+      <div><b>可售面积：</b>{{ tax.project.saleable_area|num }} ㎡</div>
+      <div><b>已售面积：</b>{{ tax.project.sold_area|num }} ㎡</div>
+      <div><b>销售比例（面积）：</b>{{ tax.project.sold_ratio|pct }}</div>
+      <div><b>清算单位：</b>{{ tax.project.unit_scope }}</div>
+      <div><b>清算状态：</b>{{ tax.project.status }}</div>
+      <div><b>主管税务机关：</b>{{ tax.project.tax_authority }}</div>
+    </div>
+    <div class="table-note">清算单位按审批/备案项目；分期按分期项目；普通住宅与其他业态分别计算。85% 是“可要求清算”条件之一，不是“应当清算”。</div>
+  </div>
+
+  <div class="card">
+    <h3>收入表 <span class="hint">分业态 + 视同销售</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>业态</th><th class="num">已售面积（㎡）</th><th class="num">单价（元/㎡）</th><th class="num">金额（万元）</th><th>说明</th></tr>
+        {% for r in tax.revenues %}
+        <tr><td>{{ r.name }}</td><td class="num">{{ r.area|num }}</td><td class="num">{{ r.price|num }}</td><td class="num">{{ r.amount|num }}</td><td>{{ r.note }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>合计</td><td class="num">{{ tax.sold_total|num }}</td><td class="num">—</td><td class="num">{{ tax.revenue_total|num }}</td><td>不含增值税口径</td></tr>
+      </table>
+    </div>
+    <div class="table-note">视同销售（福利、投资、分配、抵债、回迁等）在所有权转移时确认；价格按同类同期均价或评估价确定。</div>
+  </div>
+
+  <div class="card">
+    <h3>扣除项目五项 <span class="hint">开发费用 A/B 二选一，且不是自由选择</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:30%">扣除项目</th><th class="num">口径 A（利息据实+其他5%）</th><th class="num">口径 B（整体10%）</th><th>说明</th></tr>
+        <tr><td>1. 取得土地使用权所支付的金额</td><td class="num">{{ tax.land|num }}</td><td class="num">{{ tax.land|num }}</td><td>含契税；与拆迁补偿费不得重复</td></tr>
+        <tr><td>2. 房地产开发成本</td><td class="num">{{ tax.dev_cost|num }}</td><td class="num">{{ tax.dev_cost|num }}</td><td>前期/建安/基础设施/配套/间接费</td></tr>
+        <tr><td>3. 房地产开发费用</td><td class="num">{{ tax.dev_exp_a|num }}</td><td class="num">{{ tax.dev_exp_b|num }}</td><td>A：利息 {{ tax.interest|num }} +（土地+成本）×5%；B：（土地+成本）×10%</td></tr>
+        <tr><td>4. 与转让房地产有关的税金</td><td class="num">{{ tax.taxes|num }}</td><td class="num">{{ tax.taxes|num }}</td><td>城建税/教育费附加/地方教育附加/可扣印花税；增值税不计入</td></tr>
+        <tr><td>5. 加计 20% 扣除</td><td class="num">{{ tax.add20|num }}</td><td class="num">{{ tax.add20|num }}</td><td>（土地款 + 开发成本）×20%；仅房地产开发企业</td></tr>
+        <tr class="total"><td>扣除合计</td><td class="num">{{ tax.deduction_a|num }}</td><td class="num">{{ tax.deduction_b|num }}</td><td>A 比 B 少扣除 {{ tax.a_vs_b|num }} 万元</td></tr>
+      </table>
+    </div>
+    <div class="table-note">利息能按项目分摊并提供金融机构证明的，<b>必须</b>据实扣除（A）；不能提供证明才按 10%（B）。本例适用 A，B 仅作参考。</div>
+  </div>
+
+  <div class="card">
+    <h3>税额计算 <span class="hint">普通住宅单独核算 · 四级超率累进</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:24%">清算对象</th><th class="num">收入</th><th class="num">分摊扣除</th><th class="num">增值额</th><th class="num">增值率</th><th>档次</th><th class="num">税率</th><th class="num">速算扣除</th><th class="num">税额</th></tr>
+        {% for g in tax.groups %}
+        <tr><td><b>{{ g.name }}</b></td><td class="num">{{ g.revenue|num }}</td><td class="num">{{ g.deduction|num }}</td><td class="num">{{ g.appreciation|num }}</td><td class="num">{{ g.ratio|pct }}</td><td>{{ g.tier }}</td><td class="num">{{ g.rate|pct }}</td><td class="num">{{ g.quick|pct }}</td><td class="num">{{ g.tax|num }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>已售部分合计（口径 A）</td><td class="num">{{ tax.revenue_total|num }}</td><td class="num">{{ tax.deductible_total|num }}</td><td class="num">{{ tax.appreciation_total|num }}</td><td class="num">{{ tax.ratio_total|pct }}</td><td>分类计税</td><td class="num">—</td><td class="num">—</td><td class="num">{{ tax.tax_total|num }}</td></tr>
+        <tr><td>已预缴税额</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">{{ tax.prepaid|num }}</td></tr>
+        <tr class="sub"><td>应补（退）税额</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>—</td><td class="num">—</td><td class="num">—</td><td class="num">{{ tax.payable_total|num }}</td></tr>
+      </table>
+    </div>
+    <div class="table-note">成本按可售面积均摊、<b>仅扣除已售部分</b>：普通住宅 78,000㎡ 全部售出；其他业态已售 43,000㎡ / 可售 50,600㎡；未售车位 7,600㎡ 对应扣除 {{ tax.unsold_deduction|num }} 万元暂不扣除。</div>
+    <div class="callout {% if tax.ordinary.exempt %}green{% else %}red{% endif %}">
+      <p><b>普通标准住宅 20% 测试：</b>普通住宅收入 {{ tax.ordinary.revenue|num }} 万元、分摊扣除 {{ tax.ordinary.deduction|num }} 万元、增值额 {{ tax.ordinary.appreciation|num }} 万元、增值率 <b>{{ tax.ordinary.ratio|pct }}</b>。{% if tax.ordinary.exempt %}未超过 20%，可申报免征；{% else %}超过 20%，<b>未免征，按全部增值额计税</b>；高出 20% 线 {{ tax.ordinary.gap_to_20|pct }}，需重点复核普通住宅认定与成本归集。{% endif %}</p>
+    </div>
+    <div class="callout blue">
+      <p><b>口径对比（仅参考，不作申报数）：</b>若改用 B，分类税额 {{ tax.tax_b_total|num }} 万元，较 A 少 {{ tax.a_minus_b|num }} 万元；但本例可提供证明，应适用 A。把 B 写成“可选节税方案”是常见错误。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>多情景对比 <span class="hint">基准 / 保守 / 乐观</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>情景</th><th class="num">收入</th><th class="num">开发成本</th><th class="num">已售扣除 A</th><th class="num">增值额</th><th class="num">增值率</th><th class="num">税额</th><th class="num">税后净利</th></tr>
+        {% for s in tax.scenarios %}
+        <tr><td><b>{{ s.name }}</b></td><td class="num">{{ s.revenue|num }}</td><td class="num">{{ s.dev_cost|num }}</td><td class="num">{{ s.deduction|num }}</td><td class="num">{{ s.appreciation|num }}</td><td class="num">{{ s.ratio|pct }}</td><td class="num">{{ s.tax|num }}</td><td class="num">{{ s.net_profit|num }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="table-note">保守=收入 −5%、成本 +5%；乐观=收入 +5%、成本 −3%；利息、土地款与税率不变，税额按分类重算。增值率为已售整体概览，不作计税依据；净利为简化口径，仅作情景比较。</div>
+  </div>
+
+  <div class="callout">
+    <p><b>三条结论：</b>{% for c in tax.conclusions %}{{ c }}{% if not loop.last %}；{% endif %}{% endfor %}。</p>
+  </div>
+
+  <div class="disclaimer">
+    <b>政策依据与边界：</b>《土地增值税暂行条例》及实施细则、国税发〔2006〕187号、国税发〔2009〕91号、国税函〔2010〕220号、财税〔2006〕21号、财税字〔1995〕48号；2026年第3号公告<b>引用前核对原文</b>。普通住宅标准由省级政府规定，本项目按示例口径。示例数据与方法论演示，不构成税务意见，实际以主管税务机关口径为准。
+  </div>
+
+  <div class="footer">
+    <span>示例数据 · 非真实项目 · 方法论演示</span>
+    <span>Portfolio Template · Tax · 2026-10</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>税务风险看板（示例）</h1>
+      <div class="sub">{{ risk.period }} · {{ risk.entity }} · 单位：{{ risk.unit }}</div>
+    </div>
+    <div class="right">示例数据 · 脱敏模拟<br>阈值来自稽查实务经验，非官方</div>
+  </div>
+
+  <div class="kpi-row">
+    {% for k in risk.kpis %}
+    <div class="kpi {% if k.cls == 'red' %}red{% elif k.cls == 'green' %}green{% endif %}"><div class="v">{{ k.value }}</div><div class="l">{{ k.label }}</div></div>
+    {% endfor %}
+  </div>
+
+  <div class="card">
+    <h3>风险指标明细 <span class="hint">12 项 · 绿/黄/红三色</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr><th style="width:17%">指标</th><th style="width:22%">公式 / 口径</th><th class="num">本期值</th><th style="width:16%">阈值</th><th style="width:6%">灯</th><th style="width:16%">稽查风险</th><th>建议动作</th></tr>
+        </thead>
+        <tbody>
+        {% for i in risk.indicators %}
+        <tr>
+          <td><b>{{ i.name }}</b></td><td>{{ i.formula }}</td><td class="num">{{ i.value }}</td><td>{{ i.threshold }}</td>
+          <td>{% if i.light == '绿' %}<span class="pill green">绿</span>{% elif i.light == '黄' %}<span class="pill amber">黄</span>{% else %}<span class="pill red">红</span>{% endif %}</td>
+          <td>{{ i.risk }}</td><td>{{ i.action }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">阈值来源：税务稽查实务经验与行业对标，非官方公布值；不同地区、不同业态需重新校准。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>高风险清单 <span class="hint">按影响金额排序</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:18%">风险</th><th>证据</th><th class="num">影响金额</th><th style="width:22%">整改动作</th></tr>
+          {% for h in risk.high_risks %}
+          <tr><td><b>{{ h.risk }}</b></td><td>{{ h.evidence }}</td><td class="num">{{ h.impact|num }}</td><td>{{ h.action }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>政策变动 / 待核事项 <span class="hint">不编文号、不编日期</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:28%">政策 / 事项</th><th style="width:14%">状态</th><th>影响</th><th style="width:22%">动作</th></tr>
+          {% for p in risk.policies %}
+          <tr><td><b>{{ p.name }}</b></td><td>{% if p.status == '待核' %}<span class="pill amber">待核</span>{% elif p.status == '现行' %}<span class="pill green">现行</span>{% else %}<span class="pill gray">{{ p.status }}</span>{% endif %}</td><td>{{ p.impact }}</td><td>{{ p.action }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>总体判断 <span class="hint">加权评分口径</span></h3>
+      <div class="callout {% if risk.overall.level == '中高' %}red{% else %}blue{% endif %}">
+        <p><b>风险等级：{{ risk.overall.level }}</b>（加权得分 {{ risk.overall.score }}/100）。{{ risk.overall.note }}</p>
+      </div>
+      <div class="table-note">评分口径：每项指标按绿/黄/红赋 0/1/2 分，加权得分 = Σ(权重×分值) ÷ Σ权重 ÷ 2 × 100；权重与阈值均为示例，可按集团税务风险偏好调整。</div>
+    </div>
+    <div class="card">
+      <h3>前三大动作 <span class="hint">按优先级</span></h3>
+      <ol>
+        {% for a in risk.actions %}
+        <li>{{ a }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>整改路线图 <span class="hint">30 / 60 / 90 天</span></h3>
+    <div class="grid-3">
+      <div>
+        <b>30 天 · 止血</b>
+        <ul>
+          <li>锁定 3 户高风险供应商，暂停付款并补三流证据</li>
+          <li>完成土增清算复算，评估资金缺口与分期方案</li>
+        </ul>
+      </div>
+      <div>
+        <b>60 天 · 建制</b>
+        <ul>
+          <li>建立项目预缴台账与发票查验台账</li>
+          <li>清理其他应付款，股东借款制定还款计划</li>
+        </ul>
+      </div>
+      <div>
+        <b>90 天 · 固化</b>
+        <ul>
+          <li>季度税务风险复盘会写入制度</li>
+          <li>关联定价同期资料归档，年度复核</li>
+        </ul>
+      </div>
+    </div>
+    <div class="table-note">先处理影响金额最大的两项，再补台账与制度，最后用例会与归档把动作固化。</div>
+  </div>
+
+  <div class="disclaimer">
+    <b>诚实边界：</b>本页为示例数据与方法论演示，非真实企业税务风险结论；阈值来自稽查实务经验，非官方公布值；政策状态与文号需在引用前核对原文；关联交易阈值是风险复核阈值，不是税法安全港；本页不构成税务意见，实际处理以主管税务机关口径和持证税务师意见为准。
+  </div>
+
+  <div class="footer">
+    <span>示例数据 · 非真实企业 · 方法论演示</span>
+    <span>Portfolio Template · Tax Risk Dashboard · 2026-10</span>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{
+  "period": "2026 年 9 月",
+  "entity_count": 20,
+  "unit": "万元",
+  "budget_version": "2026 年度预算 v3（9 月滚动修订）",
+  "cash": 5750,
+  "internal_rev": 8600,
+  "internal_cost": 7900,
+  "internal_profit": 350,
+  "minority": 620,
+  "entities": [
+    { "name": "项目公司 A", "revenue": 28000, "cost": 24600, "net": 1950, "ocf": 2100, "budget": 26000 },
+    { "name": "项目公司 B", "revenue": 24500, "cost": 21300, "net": 1620, "ocf": 1450, "budget": 24800 },
+    { "name": "项目公司 C", "revenue": 21000, "cost": 18700, "net": 1180, "ocf": 980, "budget": 22000 },
+    { "name": "项目公司 D", "revenue": 19500, "cost": 17600, "net": 960, "ocf": -320, "budget": 20000 },
+    { "name": "项目公司 E", "revenue": 18000, "cost": 16400, "net": 780, "ocf": 640, "budget": 17500 },
+    { "name": "项目公司 F", "revenue": 16500, "cost": 15000, "net": 690, "ocf": 520, "budget": 16000 },
+    { "name": "项目公司 G", "revenue": 15000, "cost": 13700, "net": 600, "ocf": 410, "budget": 15500 },
+    { "name": "项目公司 H", "revenue": 13800, "cost": 12600, "net": 540, "ocf": 360, "budget": 14000 },
+    { "name": "项目公司 I", "revenue": 12500, "cost": 11400, "net": 480, "ocf": 300, "budget": 12000 },
+    { "name": "项目公司 J", "revenue": 11200, "cost": 10300, "net": 410, "ocf": 260, "budget": 11500 },
+    { "name": "项目公司 K", "revenue": 10000, "cost": 9200, "net": 350, "ocf": 210, "budget": 10200 },
+    { "name": "项目公司 L", "revenue": 9200, "cost": 8500, "net": 310, "ocf": 180, "budget": 9000 },
+    { "name": "项目公司 M", "revenue": 8400, "cost": 7800, "net": 270, "ocf": 150, "budget": 8500 },
+    { "name": "项目公司 N", "revenue": 7600, "cost": 7100, "net": 230, "ocf": 120, "budget": 7800 },
+    { "name": "项目公司 O", "revenue": 6800, "cost": 6400, "net": 190, "ocf": 90, "budget": 7000 },
+    { "name": "项目公司 P", "revenue": 6000, "cost": 5700, "net": 150, "ocf": 60, "budget": 6300 },
+    { "name": "项目公司 Q", "revenue": 5200, "cost": 5000, "net": 110, "ocf": 40, "budget": 5300 },
+    { "name": "项目公司 R", "revenue": 4400, "cost": 4300, "net": 60, "ocf": -80, "budget": 4800 },
+    { "name": "项目公司 S", "revenue": 3600, "cost": 3600, "net": 20, "ocf": -150, "budget": 4000 },
+    { "name": "项目公司 T", "revenue": 2520, "cost": 2650, "net": -110, "ocf": -260, "budget": 3000 }
+  ]
+}

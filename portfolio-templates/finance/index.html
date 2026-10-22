@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13 周现金流预测 + 集团快报（示例）· 作品模板</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="top-nav no-print">
+  <a href="../index.html">← 返回作品集</a>
+  <span>示例数据 / 公开数据案例 · 作品模板</span>
+</div>
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Portfolio Template · Finance Director</div>
+    <h1>13 周滚动现金流预测（示例）</h1>
+    <div class="sub">从“看得见”到“管得住”：周度现金流入流出、最低现金保有、缺口预警与动作清单</div>
+    <div class="meta">
+      <span>预测期间：<b>2026-10-01 至 2026-12-31（W1–W13）</b></span>
+      <span>主体/范围：<b>某建安企业（示例）本部及 3 个在建项目</b></span>
+      <span>金额单位：<b>万元</b></span>
+      <span>版本：<b>v1.0 · 示例</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge">示例数据 · 脱敏模拟 · 非真实企业数据</span>
+      <span class="badge green">W1–W2 实际</span>
+      <span class="badge blue">W3–W13 预测</span>
+      <span class="badge red">最低现金保有 3,000 万元</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="v">5,200<small>万元</small></div><div class="l">期初现金（W1 起点）</div></div>
+    <div class="kpi"><div class="v">52,800<small>万元</small></div><div class="l">13 周累计流入</div></div>
+    <div class="kpi"><div class="v">52,250<small>万元</small></div><div class="l">13 周累计流出</div></div>
+    <div class="kpi"><div class="v">550<small>万元</small></div><div class="l">累计净现金流</div></div>
+    <div class="kpi gold"><div class="v">5,750<small>万元</small></div><div class="l">第 13 周末现金</div></div>
+    <div class="kpi red"><div class="v">W5</div><div class="l">最低现金周 · 450 万元</div></div>
+    <div class="kpi red"><div class="v">5</div><div class="l">缺口周数 · 累计缺口 9,150 万元</div></div>
+    <div class="kpi"><div class="v">191.67%</div><div class="l">第 13 周末安全线覆盖率</div></div>
+  </div>
+
+  <div class="card">
+    <h3>现金曲线 <span class="hint">柱：流入/流出；线：期末现金；虚线：最低保有</span></h3>
+    <svg viewBox="0 0 720 176" width="100%" role="img" aria-label="13 周现金流入流出与期末现金曲线" style="display:block;font-family:Inter,PingFang SC,sans-serif"><rect x="42" y="6" width="7" height="7" fill="#1565c0"/><text x="53" y="13" font-size="8" fill="#4a5568">流入</text><rect x="94" y="6" width="7" height="7" fill="#c62828"/><text x="105" y="13" font-size="8" fill="#4a5568">流出</text><line x1="146" y1="9.5" x2="166" y2="9.5" stroke="#b8944c" stroke-width="2"/><text x="170" y="13" font-size="8" fill="#4a5568">期末现金</text><line x1="232" y1="9.5" x2="252" y2="9.5" stroke="#e65100" stroke-width="1.5" stroke-dasharray="3 3"/><text x="256" y="13" font-size="8" fill="#4a5568">最低保有 3,000</text><line x1="42" y1="152.0" x2="708" y2="152.0" stroke="#e8edf3" stroke-width="1"/><text x="36" y="155.0" text-anchor="end" font-size="7.5" fill="#94a3b8">0</text><line x1="42" y1="119.5" x2="708" y2="119.5" stroke="#e8edf3" stroke-width="1"/><text x="36" y="122.5" text-anchor="end" font-size="7.5" fill="#94a3b8">1,610</text><line x1="42" y1="87.0" x2="708" y2="87.0" stroke="#e8edf3" stroke-width="1"/><text x="36" y="90.0" text-anchor="end" font-size="7.5" fill="#94a3b8">3,220</text><line x1="42" y1="54.5" x2="708" y2="54.5" stroke="#e8edf3" stroke-width="1"/><text x="36" y="57.5" text-anchor="end" font-size="7.5" fill="#94a3b8">4,830</text><line x1="42" y1="22.0" x2="708" y2="22.0" stroke="#e8edf3" stroke-width="1"/><text x="36" y="25.0" text-anchor="end" font-size="7.5" fill="#94a3b8">6,440</text><rect x="52.8" y="67.2" width="13.8" height="84.8" fill="#1565c0" opacity="1" rx="1"/><rect x="68.6" y="74.3" width="13.8" height="77.7" fill="#c62828" opacity="1" rx="1"/><text x="67.6" y="164" text-anchor="middle" font-size="7" fill="#718096">W1</text><rect x="104.0" y="79.3" width="13.8" height="72.7" fill="#1565c0" opacity="1" rx="1"/><rect x="119.8" y="69.2" width="13.8" height="82.8" fill="#c62828" opacity="1" rx="1"/><text x="118.8" y="164" text-anchor="middle" font-size="7" fill="#718096">W2</text><rect x="155.2" y="87.4" width="13.8" height="64.6" fill="#1565c0" opacity="0.42" rx="1"/><rect x="171.1" y="65.2" width="13.8" height="86.8" fill="#c62828" opacity="0.42" rx="1"/><text x="170.1" y="164" text-anchor="middle" font-size="7" fill="#718096">W3</text><rect x="206.5" y="93.5" width="13.8" height="58.5" fill="#1565c0" opacity="0.42" rx="1"/><rect x="222.3" y="59.1" width="13.8" height="92.9" fill="#c62828" opacity="0.42" rx="1"/><text x="221.3" y="164" text-anchor="middle" font-size="7" fill="#718096">W4</text><rect x="257.7" y="99.5" width="13.8" height="52.5" fill="#1565c0" opacity="0.42" rx="1"/><rect x="273.5" y="63.2" width="13.8" height="88.8" fill="#c62828" opacity="0.42" rx="1"/><text x="272.5" y="164" text-anchor="middle" font-size="7" fill="#718096">W5</text><rect x="308.9" y="59.1" width="13.8" height="92.9" fill="#1565c0" opacity="0.42" rx="1"/><rect x="324.8" y="71.3" width="13.8" height="80.7" fill="#c62828" opacity="0.42" rx="1"/><text x="323.8" y="164" text-anchor="middle" font-size="7" fill="#718096">W6</text><rect x="360.2" y="83.4" width="13.8" height="68.6" fill="#1565c0" opacity="0.42" rx="1"/><rect x="376.0" y="73.3" width="13.8" height="78.7" fill="#c62828" opacity="0.42" rx="1"/><text x="375.0" y="164" text-anchor="middle" font-size="7" fill="#718096">W7</text><rect x="411.4" y="55.1" width="13.8" height="96.9" fill="#1565c0" opacity="0.42" rx="1"/><rect x="427.2" y="75.3" width="13.8" height="76.7" fill="#c62828" opacity="0.42" rx="1"/><text x="426.2" y="164" text-anchor="middle" font-size="7" fill="#718096">W8</text><rect x="462.6" y="47.0" width="13.8" height="105.0" fill="#1565c0" opacity="0.42" rx="1"/><rect x="478.5" y="77.3" width="13.8" height="74.7" fill="#c62828" opacity="0.42" rx="1"/><text x="477.5" y="164" text-anchor="middle" font-size="7" fill="#718096">W9</text><rect x="513.9" y="63.2" width="13.8" height="88.8" fill="#1565c0" opacity="0.42" rx="1"/><rect x="529.7" y="73.3" width="13.8" height="78.7" fill="#c62828" opacity="0.42" rx="1"/><text x="528.7" y="164" text-anchor="middle" font-size="7" fill="#718096">W10</text><rect x="565.1" y="69.2" width="13.8" height="82.8" fill="#1565c0" opacity="0.42" rx="1"/><rect x="580.9" y="75.3" width="13.8" height="76.7" fill="#c62828" opacity="0.42" rx="1"/><text x="579.9" y="164" text-anchor="middle" font-size="7" fill="#718096">W11</text><rect x="616.3" y="61.2" width="13.8" height="90.8" fill="#1565c0" opacity="0.42" rx="1"/><rect x="632.2" y="73.3" width="13.8" height="78.7" fill="#c62828" opacity="0.42" rx="1"/><text x="631.2" y="164" text-anchor="middle" font-size="7" fill="#718096">W12</text><rect x="667.6" y="45.0" width="13.8" height="107.0" fill="#1565c0" opacity="0.42" rx="1"/><rect x="683.4" y="71.3" width="13.8" height="80.7" fill="#c62828" opacity="0.42" rx="1"/><text x="682.4" y="164" text-anchor="middle" font-size="7" fill="#718096">W13</text><line x1="42" y1="91.4" x2="708" y2="91.4" stroke="#e65100" stroke-width="1.4" stroke-dasharray="4 3"/><polyline points="67.6,40.0 118.8,50.1 170.1,72.3 221.3,106.6 272.5,142.9 323.8,130.8 375.0,140.9 426.2,120.7 477.5,90.4 528.7,80.3 579.9,74.3 631.2,62.2 682.4,35.9" fill="none" stroke="#b8944c" stroke-width="2" stroke-linejoin="round"/><circle cx="67.6" cy="40.0" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="118.8" cy="50.1" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="170.1" cy="72.3" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="221.3" cy="106.6" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="272.5" cy="142.9" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="323.8" cy="130.8" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="375.0" cy="140.9" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="426.2" cy="120.7" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="477.5" cy="90.4" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="528.7" cy="80.3" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="579.9" cy="74.3" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="631.2" cy="62.2" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/><circle cx="682.4" cy="35.9" r="2.1" fill="#fff" stroke="#b8944c" stroke-width="1.6"/></svg>
+    <div class="table-note">实线/实底 = 实际（W1–W2）；浅色底 = 预测（W3–W13）。缺口定义：当周期末现金低于最低现金保有 3,000 万元时，差额计入缺口。</div>
+  </div>
+
+  <div class="card">
+    <h3>13 周现金流主表 <span class="hint">单位：万元</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th style="width:7%">周次</th><th style="width:6%">状态</th><th class="num">期初</th><th class="num">流入</th>
+          <th class="num">流出</th><th class="num">净现金流</th><th class="num">期末</th>
+          <th class="num">最低保有</th><th class="num">缺口</th><th style="width:7%">灯</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><b>W1</b></td><td>实际</td><td class="num">5,200</td><td class="num">4,200</td>
+          <td class="num">3,850</td><td class="num">350</td><td class="num">5,550</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W2</b></td><td>实际</td><td class="num">5,550</td><td class="num">3,600</td>
+          <td class="num">4,100</td><td class="num">-500</td><td class="num">5,050</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W3</b></td><td>预测</td><td class="num">5,050</td><td class="num">3,200</td>
+          <td class="num">4,300</td><td class="num">-1,100</td><td class="num">3,950</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W4</b></td><td>预测</td><td class="num">3,950</td><td class="num">2,900</td>
+          <td class="num">4,600</td><td class="num">-1,700</td><td class="num">2,250</td>
+          <td class="num">3,000</td><td class="num">750</td>
+          <td><span class="pill amber">黄</span></td>
+        </tr>
+        <tr>
+          <td><b>W5</b></td><td>预测</td><td class="num">2,250</td><td class="num">2,600</td>
+          <td class="num">4,400</td><td class="num">-1,800</td><td class="num">450</td>
+          <td class="num">3,000</td><td class="num">2,550</td>
+          <td><span class="pill red">红</span></td>
+        </tr>
+        <tr>
+          <td><b>W6</b></td><td>预测</td><td class="num">450</td><td class="num">4,600</td>
+          <td class="num">4,000</td><td class="num">600</td><td class="num">1,050</td>
+          <td class="num">3,000</td><td class="num">1,950</td>
+          <td><span class="pill red">红</span></td>
+        </tr>
+        <tr>
+          <td><b>W7</b></td><td>预测</td><td class="num">1,050</td><td class="num">3,400</td>
+          <td class="num">3,900</td><td class="num">-500</td><td class="num">550</td>
+          <td class="num">3,000</td><td class="num">2,450</td>
+          <td><span class="pill red">红</span></td>
+        </tr>
+        <tr>
+          <td><b>W8</b></td><td>预测</td><td class="num">550</td><td class="num">4,800</td>
+          <td class="num">3,800</td><td class="num">1,000</td><td class="num">1,550</td>
+          <td class="num">3,000</td><td class="num">1,450</td>
+          <td><span class="pill red">红</span></td>
+        </tr>
+        <tr>
+          <td><b>W9</b></td><td>预测</td><td class="num">1,550</td><td class="num">5,200</td>
+          <td class="num">3,700</td><td class="num">1,500</td><td class="num">3,050</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W10</b></td><td>预测</td><td class="num">3,050</td><td class="num">4,400</td>
+          <td class="num">3,900</td><td class="num">500</td><td class="num">3,550</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W11</b></td><td>预测</td><td class="num">3,550</td><td class="num">4,100</td>
+          <td class="num">3,800</td><td class="num">300</td><td class="num">3,850</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W12</b></td><td>预测</td><td class="num">3,850</td><td class="num">4,500</td>
+          <td class="num">3,900</td><td class="num">600</td><td class="num">4,450</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td><b>W13</b></td><td>预测</td><td class="num">4,450</td><td class="num">5,300</td>
+          <td class="num">4,000</td><td class="num">1,300</td><td class="num">5,750</td>
+          <td class="num">3,000</td><td class="num">0</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr class="total"><td>合计</td><td>—</td><td class="num">5,200</td><td class="num">52,800</td><td class="num">52,250</td><td class="num">550</td><td class="num">5,750</td><td class="num">—</td><td class="num">9,150</td><td>—</td></tr>
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">自洽：期初 + 净现金流 = 期末；每周期末 = 下周期初；Σ流入 − Σ流出 = Σ净现金流；缺口 = MAX(0, 最低保有 − 期末)。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>现金结构 <span class="hint">监管内/外 · 受限/非受限</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>维度</th><th class="num">金额（万元）</th><th class="num">占比</th><th>说明</th></tr>
+          <tr><td>监管内资金</td><td class="num">1,900</td><td class="num">33.04%</td><td>预售监管账户等</td></tr>
+          <tr><td>监管外资金</td><td class="num">3,850</td><td class="num">66.96%</td><td>一般账户</td></tr>
+          <tr class="sub"><td>总现金</td><td class="num">5,750</td><td class="num">100.0%</td><td>监管内 + 监管外</td></tr>
+          <tr><td>受限资金</td><td class="num">1,450</td><td class="num">25.22%</td><td>保证金/冻结/质押</td></tr>
+          <tr><td>非受限资金</td><td class="num">4,300</td><td class="num">74.78%</td><td>可自由调度</td></tr>
+          <tr class="sub"><td>可用现金</td><td class="num">4,300</td><td class="num">74.78%</td><td>总现金 − 受限</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>结论与动作 <span class="hint">从数字到管理动作</span></h3>
+      <div class="callout red">
+        <p><b>最低点：</b>W5 期末现金 450 万元，低于最低保有 3,000 万元；共有 5 周出现缺口，累计缺口 9,150 万元。</p>
+      </div>
+      <ul>
+        <li>最低点 W5（期末 450 万元），5 周低于保有线，累计缺口 9,150 万元。</li>
+        <li>把 W4–W6 的 3 笔分包付款（2,800 万元）与回款节点挂钩，争取延后 2 周。</li>
+        <li>启用 3,000 万元授信覆盖 W5–W7 缺口；对逾期 60 天应收 1,900 万元专项催收。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>关键假设与口径 <span class="hint">先写假设，再给结论</span></h3>
+    <div class="grid-3">
+      <div><b>回款率：</b>92%（近 12 个月均值）</div>
+      <div><b>平均账期：</b>75 天，较合同延后 15 天</div>
+      <div><b>工程进度：</b>按月度产值计划，无停工</div>
+      <div><b>融资到位：</b>3,000 万元授信 W6 前批复（概率 70%）</div>
+      <div><b>固定支出：</b>税费与工资按月支付</div>
+      <div><b>最低保有：</b>3,000 万元（约 6 周固定支出）</div>
+    </div>
+    <div class="disclaimer">
+      <b>示例数据声明：</b>本页为方法论演示，所有金额、周次、回款率与融资到位假设均为示例，非真实企业数据。实际使用需替换为银行流水、合同回款计划、工程进度与融资批复，并由财务负责人复核。
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>示例数据 · 非真实企业 · 方法论演示</span>
+    <span>Portfolio Template · Finance · 2026-10</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>集团经营快报（示例）</h1>
+      <div class="sub">2026 年 9 月 · 合并范围 20 家项目公司 · 单位：万元</div>
+    </div>
+    <div class="right">示例数据 · 脱敏模拟<br>非真实企业数据</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">235,120<small>万元</small></div><div class="l">合并营业收入</div></div>
+    <div class="kpi"><div class="v">9.00%</div><div class="l">合并毛利率</div></div>
+    <div class="kpi"><div class="v">10,440<small>万元</small></div><div class="l">合并净利润</div></div>
+    <div class="kpi"><div class="v">4.44%</div><div class="l">合并净利率</div></div>
+    <div class="kpi"><div class="v">7,060<small>万元</small></div><div class="l">经营现金流合计</div></div>
+    <div class="kpi"><div class="v">5,750<small>万元</small></div><div class="l">期末现金合计</div></div>
+    <div class="kpi"><div class="v">99.40%</div><div class="l">预算完成率（20 家合计口径）</div></div>
+    <div class="kpi"><div class="v">16 / 3 / 1</div><div class="l">红黄绿灯：绿 / 黄 / 红</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>净利贡献 Top 10 / Bottom 5 <span class="hint">按净利润排名</span></h3>
+      <div class="bar-row"><div class="name">项目公司 A</div><div class="track"><div class="fill green" style="width:100.0%"></div></div><div class="val">1,950</div></div>
+      <div class="bar-row"><div class="name">项目公司 B</div><div class="track"><div class="fill green" style="width:83.07692307692308%"></div></div><div class="val">1,620</div></div>
+      <div class="bar-row"><div class="name">项目公司 C</div><div class="track"><div class="fill green" style="width:60.51282051282051%"></div></div><div class="val">1,180</div></div>
+      <div class="bar-row"><div class="name">项目公司 D</div><div class="track"><div class="fill green" style="width:49.23076923076923%"></div></div><div class="val">960</div></div>
+      <div class="bar-row"><div class="name">项目公司 E</div><div class="track"><div class="fill green" style="width:40.0%"></div></div><div class="val">780</div></div>
+      <div class="bar-row"><div class="name">项目公司 F</div><div class="track"><div class="fill green" style="width:35.38461538461539%"></div></div><div class="val">690</div></div>
+      <div class="bar-row"><div class="name">项目公司 G</div><div class="track"><div class="fill green" style="width:30.76923076923077%"></div></div><div class="val">600</div></div>
+      <div class="bar-row"><div class="name">项目公司 H</div><div class="track"><div class="fill green" style="width:27.692307692307693%"></div></div><div class="val">540</div></div>
+      <div class="bar-row"><div class="name">项目公司 I</div><div class="track"><div class="fill green" style="width:24.615384615384617%"></div></div><div class="val">480</div></div>
+      <div class="bar-row"><div class="name">项目公司 J</div><div class="track"><div class="fill green" style="width:21.025641025641026%"></div></div><div class="val">410</div></div>
+      <div class="hr"></div>
+      <div class="bar-row"><div class="name">项目公司 T</div><div class="track"><div class="fill red" style="width:73.33333333333333%"></div></div><div class="val">-110</div></div>
+      <div class="bar-row"><div class="name">项目公司 S</div><div class="track"><div class="fill red" style="width:13.333333333333334%"></div></div><div class="val">20</div></div>
+      <div class="bar-row"><div class="name">项目公司 R</div><div class="track"><div class="fill red" style="width:40.0%"></div></div><div class="val">60</div></div>
+      <div class="bar-row"><div class="name">项目公司 Q</div><div class="track"><div class="fill red" style="width:73.33333333333333%"></div></div><div class="val">110</div></div>
+      <div class="bar-row"><div class="name">项目公司 P</div><div class="track"><div class="fill red" style="width:100.0%"></div></div><div class="val">150</div></div>
+    </div>
+    <div class="card">
+      <h3>预算偏差 Top 5 <span class="hint">实际 − 预算（收入口径）</span></h3>
+      <div class="bar-row"><div class="name">项目公司 A</div><div class="track"><div class="fill green" style="width:100.0%"></div></div><div class="val">2,000</div></div>
+      <div class="bar-row"><div class="name">项目公司 C</div><div class="track"><div class="fill red" style="width:50.0%"></div></div><div class="val">-1,000</div></div>
+      <div class="bar-row"><div class="name">项目公司 D</div><div class="track"><div class="fill red" style="width:25.0%"></div></div><div class="val">-500</div></div>
+      <div class="bar-row"><div class="name">项目公司 E</div><div class="track"><div class="fill green" style="width:25.0%"></div></div><div class="val">500</div></div>
+      <div class="bar-row"><div class="name">项目公司 F</div><div class="track"><div class="fill green" style="width:25.0%"></div></div><div class="val">500</div></div>
+      <div class="table-note">偏差 = 实际 − 预算；偏差率 = 偏差 / 预算；完成率 = 实际 / 预算。绿色为超预算，红色为低于预算。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>20 家项目公司快报 <span class="hint">节选全部 20 家 · 排名按净利润</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr><th style="width:4%">#</th><th style="width:10%">项目公司</th><th class="num">收入</th><th class="num">毛利率</th><th class="num">净利率</th><th class="num">经营现金流</th><th class="num">预算完成率</th><th style="width:7%">灯</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="c">1</td><td><b>项目公司 A</b></td><td class="num">28,000</td><td class="num">12.14%</td><td class="num">6.96%</td><td class="num">2,100</td><td class="num">107.69%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">2</td><td><b>项目公司 B</b></td><td class="num">24,500</td><td class="num">13.06%</td><td class="num">6.61%</td><td class="num">1,450</td><td class="num">98.79%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">3</td><td><b>项目公司 C</b></td><td class="num">21,000</td><td class="num">10.95%</td><td class="num">5.62%</td><td class="num">980</td><td class="num">95.45%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">4</td><td><b>项目公司 D</b></td><td class="num">19,500</td><td class="num">9.74%</td><td class="num">4.92%</td><td class="num">-320</td><td class="num">97.50%</td>
+          <td><span class="pill amber">黄</span></td>
+        </tr>
+        <tr>
+          <td class="c">5</td><td><b>项目公司 E</b></td><td class="num">18,000</td><td class="num">8.89%</td><td class="num">4.33%</td><td class="num">640</td><td class="num">102.86%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">6</td><td><b>项目公司 F</b></td><td class="num">16,500</td><td class="num">9.09%</td><td class="num">4.18%</td><td class="num">520</td><td class="num">103.12%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">7</td><td><b>项目公司 G</b></td><td class="num">15,000</td><td class="num">8.67%</td><td class="num">4.00%</td><td class="num">410</td><td class="num">96.77%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">8</td><td><b>项目公司 H</b></td><td class="num">13,800</td><td class="num">8.70%</td><td class="num">3.91%</td><td class="num">360</td><td class="num">98.57%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">9</td><td><b>项目公司 I</b></td><td class="num">12,500</td><td class="num">8.80%</td><td class="num">3.84%</td><td class="num">300</td><td class="num">104.17%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">10</td><td><b>项目公司 J</b></td><td class="num">11,200</td><td class="num">8.04%</td><td class="num">3.66%</td><td class="num">260</td><td class="num">97.39%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">11</td><td><b>项目公司 K</b></td><td class="num">10,000</td><td class="num">8.00%</td><td class="num">3.50%</td><td class="num">210</td><td class="num">98.04%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">12</td><td><b>项目公司 L</b></td><td class="num">9,200</td><td class="num">7.61%</td><td class="num">3.37%</td><td class="num">180</td><td class="num">102.22%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">13</td><td><b>项目公司 M</b></td><td class="num">8,400</td><td class="num">7.14%</td><td class="num">3.21%</td><td class="num">150</td><td class="num">98.82%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">14</td><td><b>项目公司 N</b></td><td class="num">7,600</td><td class="num">6.58%</td><td class="num">3.03%</td><td class="num">120</td><td class="num">97.44%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">15</td><td><b>项目公司 O</b></td><td class="num">6,800</td><td class="num">5.88%</td><td class="num">2.79%</td><td class="num">90</td><td class="num">97.14%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">16</td><td><b>项目公司 P</b></td><td class="num">6,000</td><td class="num">5.00%</td><td class="num">2.50%</td><td class="num">60</td><td class="num">95.24%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">17</td><td><b>项目公司 Q</b></td><td class="num">5,200</td><td class="num">3.85%</td><td class="num">2.12%</td><td class="num">40</td><td class="num">98.11%</td>
+          <td><span class="pill green">绿</span></td>
+        </tr>
+        <tr>
+          <td class="c">18</td><td><b>项目公司 R</b></td><td class="num">4,400</td><td class="num">2.27%</td><td class="num">1.36%</td><td class="num">-80</td><td class="num">91.67%</td>
+          <td><span class="pill amber">黄</span></td>
+        </tr>
+        <tr>
+          <td class="c">19</td><td><b>项目公司 S</b></td><td class="num">3,600</td><td class="num">0.00%</td><td class="num">0.56%</td><td class="num">-150</td><td class="num">90.00%</td>
+          <td><span class="pill amber">黄</span></td>
+        </tr>
+        <tr>
+          <td class="c">20</td><td><b>项目公司 T</b></td><td class="num">2,520</td><td class="num">-5.16%</td><td class="num">-4.37%</td><td class="num">-260</td><td class="num">84.00%</td>
+          <td><span class="pill red">红</span></td>
+        </tr>
+        <tr class="total"><td>—</td><td>合计 / 合并</td><td class="num">235,120</td><td class="num">9.00%</td><td class="num">4.44%</td><td class="num">7,060</td><td class="num">99.40%</td><td>—</td></tr>
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">预算完成率 = 20 家收入合计 ÷ 预算合计（未抵消内部交易）；合并口径的完成率需另行以合并收入为分子。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>合并桥（收入） <span class="hint">20 家合计 → 抵消 → 合并</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">金额（万元）</th></tr>
+          <tr><td>20 家收入合计</td><td class="num">243,720</td></tr>
+          <tr><td>减：内部交易抵消</td><td class="num">-8,600</td></tr>
+          <tr class="total"><td>合并营业收入</td><td class="num">235,120</td></tr>
+          <tr><td>20 家成本合计</td><td class="num">221,850</td></tr>
+          <tr><td>减：内部成本抵消</td><td class="num">-7,900</td></tr>
+          <tr class="total"><td>合并营业成本</td><td class="num">213,950</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>合并桥（净利） <span class="hint">净利合计 → 抵消 → 少数股东 → 归母</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">金额（万元）</th></tr>
+          <tr><td>20 家净利润合计</td><td class="num">10,790</td></tr>
+          <tr><td>减：内部利润抵消</td><td class="num">-350</td></tr>
+          <tr><td>减：少数股东损益</td><td class="num">-620</td></tr>
+          <tr class="total"><td>归母净利润</td><td class="num">9,820</td></tr>
+          <tr><td>经营现金流合计</td><td class="num">7,060</td></tr>
+          <tr><td>期末现金合计</td><td class="num">5,750</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <p><b>三条管理结论：</b>净利前 3 家（项目公司 A、项目公司 B、项目公司 C）合计 4,750 万元，占 20 家净利合计的 44.02%；收入完成率 99.40%，但有 4 家经营现金流为负，合计 -810 万元；红灯 1 家（项目公司 T）；内部交易抵消 8,600 万元，月结前须完成对账；归母净利 9,820 万元，少数股东损益 620 万元。</p>
+  </div>
+
+  <div class="footer">
+    <span>口径：合并范围 20 家；内部交易抵消 8,600 万元；预算版本 2026 年度预算 v3（9 月滚动修订）；红黄绿灯阈值见下。</span>
+    <span>绿灯：完成率≥95% 且经营现金流≥0；黄灯：85%–95% 或现金流为负但可覆盖；红灯：&lt;85% 或出现缺口。示例阈值，可按集团制度替换。</span>
+  </div>
+</div>
+</body>
+</html>

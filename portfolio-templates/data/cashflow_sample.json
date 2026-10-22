@@ -1,0 +1,108 @@
+{
+  "period": "2026-10-01 至 2026-12-31（W1–W13）",
+  "scope": "某建安企业（示例）本部及 3 个在建项目",
+  "unit": "万元",
+  "version": "v1.0 · 示例",
+  "floor": 3000,
+  "opening": 5200,
+  "weeks": [
+    {
+      "label": "W1",
+      "inflow": 4200,
+      "outflow": 3850
+    },
+    {
+      "label": "W2",
+      "inflow": 3600,
+      "outflow": 4100
+    },
+    {
+      "label": "W3",
+      "inflow": 3200,
+      "outflow": 4300
+    },
+    {
+      "label": "W4",
+      "inflow": 2900,
+      "outflow": 4600
+    },
+    {
+      "label": "W5",
+      "inflow": 2600,
+      "outflow": 4400
+    },
+    {
+      "label": "W6",
+      "inflow": 4600,
+      "outflow": 4000
+    },
+    {
+      "label": "W7",
+      "inflow": 3400,
+      "outflow": 3900
+    },
+    {
+      "label": "W8",
+      "inflow": 4800,
+      "outflow": 3800
+    },
+    {
+      "label": "W9",
+      "inflow": 5200,
+      "outflow": 3700
+    },
+    {
+      "label": "W10",
+      "inflow": 4400,
+      "outflow": 3900
+    },
+    {
+      "label": "W11",
+      "inflow": 4100,
+      "outflow": 3800
+    },
+    {
+      "label": "W12",
+      "inflow": 4500,
+      "outflow": 3900
+    },
+    {
+      "label": "W13",
+      "inflow": 5300,
+      "outflow": 4000
+    }
+  ],
+  "actual_weeks": 2,
+  "cash": {
+    "regulatory": 1900,
+    "non_regulatory": 3850,
+    "restricted": 1450,
+    "non_restricted": 4300
+  },
+  "assumptions": [
+    {
+      "label": "回款率",
+      "value": "92%（近 12 个月均值）"
+    },
+    {
+      "label": "平均账期",
+      "value": "75 天，较合同延后 15 天"
+    },
+    {
+      "label": "工程进度",
+      "value": "按月度产值计划，无停工"
+    },
+    {
+      "label": "融资到位",
+      "value": "3,000 万元授信 W6 前批复（概率 70%）"
+    },
+    {
+      "label": "固定支出",
+      "value": "税费与工资按月支付"
+    },
+    {
+      "label": "最低保有",
+      "value": "3,000 万元（约 6 周固定支出）"
+    }
+  ]
+}

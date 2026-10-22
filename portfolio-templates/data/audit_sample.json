@@ -1,0 +1,572 @@
+{
+  "company": "某建安企业（示例）",
+  "period": "2026 年 1—12 月",
+  "unit": "万元",
+  "version": "v1.0 · 示例",
+  "assertion_count": 6,
+  "benchmarks": [
+    {
+      "name": "税前利润",
+      "amount": 8600,
+      "rate": 0.05,
+      "note": "常用 5%"
+    },
+    {
+      "name": "营业收入",
+      "amount": 186000,
+      "rate": 0.005,
+      "note": "常用 0.5%–1%"
+    },
+    {
+      "name": "资产总额",
+      "amount": 152000,
+      "rate": 0.003,
+      "note": "常用 0.3%–0.5%"
+    },
+    {
+      "name": "净资产",
+      "amount": 48000,
+      "rate": 0.01,
+      "note": "常用 1%"
+    }
+  ],
+  "objectives": [
+    {
+      "title": "报表公允性",
+      "desc": "对 2026 年度财务报表不存在重大错报获取合理保证。"
+    },
+    {
+      "title": "高风险领域",
+      "desc": "收入确认、应收减值、成本归集三项高风险领域。"
+    },
+    {
+      "title": "内控有效性",
+      "desc": "评价采购付款与销售收款两个流程的关键控制。"
+    }
+  ],
+  "scope": [
+    {
+      "label": "审计主体",
+      "value": "某建安企业（单一法人，示例）"
+    },
+    {
+      "label": "审计期间",
+      "value": "2026-01-01 至 2026-12-31"
+    },
+    {
+      "label": "重点科目",
+      "value": "收入、应收、合同资产、工程施工、货币资金"
+    },
+    {
+      "label": "排除项",
+      "value": "子公司、境外业务、IT 一般控制（另立项目）"
+    }
+  ],
+  "risks": [
+    {
+      "id": "R-01",
+      "process": "收入确认",
+      "desc": "完工百分比依赖估算，或提前确认收入",
+      "level": "高",
+      "control": "未测试（管理层估计）",
+      "residual": "高",
+      "assertion": "发生 / 截止",
+      "response": "进度复核 + 函证 + 截止测试",
+      "fraud": false
+    },
+    {
+      "id": "R-02",
+      "process": "收入确认",
+      "desc": "年末突击确认收入、跨期调节利润",
+      "level": "高",
+      "control": "月度分析 + 异动问询",
+      "residual": "中高",
+      "assertion": "发生 / 截止",
+      "response": "凭证全查 + 异常分录筛查",
+      "fraud": true
+    },
+    {
+      "id": "R-03",
+      "process": "应收账款",
+      "desc": "账龄错误、单项减值遗漏、ECL 参数随意",
+      "level": "高",
+      "control": "账龄自动 + 单项审批",
+      "residual": "中高",
+      "assertion": "计价与分摊",
+      "response": "ECL 重算 + 期后回款检查",
+      "fraud": false
+    },
+    {
+      "id": "R-04",
+      "process": "合同资产",
+      "desc": "已完工未结算与预收款项分类错误",
+      "level": "中高",
+      "control": "月末结算单核对",
+      "residual": "中",
+      "assertion": "分类 / 列报",
+      "response": "核对结算单与列报",
+      "fraud": false
+    },
+    {
+      "id": "R-05",
+      "process": "采购付款",
+      "desc": "供应商准入绕过、虚假采购",
+      "level": "高",
+      "control": "比价 + 合同 + 关联筛查",
+      "residual": "中高",
+      "assertion": "发生 / 准确性",
+      "response": "背景核查 + 双签测试",
+      "fraud": true
+    },
+    {
+      "id": "R-06",
+      "process": "存货与成本",
+      "desc": "成本归集错误、跨项目串成本",
+      "level": "高",
+      "control": "成本台账 + 月度分析",
+      "residual": "中高",
+      "assertion": "准确性 / 计价",
+      "response": "成本穿行 + 重新归集",
+      "fraud": false
+    },
+    {
+      "id": "R-07",
+      "process": "资金与担保",
+      "desc": "资金越权、担保未披露、资金池混同",
+      "level": "高",
+      "control": "权限表 + 月度资金计划",
+      "residual": "高",
+      "assertion": "存在 / 列报",
+      "response": "函证 + 大额流水 + 担保检查",
+      "fraud": false
+    },
+    {
+      "id": "R-08",
+      "process": "税务与发票",
+      "desc": "预缴不足、抵扣不合规、三流不一致",
+      "level": "中高",
+      "control": "申报复核 + 发票查验",
+      "residual": "中高",
+      "assertion": "准确性 / 合规",
+      "response": "发票三流核对 + 预缴复核",
+      "fraud": false
+    }
+  ],
+  "programs": [
+    {
+      "id": "P-01",
+      "risk": "R-01",
+      "type": "实质性程序",
+      "desc": "复核履约进度：产值单、监理确认、形象进度三方比对并重算收入",
+      "sample": "12 个项目",
+      "timing": "W3–W4",
+      "wp": "A-01"
+    },
+    {
+      "id": "P-02",
+      "risk": "R-02",
+      "type": "舞弊程序",
+      "desc": "截止日前后各 10 天收入凭证全查，筛查手工分录与红字冲销",
+      "sample": "全部凭证",
+      "timing": "W4",
+      "wp": "A-02"
+    },
+    {
+      "id": "P-03",
+      "risk": "R-03",
+      "type": "实质性程序",
+      "desc": "重算 ECL 模型，检查账龄划分与参数，核对期后回款",
+      "sample": "前 20 大客户",
+      "timing": "W4–W5",
+      "wp": "A-03"
+    },
+    {
+      "id": "P-04",
+      "risk": "R-05",
+      "type": "控制测试 + 实质性",
+      "desc": "抽查供应商准入与付款审批链",
+      "sample": "25 笔付款",
+      "timing": "W5",
+      "wp": "B-01"
+    },
+    {
+      "id": "P-05",
+      "risk": "R-06",
+      "type": "实质性程序",
+      "desc": "项目成本穿行：领料、分包结算到成本归集，重新归集",
+      "sample": "6 个项目",
+      "timing": "W5–W6",
+      "wp": "C-01"
+    },
+    {
+      "id": "P-06",
+      "risk": "R-07",
+      "type": "实质性程序",
+      "desc": "全部账户函证，抽查 500 万元以上流水，检查担保协议",
+      "sample": "全部账户",
+      "timing": "W3–W6",
+      "wp": "D-01"
+    }
+  ],
+  "sampling": {
+    "total": "1,860 笔收入凭证与 25 个项目成本台账",
+    "method": "风险导向 + 货币单元抽样（PPS）",
+    "basis": "置信度 95%、可容忍错报 = PM、预期错报为 0",
+    "inference": "样本误差按 PPS 推断至总体；推断错报超过 PM 时扩大样本或调整程序"
+  },
+  "phases": [
+    {
+      "name": "计划",
+      "start": 1,
+      "end": 2,
+      "color": "gold"
+    },
+    {
+      "name": "现场",
+      "start": 3,
+      "end": 6,
+      "color": "navy"
+    },
+    {
+      "name": "复核",
+      "start": 7,
+      "end": 8,
+      "color": "blue"
+    },
+    {
+      "name": "报告",
+      "start": 9,
+      "end": 9,
+      "color": "green"
+    },
+    {
+      "name": "整改跟踪",
+      "start": 10,
+      "end": 10,
+      "color": "amber"
+    }
+  ],
+  "team": [
+    {
+      "role": "项目负责人",
+      "count": 1,
+      "days": 12,
+      "duty": "总体把控、重要性判断、报告签发"
+    },
+    {
+      "role": "现场负责人",
+      "count": 1,
+      "days": 20,
+      "duty": "现场组织、底稿一级复核、问题汇总"
+    },
+    {
+      "role": "审计执行",
+      "count": 3,
+      "days": 45,
+      "duty": "程序执行、证据收集、底稿编制"
+    },
+    {
+      "role": "质量复核（EQCR）",
+      "count": 1,
+      "days": 3,
+      "duty": "独立复核重大判断与报告措辞"
+    },
+    {
+      "role": "数据分析",
+      "count": 1,
+      "days": 8,
+      "duty": "全量数据筛查、异常分录与趋势识别"
+    }
+  ],
+  "deliverables": [
+    "审计方案",
+    "工作底稿",
+    "问题清单",
+    "审计报告",
+    "整改跟踪表",
+    "归档包"
+  ],
+  "ic": {
+    "entity_type": "单一法人建安企业（示例）",
+    "framework": "COSO 2013 + 企业内部控制基本规范（财会〔2008〕7号）及配套指引（财会〔2010〕11号）",
+    "purpose": "年度内控有效性评价，支撑审计对控制的依赖判断",
+    "period": "2026-01-01 至 2026-09-30（前三季度）",
+    "scope": "采购付款、销售收款两个流程；共 10 个控制点，其中 KCP 6 个",
+    "method": "穿行测试 + 控制测试 + 询问 + 检查 + 重新执行",
+    "statement": "本页按企业内部控制评价口径列示，缺陷等级采用企业自定标准；重大缺陷须经董事会最终认定，本页不替企业下最终结论。"
+  },
+  "coso": [
+    {
+      "element": "控制环境",
+      "principles": "1、2、5",
+      "question": "治理与权责是否有效",
+      "evidence": "章程、决议、授权表",
+      "rating": "部分有效",
+      "note": "授权表一年未更新"
+    },
+    {
+      "element": "风险评估",
+      "principles": "6、7、8、9",
+      "question": "风险识别与应对机制",
+      "evidence": "风险清单、会议纪要",
+      "rating": "部分有效",
+      "note": "无量化风险偏好"
+    },
+    {
+      "element": "控制活动",
+      "principles": "10、11、12",
+      "question": "关键控制是否运行",
+      "evidence": "控制矩阵、测试底稿",
+      "rating": "部分有效",
+      "note": "5 项控制存在例外"
+    },
+    {
+      "element": "信息与沟通",
+      "principles": "13、14、15",
+      "question": "信息传递是否及时",
+      "evidence": "分析会、报表记录",
+      "rating": "有效",
+      "note": "月报次月 8 日前"
+    },
+    {
+      "element": "监控活动",
+      "principles": "16、17",
+      "question": "是否持续监控内控",
+      "evidence": "内审报告、台账",
+      "rating": "未测试",
+      "note": "本期未测试"
+    }
+  ],
+  "controls": [
+    {
+      "id": "C-01",
+      "process": "采购付款",
+      "risk": "准入绕过",
+      "control": "三证+考察+关联筛查，双签",
+      "type": "预防",
+      "mode": "人工",
+      "freq": "每笔",
+      "kcp": "是",
+      "test": "10 家",
+      "sample": "10",
+      "result": "通过",
+      "deficiency": ""
+    },
+    {
+      "id": "C-02",
+      "process": "采购付款",
+      "risk": "虚假采购",
+      "control": "合同、验收单、发票三单匹配",
+      "type": "预防",
+      "mode": "人工",
+      "freq": "每笔",
+      "kcp": "是",
+      "test": "25 笔",
+      "sample": "25",
+      "result": "例外",
+      "deficiency": "D-01"
+    },
+    {
+      "id": "C-03",
+      "process": "采购付款",
+      "risk": "越权审批",
+      "control": "≥500 万元双签审批",
+      "type": "预防",
+      "mode": "人工",
+      "freq": "每笔",
+      "kcp": "是",
+      "test": "15 笔",
+      "sample": "15",
+      "result": "例外",
+      "deficiency": "D-02"
+    },
+    {
+      "id": "C-04",
+      "process": "采购付款",
+      "risk": "对账差异",
+      "control": "月末对账单与应付核对",
+      "type": "发现",
+      "mode": "人工",
+      "freq": "每月",
+      "kcp": "否",
+      "test": "3 月",
+      "sample": "3",
+      "result": "例外",
+      "deficiency": "D-01"
+    },
+    {
+      "id": "C-05",
+      "process": "采购付款",
+      "risk": "预付挂账",
+      "control": "预付超 180 天预警清理",
+      "type": "发现",
+      "mode": "自动",
+      "freq": "每月",
+      "kcp": "否",
+      "test": "3 月",
+      "sample": "3",
+      "result": "通过",
+      "deficiency": ""
+    },
+    {
+      "id": "C-06",
+      "process": "销售收款",
+      "risk": "收入提前确认",
+      "control": "收入与产值、结算单核对",
+      "type": "发现",
+      "mode": "人工",
+      "freq": "每月",
+      "kcp": "是",
+      "test": "3 月",
+      "sample": "3",
+      "result": "例外",
+      "deficiency": "D-03"
+    },
+    {
+      "id": "C-07",
+      "process": "销售收款",
+      "risk": "应收逾期",
+      "control": "账龄自动，超 90 天催收",
+      "type": "发现",
+      "mode": "自动",
+      "freq": "每周",
+      "kcp": "否",
+      "test": "2 周",
+      "sample": "2",
+      "result": "通过",
+      "deficiency": ""
+    },
+    {
+      "id": "C-08",
+      "process": "销售收款",
+      "risk": "收款未入账",
+      "control": "流水与收款台账每日核对",
+      "type": "发现",
+      "mode": "人工",
+      "freq": "每日",
+      "kcp": "是",
+      "test": "10 日",
+      "sample": "10",
+      "result": "通过",
+      "deficiency": ""
+    },
+    {
+      "id": "C-09",
+      "process": "销售收款",
+      "risk": "坏账计提不足",
+      "control": "ECL 参数审批并留痕",
+      "type": "预防",
+      "mode": "人工",
+      "freq": "每季",
+      "kcp": "否",
+      "test": "未测试",
+      "sample": "—",
+      "result": "未测试",
+      "deficiency": "D-04"
+    },
+    {
+      "id": "C-10",
+      "process": "销售收款",
+      "risk": "折扣未审批",
+      "control": "超 5% 折扣需总经理审批",
+      "type": "预防",
+      "mode": "人工",
+      "freq": "每笔",
+      "kcp": "是",
+      "test": "12 笔",
+      "sample": "12",
+      "result": "例外",
+      "deficiency": "D-05"
+    }
+  ],
+  "deficiencies": [
+    {
+      "id": "D-01",
+      "desc": "3 笔付款无验收单（抽 25 笔）",
+      "cause": "执行不到位",
+      "severity": "重要",
+      "standard": "≥100 万元且无补偿",
+      "compensating": "",
+      "action": "补签 + 系统硬控",
+      "owner": "采购负责人",
+      "due": "2026-12-31",
+      "status": "整改中",
+      "verification": "抽 10 笔齐全"
+    },
+    {
+      "id": "D-02",
+      "desc": "2 笔 600 万元以上付款越权",
+      "cause": "授权表未更新",
+      "severity": "重大",
+      "standard": "超授权且影响报表",
+      "compensating": "月度资金复核",
+      "action": "更新授权表，OA 拦截",
+      "owner": "财务负责人",
+      "due": "2026-11-30",
+      "status": "已验证关闭",
+      "verification": "抽 8 笔合规"
+    },
+    {
+      "id": "D-03",
+      "desc": "1 笔 1,850 万元收入提前确认",
+      "cause": "结算晚于记账",
+      "severity": "重要",
+      "standard": "错报≥PM",
+      "compensating": "季度分析性复核",
+      "action": "冲回并增加截止测试",
+      "owner": "财务经理",
+      "due": "2026-11-15",
+      "status": "整改中",
+      "verification": "10 月凭证正确"
+    },
+    {
+      "id": "D-04",
+      "desc": "ECL 参数一年未更新",
+      "cause": "设计缺陷",
+      "severity": "重要",
+      "standard": "影响损益≥PM",
+      "compensating": "",
+      "action": "更新参数并季度回测",
+      "owner": "财务负责人",
+      "due": "2026-12-31",
+      "status": "未开始",
+      "verification": "待四季度复核"
+    },
+    {
+      "id": "D-05",
+      "desc": "3 笔超 5% 折扣无审批",
+      "cause": "执行不到位",
+      "severity": "一般",
+      "standard": "<100 万元",
+      "compensating": "销售负责人月度复核",
+      "action": "补审批 + 合同评审",
+      "owner": "销售负责人",
+      "due": "2026-11-30",
+      "status": "已验证关闭",
+      "verification": "抽 12 笔合规"
+    }
+  ],
+  "cross": [
+    {
+      "item": "收入",
+      "audit": "截止测试发现 1 笔 1,850 万元提前确认",
+      "analysis": "毛利率季度波动 +2.1pp",
+      "conclusion": "一致，已调整",
+      "cls": "green"
+    },
+    {
+      "item": "应收",
+      "audit": "前 20 大客户期后回款率 78%",
+      "analysis": "应收周转天数同比 +18 天",
+      "conclusion": "需扩大样本",
+      "cls": "amber"
+    },
+    {
+      "item": "资金",
+      "audit": "银行函证无差异",
+      "analysis": "经营现金流/净利润 0.64",
+      "conclusion": "冲突，追加程序",
+      "cls": "red"
+    }
+  ]
+}

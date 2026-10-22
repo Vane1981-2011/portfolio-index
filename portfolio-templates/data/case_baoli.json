@@ -1,0 +1,207 @@
+{
+  "company": "保利发展",
+  "ticker": "600048.SH",
+  "period": "2026 年半年报（2026-06-30）",
+  "compare_period": "2025 年半年报",
+  "source": "东方财富 / akshare 公开数据",
+  "collected_at": "2026-10-22",
+  "unit": "亿元",
+  "disclaimer": "本案例仅使用公开披露的合并报表与主营构成数据，不包含任何内部账套、项目级土增税清算或关联交易定价信息；结论仅用于方法演示，不构成审计意见或税务意见。",
+  "income": {
+    "revenue": 1028.6031,
+    "cost": 894.5831,
+    "tax_surcharge": 16.4987,
+    "profit_total": 56.2979,
+    "income_tax": 23.9577,
+    "net_profit": 32.3402,
+    "attributable": 19.586,
+    "minority": 12.7542,
+    "revenue_prior": 1168.567,
+    "attributable_prior": 33.1072,
+    "net_profit_prior": 72.0597,
+    "gm_prior": 0.1464
+  },
+  "balance": {
+    "cash": 1338.1402,
+    "inventory": 6305.0932,
+    "contract_liab": 2416.7055,
+    "accounts_rece": 77.2281,
+    "short_loan": 46.3301,
+    "current_ltd": 650.8591,
+    "total_assets": 11652.2954,
+    "total_liabilities": 8364.881,
+    "equity": 3287.4144,
+    "parent_equity": 1945.7464,
+    "minority_equity": 1341.6681,
+    "deferred_tax_asset": 201.0566,
+    "deferred_tax_liab": 15.5341
+  },
+  "cashflow": {
+    "ocf": 245.5167,
+    "ocf_prior": 160.172,
+    "sales_cash": 1062.9733,
+    "taxes_paid": 123.44,
+    "operating_inflow": 1228.6622,
+    "operating_outflow": 983.1455,
+    "investing": -4.7232,
+    "financing": -134.8589
+  },
+  "segments": [
+    {
+      "name": "广东",
+      "revenue": 264.6909,
+      "cost": 237.432
+    },
+    {
+      "name": "江苏",
+      "revenue": 118.6614,
+      "cost": 112.5833
+    },
+    {
+      "name": "北京",
+      "revenue": 114.4755,
+      "cost": 97.87
+    },
+    {
+      "name": "上海",
+      "revenue": 103.521,
+      "cost": 78.9975
+    },
+    {
+      "name": "其他区域",
+      "revenue": 87.7383,
+      "cost": 82.7781
+    },
+    {
+      "name": "陕西",
+      "revenue": 72.8482,
+      "cost": 60.5156
+    },
+    {
+      "name": "海南",
+      "revenue": 48.8265,
+      "cost": 33.9252
+    },
+    {
+      "name": "河南",
+      "revenue": 41.1813,
+      "cost": 36.8237
+    },
+    {
+      "name": "山东",
+      "revenue": 32.3674,
+      "cost": 26.4375
+    },
+    {
+      "name": "福建",
+      "revenue": 28.9136,
+      "cost": 24.9896
+    },
+    {
+      "name": "四川",
+      "revenue": 25.6258,
+      "cost": 23.4156
+    },
+    {
+      "name": "安徽",
+      "revenue": 18.2839,
+      "cost": 16.9929
+    },
+    {
+      "name": "江西",
+      "revenue": 17.556,
+      "cost": 16.2065
+    },
+    {
+      "name": "河北",
+      "revenue": 15.6599,
+      "cost": 11.2591
+    },
+    {
+      "name": "辽宁",
+      "revenue": 14.1752,
+      "cost": 13.5959
+    },
+    {
+      "name": "湖北",
+      "revenue": 12.5926,
+      "cost": 11.9198
+    },
+    {
+      "name": "天津",
+      "revenue": 10.0895,
+      "cost": 8.5296
+    },
+    {
+      "name": "其他（补充）",
+      "revenue": 1.3963,
+      "cost": 0.3114
+    }
+  ],
+  "policies": [
+    {
+      "name": "土地增值税清算管理规程（国税发〔2009〕91号）",
+      "status": "现行",
+      "impact": "项目级清算条件、扣除分摊与尾盘销售",
+      "action": "需项目层面数据，公开报表无法测算"
+    },
+    {
+      "name": "2026 年第 3 号公告（印花税 / 地方教育附加 / 尾盘销售口径）",
+      "status": "待核",
+      "impact": "可能影响税金及附加与尾盘计算",
+      "action": "引用前核对原文与施行日期"
+    },
+    {
+      "name": "合作开发并表与权益法（企业会计准则第 33 号）",
+      "status": "现行",
+      "impact": "少数股东权益与损益的列报",
+      "action": "穿透合作项目协议与资金往来"
+    },
+    {
+      "name": "递延所得税（企业会计准则第 18 号）",
+      "status": "现行",
+      "impact": "有效税率与递延所得税资产确认",
+      "action": "复核可抵扣暂时性差异与转回假设"
+    },
+    {
+      "name": "房地产预收款增值税预缴（国家税务总局公告 2016 年第 18 号）",
+      "status": "现行",
+      "impact": "合同负债对应的预缴现金流",
+      "action": "按项目核对预缴与结转"
+    }
+  ],
+  "trend": [
+    {
+      "period": "2023H1",
+      "revenue": 1370.267,
+      "attributable": 122.2247,
+      "net_profit": 150.6729,
+      "ocf": 71.4597,
+      "gm": 0.2126
+    },
+    {
+      "period": "2024H1",
+      "revenue": 1392.492,
+      "attributable": 74.1988,
+      "net_profit": 106.9777,
+      "ocf": -171.4801,
+      "gm": 0.1602
+    },
+    {
+      "period": "2025H1",
+      "revenue": 1168.567,
+      "attributable": 33.1072,
+      "net_profit": 72.0597,
+      "ocf": 160.172,
+      "gm": 0.1464
+    },
+    {
+      "period": "2026H1",
+      "revenue": 1028.6031,
+      "attributable": 19.586,
+      "net_profit": 32.3402,
+      "ocf": 245.5167,
+      "gm": 0.1303
+    }
+  ]
+}

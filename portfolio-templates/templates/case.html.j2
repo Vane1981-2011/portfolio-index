@@ -1,0 +1,281 @@
+{% extends "base.html.j2" %}
+{% block content %}
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Public-Data Case · 2026 Interim</div>
+    <h1>保利发展（600048）公开数据案例</h1>
+    <div class="sub">用三份总监岗模板的方法跑一遍真实半年报：重要性水平、区域经营、现金流质量、税负与风险</div>
+    <div class="meta">
+      <span>数据源：<b>{{ case.source }}</b></span>
+      <span>报告期：<b>{{ case.period }}</b></span>
+      <span>采集日：<b>{{ case.collected_at }}</b></span>
+      <span>金额单位：<b>{{ case.unit }}</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge">公开数据 · 可复核</span>
+      <span class="badge red">非审计意见 · 非税务意见</span>
+      <span class="badge blue">不含内部账套与项目级清算数据</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">{{ c.revenue|num }}<small>亿元</small></div><div class="l">营业收入 · 同比 {{ c.revenue_yoy|pct }}</div></div>
+    <div class="kpi red"><div class="v">{{ c.attributable|num }}<small>亿元</small></div><div class="l">归母净利 · 同比 {{ c.attrib_yoy|pct }}</div></div>
+    <div class="kpi"><div class="v">{{ c.gm|pct }}</div><div class="l">毛利率 · 上年同期 {{ c.gm_prior|pct }}</div></div>
+    <div class="kpi green"><div class="v">{{ c.ocf|num }}<small>亿元</small></div><div class="l">经营现金流 · 同比 {{ c.ocf_yoy|pct }}</div></div>
+  </div>
+
+  <div class="card">
+    <h3>审计视角：先定重要性，再做分析性程序 <span class="hint">公开数据可支撑的部分</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>基准</th><th class="num">金额（亿元）</th><th class="num">比例</th><th class="num">计算结果</th><th>说明</th></tr>
+        {% for b in c.benchmarks %}
+        <tr><td>{{ b.name }}</td><td class="num">{{ b.amount|num }}</td><td class="num">{{ b.rate|pct }}</td><td class="num">{{ b.result|num2 }}</td><td>{{ b.note }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>整体重要性 OM</td><td class="num">—</td><td class="num">取孰低</td><td class="num">{{ c.om|num2 }}</td><td>税前利润基准，示例比例 5%</td></tr>
+        <tr><td>实际执行重要性 PM</td><td class="num">—</td><td class="num">OM×60%</td><td class="num">{{ c.pm|num2 }}</td><td>示例取 60%</td></tr>
+        <tr><td>明显微小错报临界值</td><td class="num">—</td><td class="num">OM×5%</td><td class="num">{{ c.trivial|num2 }}</td><td>低于该金额可累计不单独调整</td></tr>
+      </table>
+    </div>
+    <div class="table-note">基准数据取自 2026 年半年报合并报表；比例是常用区间，不是准则强制值。公开数据只能支持“计划重要性”的测算，不能替代现场判断。</div>
+  </div>
+
+  <div class="card">
+    <h3>风险矩阵 <span class="hint">指标来自公开报表，程序为建议</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th style="width:6%">ID</th><th style="width:13%">领域</th><th style="width:26%">公开指标 / 异常</th>
+          <th style="width:9%">风险</th><th style="width:26%">拟执行程序</th><th>对应认定</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in c.risks %}
+        <tr>
+          <td><b>{{ r.id }}</b></td><td>{{ r.area }}</td><td>{{ r.signal }}</td>
+          <td>{% if r.level == '高' %}<span class="pill red">高</span>{% else %}<span class="pill amber">中高</span>{% endif %}</td>
+          <td>{{ r.program }}</td><td>{{ r.assertion }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="table-note">风险等级 = 公开指标异常程度 × 对报表的影响；未获取内部数据时，控制运行有效性一律标注“未测试”。</div>
+  </div>
+
+  <div class="card">
+    <h3>审计程序与抽样建议 <span class="hint">每条程序对应一个风险 ID</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:6%">ID</th><th style="width:8%">对应风险</th><th style="width:12%">程序类型</th><th>程序描述</th><th style="width:14%">样本建议</th><th style="width:10%">底稿索引</th></tr>
+        {% for p in c.programs %}
+        <tr><td><b>{{ p.id }}</b></td><td>{{ p.risk }}</td><td>{{ p.type }}</td><td>{{ p.desc }}</td><td class="num">{{ p.sample }}</td><td>{{ p.wp }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><b>分析性程序结论：</b>① 收入连续三年同期下滑（1,392 → 1,169 → 1,029 亿元），归母净利下滑更快（74.2 → 33.1 → 19.6 亿元），收入确认与成本结转是首要风险；② 存货 6,305 亿元、合同负债 2,417 亿元，交付进度与存货跌价是最敏感的两项估计；③ 经营现金流由 2024H1 的 −171 亿元转为 2026H1 的 +246 亿元，现金改善与利润下滑并存，需验证是否来自拿地收缩与以价换量。</p>
+  </div>
+
+  <div class="callout red">
+    <p><b>不能从公开数据得到什么：</b>内控运行有效性、项目级收入截止、存货可变现净值、关联方资金往来、土地增值税清算数据。本页只完成“风险识别 + 计划”，不构成审计结论；正式项目须进场获取账套、合同、结算单与银行流水。</p>
+  </div>
+
+  <div class="disclaimer">
+    <b>案例边界：</b>本页数据来自 {{ case.source }}（采集 {{ case.collected_at }}），仅含合并报表与主营构成；比例与阈值均为示例。作者未持 CPA / CIA，本页不构成审计意见或鉴证结论。
+  </div>
+
+  <div class="footer">
+    <span>{{ case.company }}（{{ case.ticker }}）· {{ case.period }}</span>
+    <span>Public-Data Case · Audit Lens · 2026-10</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>财务视角：区域经营与现金流质量</h1>
+      <div class="sub">{{ case.period }} · 合并口径 · 单位：{{ case.unit }}</div>
+    </div>
+    <div class="right">公开数据 · 可复核<br>非真实内部经营数据</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">{{ c.revenue|num }}</div><div class="l">营业收入</div></div>
+    <div class="kpi"><div class="v">{{ c.gm|pct }}</div><div class="l">毛利率</div></div>
+    <div class="kpi"><div class="v">{{ c.net_profit|num }}</div><div class="l">净利润（含少数）</div></div>
+    <div class="kpi"><div class="v">{{ c.attributable|num }}</div><div class="l">归母净利</div></div>
+    <div class="kpi green"><div class="v">{{ c.ocf|num }}</div><div class="l">经营现金流</div></div>
+    <div class="kpi"><div class="v">{{ c.cash|num }}</div><div class="l">货币资金</div></div>
+    <div class="kpi red"><div class="v">{{ c.leverage|pct }}</div><div class="l">资产负债率</div></div>
+    <div class="kpi"><div class="v">{{ c.ocf_to_attrib|num2 }}<small>x</small></div><div class="l">经营现金流 / 归母净利</div></div>
+  </div>
+
+  <div class="card">
+    <h3>四年同期趋势 <span class="hint">2023H1–2026H1 · 单位：亿元</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>期间</th><th class="num">营业收入</th><th class="num">同比</th><th class="num">归母净利</th><th class="num">同比</th><th class="num">毛利率</th><th class="num">经营现金流</th></tr>
+        {% for t in c.trend %}
+        <tr><td><b>{{ t.period }}</b></td><td class="num">{{ t.revenue|num }}</td><td class="num">{{ t.revenue_yoy|pct }}</td><td class="num">{{ t.attributable|num }}</td><td class="num">{{ t.attrib_yoy|pct }}</td><td class="num">{{ t.gm|pct }}</td><td class="num">{{ t.ocf|num }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="table-note">同比为相邻两个半年度的同期比较；2024H1 经营现金流为负，2025H1 起转正并继续改善。数据来自东方财富 / akshare 公开数据。</div>
+  </div>
+
+  <div class="card">
+    <h3>区域经营快报 <span class="hint">17 个区域 + 其他 · 按毛利贡献排序</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr><th style="width:5%">#</th><th style="width:12%">区域</th><th class="num">收入</th><th class="num">收入占比</th><th class="num">毛利率</th><th class="num">毛利</th><th style="width:7%">灯</th></tr>
+        </thead>
+        <tbody>
+        {% for s in c.segments %}
+        <tr>
+          <td class="c">{{ s.rank }}</td><td><b>{{ s.name }}</b></td><td class="num">{{ s.revenue|num }}</td><td class="num">{{ s.share|pct }}</td><td class="num">{{ s.gm|pct }}</td><td class="num">{{ s.gross_profit|num }}</td>
+          <td>{% if s.light == '绿' %}<span class="pill green">绿</span>{% elif s.light == '黄' %}<span class="pill amber">黄</span>{% else %}<span class="pill red">红</span>{% endif %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="table-note">分区域收入合计 {{ c.segment_revenue_sum|num2 }} 亿元，与合并收入 {{ c.revenue|num }} 亿元差 {{ c.segment_gap|num2 }} 亿元，为四舍五入。灯：毛利率 ≥15% 绿、10%–15% 黄、&lt;10% 红（示例阈值，非公司制度）。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>毛利贡献 Top 5 <span class="hint">按毛利额</span></h3>
+      {% for b in c.top %}
+      <div class="bar-row"><div class="name">{{ b.name }}</div><div class="track"><div class="fill green" style="width:{{ b.width }}%"></div></div><div class="val">{{ b.gross_profit|num }}</div></div>
+      {% endfor %}
+      <div class="hr"></div>
+      <h3 class="small">毛利贡献 Bottom 5</h3>
+      {% for b in c.bottom %}
+      <div class="bar-row"><div class="name">{{ b.name }}</div><div class="track"><div class="fill red" style="width:{{ b.width }}%"></div></div><div class="val">{{ b.gross_profit|num }}</div></div>
+      {% endfor %}
+    </div>
+    <div class="card">
+      <h3>现金流质量 <span class="hint">利润的现金含量</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>指标</th><th class="num">数值</th><th>解读</th></tr>
+          <tr><td>销售回款 / 营业收入</td><td class="num">{{ c.sales_cash_ratio|pct }}</td><td>回款覆盖收入</td></tr>
+          <tr><td>经营现金流 / 净利润</td><td class="num">{{ c.ocf_to_net|num2 }}x</td><td>利润有现金支撑</td></tr>
+          <tr><td>支付税费 / 营业收入</td><td class="num">{{ c.taxes_paid_ratio|pct }}</td><td>含增值税、土增税等</td></tr>
+          <tr><td>筹资现金流净额</td><td class="num">{{ c.financing|num }}</td><td>净偿还/分红</td></tr>
+          <tr><td>现金 / 短期有息负债</td><td class="num">{{ c.cash_to_debt|num2 }}x</td><td>短期覆盖</td></tr>
+        </table>
+      </div>
+      <div class="callout green">
+        <p><b>核心判断：</b>收入与利润双降，但经营现金流同比 {{ c.ocf_yoy|pct }}，回款率 {{ c.sales_cash_ratio|pct }}；这是一份“利润承压、现金改善”的半年报。风险不在当期现金，而在 {{ c.inventory_pct|pct }} 的存货与 {{ c.leverage|pct }} 的杠杆。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>口径说明：</b>毛利率 =（营业收入 − 营业成本）÷ 营业收入；经营现金流为合并口径，未扣除少数股东部分；区域数据来自主营构成（按地区），与合并收入的尾差为四舍五入。公开数据不含项目级回款、监管资金与受限资金，不能替代内部资金计划。
+  </div>
+
+  <div class="footer">
+    <span>数据源：{{ case.source }} · 采集 {{ case.collected_at }}</span>
+    <span>Public-Data Case · Finance Lens · 2026-10</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>税务视角：税负、预收与有效税率</h1>
+      <div class="sub">{{ case.period }} · 公开税负指标 · 单位：{{ case.unit }}</div>
+    </div>
+    <div class="right">公开数据 · 不含项目级清算<br>不构成税务意见</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="v">{{ c.tax_surcharge|num }}</div><div class="l">税金及附加</div></div>
+    <div class="kpi"><div class="v">{{ c.tax_surcharge_ratio|pct }}</div><div class="l">税金及附加 / 营业收入</div></div>
+    <div class="kpi"><div class="v">{{ c.income_tax|num }}</div><div class="l">所得税费用</div></div>
+    <div class="kpi red"><div class="v">{{ c.etr|pct }}</div><div class="l">有效税率 · 法定 25%</div></div>
+    <div class="kpi"><div class="v">{{ c.dta|num }}</div><div class="l">递延所得税资产</div></div>
+    <div class="kpi"><div class="v">{{ c.contract_ratio|num2 }}<small>x</small></div><div class="l">合同负债 / 营业收入</div></div>
+    <div class="kpi"><div class="v">{{ c.minority_ratio|pct }}</div><div class="l">少数股东损益 / 净利润</div></div>
+    <div class="kpi amber"><div class="v">未披露</div><div class="l">土地增值税（单独金额）</div></div>
+  </div>
+
+  <div class="card">
+    <h3>税负与结构指标 <span class="hint">10 项 · 公开数据可计算</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr><th style="width:22%">指标</th><th style="width:26%">公式 / 口径</th><th class="num">本期值</th><th style="width:20%">参考阈值</th><th>解读</th></tr>
+        </thead>
+        <tbody>
+        {% for i in c.tax_indicators %}
+        <tr><td><b>{{ i.name }}</b></td><td>{{ i.formula }}</td><td class="num">{{ i.value }}</td><td>{{ i.threshold }}</td><td>{{ i.note }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="table-note">阈值是复核参考（法定税率、行业常见区间），不是官方标准；有效税率含递延所得税，不能直接读成“多缴了 {{ c.etr_gap|pct }}”。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>三个税务关注点 <span class="hint">按影响排序</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:22%">关注点</th><th>公开证据</th><th style="width:26%">下一步</th></tr>
+          {% for h in c.tax_risks %}
+          <tr><td><b>{{ h.risk }}</b></td><td>{{ h.evidence }}</td><td>{{ h.action }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>政策与待核事项 <span class="hint">不编文号、不编日期</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:38%">政策</th><th style="width:12%">状态</th><th>影响 / 动作</th></tr>
+          {% for p in case.policies %}
+          <tr><td><b>{{ p.name }}</b></td><td>{% if p.status == '待核' %}<span class="pill amber">待核</span>{% else %}<span class="pill green">现行</span>{% endif %}</td><td>{{ p.impact }}；{{ p.action }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <p><b>核心判断：</b>有效税率 {{ c.etr|pct }}，比法定 25% 高 {{ c.etr_gap|pct }}，但公开报表无法拆分“纳税调整 vs 递延所得税”；合同负债 {{ c.contract_liab|num }} 亿元对应预缴与结转时点；少数股东损益占净利润 {{ c.minority_ratio|pct }}，合作项目是税务与关联交易的交汇点。这三项都需要项目级数据才能下结论。</p>
+  </div>
+
+  <div class="card">
+    <h3>要下税务结论，还缺哪些数据 <span class="hint">取数清单</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:30%">缺失数据</th><th style="width:34%">用途</th><th>缺失影响</th></tr>
+        <tr><td><b>项目级土增税清算表</b></td><td>可售/已售面积、五项扣除、预缴与清算</td><td>无法计算清算税额与补税缺口</td></tr>
+        <tr><td><b>增值税进销项与预缴台账</b></td><td>分项目预缴、进项转出、三流一致</td><td>无法判断预缴是否充分</td></tr>
+        <tr><td><b>所得税纳税调整与递延底稿</b></td><td>拆分永久性差异与暂时性差异</td><td>无法解释 42.56% 的有效税率</td></tr>
+        <tr><td><b>合作项目协议与同期资料</b></td><td>关联定价、明股实债、少数股东安排</td><td>无法评估关联交易调整风险</td></tr>
+      </table>
+    </div>
+    <div class="table-note">这四类数据都不在公开报表中；本页只做指标筛查，不能替代项目层面的税务复核。</div>
+  </div>
+
+  <div class="disclaimer">
+    <b>诚实边界：</b>公开数据不含增值税进销项、项目级土地增值税清算、关联交易定价与同期资料，无法计算土增税清算税额，也无法判断预缴是否充分；本页只做指标筛查，不构成税务意见。政策状态与文号须在引用前核对原文。
+  </div>
+
+  <div class="footer">
+    <span>{{ case.company }}（{{ case.ticker }}）· {{ case.period }}</span>
+    <span>Public-Data Case · Tax Lens · 2026-10</span>
+  </div>
+</div>
+{% endblock %}

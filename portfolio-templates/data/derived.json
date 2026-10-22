@@ -1,0 +1,136 @@
+{
+  "audit": {
+    "om": 430.0,
+    "pm": 258.0,
+    "trivial": 21.5,
+    "risk_count": 8,
+    "fraud_count": 2,
+    "program_count": 6,
+    "control_count": 10,
+    "kcp_count": 6,
+    "untested_count": 1,
+    "def_count": 5,
+    "def_counts": {
+      "major": 1,
+      "significant": 3,
+      "general": 1
+    },
+    "closed_count": 2,
+    "rect_rate": 0.4
+  },
+  "finance": {
+    "opening": 5200,
+    "ending": 5750,
+    "inflow": 52800,
+    "outflow": 52250,
+    "net": 550,
+    "min_week": 5,
+    "min_amount": 450,
+    "gap_weeks": 5,
+    "cumulative_gap": 9150,
+    "cash_total": 5750,
+    "cash_available": 4300
+  },
+  "group": {
+    "revenue": 235120,
+    "cost": 213950,
+    "gross_profit": 21170,
+    "gm": 0.09003912895542701,
+    "net": 10440,
+    "nm": 0.044402858115005106,
+    "attributable": 9820,
+    "ocf": 7060,
+    "cash": 5750,
+    "completion": 0.9939641109298532,
+    "revenue_sum": 243720,
+    "internal_rev": 8600,
+    "internal_cost": 7900,
+    "net_sum": 10790,
+    "internal_profit": 350,
+    "minority": 620,
+    "lights": {
+      "green": 16,
+      "yellow": 3,
+      "red": 1
+    }
+  },
+  "tax": {
+    "revenue_total": 165380.0,
+    "deduction_a": 116769.0,
+    "deduction_b": 118869.0,
+    "deductible_total": 109868.18818040435,
+    "unsold_deduction": 6900.811819595649,
+    "groups": [
+      {
+        "name": "普通住宅（单独核算）",
+        "revenue": 93600.0,
+        "deduction": 70824.12130637636,
+        "appreciation": 22775.878693623643,
+        "ratio": 0.3215836394933588,
+        "tax": 6832.7636080870925
+      },
+      {
+        "name": "其他业态（合并核算）",
+        "revenue": 71780.0,
+        "deduction": 39044.066874027994,
+        "appreciation": 32735.933125972006,
+        "ratio": 0.8384355357138233,
+        "tax": 11142.169906687403
+      }
+    ],
+    "tax_total": 17974.933514774493,
+    "tax_b_total": 17276.838646967342,
+    "prepaid": 6500,
+    "payable": 11474.933514774493,
+    "ordinary_ratio": 0.3215836394933588,
+    "ordinary_exempt": false,
+    "scenarios": [
+      {
+        "name": "基准",
+        "revenue": 165380.0,
+        "dev_cost": 58000.0,
+        "deduction": 109868.18818040435,
+        "appreciation": 55511.81181959565,
+        "ratio": 0.5052582802989785,
+        "tax": 17974.933514774493,
+        "net_profit": 55536.06648522551
+      },
+      {
+        "name": "保守",
+        "revenue": 157111.0,
+        "dev_cost": 60900.0,
+        "deduction": 113191.03071539657,
+        "appreciation": 43919.96928460343,
+        "ratio": 0.38801633845913297,
+        "tax": 13961.354024105753,
+        "net_profit": 48474.09597589425
+      },
+      {
+        "name": "乐观",
+        "revenue": 173649.0,
+        "dev_cost": 56260.0,
+        "deduction": 107909.6535769829,
+        "appreciation": 65739.3464230171,
+        "ratio": 0.6092072789031664,
+        "tax": 21506.49512052877,
+        "net_profit": 61920.05487947124
+      }
+    ]
+  },
+  "risk": {
+    "score": 50.0,
+    "level": "中高"
+  },
+  "case": {
+    "revenue": 1028.6031,
+    "gm": 0.13029321027712254,
+    "attributable": 19.586,
+    "ocf": 245.5167,
+    "etr": 0.42555228525397926,
+    "om": 2.814895,
+    "pm": 1.688937,
+    "trivial": 0.14074475,
+    "segment_revenue_sum": 1028.6033,
+    "segment_gap": 0.0001999999999497959
+  }
+}

@@ -1,0 +1,258 @@
+{% extends "base.html.j2" %}
+{% block content %}
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Portfolio Template · Internal Audit</div>
+    <h1>风险导向内审方案（示例）</h1>
+    <div class="sub">某建安企业 2026 年度 · 收入确认与减值专项</div>
+    <div class="meta">
+      <span>被审计单位：<b>{{ audit.company }}</b></span>
+      <span>审计期间：<b>{{ audit.period }}</b></span>
+      <span>金额单位：<b>{{ audit.unit }}</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge">示例数据 · 脱敏模拟 · 非真实企业数据</span>
+      <span class="badge red">非执业审计 · 方法论演示</span>
+      <span class="badge blue">未持 CPA / CIA</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">{{ audit.om|num }}<small>万元</small></div><div class="l">整体重要性 OM（取孰低）</div></div>
+    <div class="kpi"><div class="v">{{ audit.pm|num }}<small>万元</small></div><div class="l">实际执行重要性 PM（OM×60%）</div></div>
+    <div class="kpi"><div class="v">{{ audit.risk_count }}</div><div class="l">风险条目（舞弊 {{ audit.fraud_count }} 条）</div></div>
+    <div class="kpi"><div class="v">{{ audit.program_count }}</div><div class="l">审计程序（{{ audit.assertion_count }} 类认定）</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>审计目标 <span class="hint">以风险为导向，不做“全面审计”</span></h3>
+      <ul>
+        {% for o in audit.objectives %}
+        <li><b>{{ o.title }}</b>：{{ o.desc }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="card">
+      <h3>范围与排除项 <span class="hint">先划边界，再谈程序</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:22%">维度</th><th>内容</th></tr>
+          {% for s in audit.scope %}
+          <tr><td><b>{{ s.label }}</b></td><td>{{ s.value }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>重要性水平 <span class="hint">先定重要性，再做实质性程序</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>基准</th><th class="num">金额（万元）</th><th class="num">比例</th><th class="num">计算结果</th><th>说明</th></tr>
+        {% for b in audit.benchmarks %}
+        <tr><td>{{ b.name }}</td><td class="num">{{ b.amount|num }}</td><td class="num">{{ b.rate|pct }}</td><td class="num">{{ b.result|num }}</td><td>{{ b.note }}</td></tr>
+        {% endfor %}
+        <tr class="total"><td>整体重要性 OM</td><td class="num">—</td><td class="num">取孰低</td><td class="num">{{ audit.om|num }}</td><td>四个基准计算结果中的最小值</td></tr>
+        <tr><td>实际执行重要性 PM</td><td class="num">—</td><td class="num">OM×60%</td><td class="num">{{ audit.pm|num }}</td><td>示例取 60%，可按项目风险在 50%–75% 调整</td></tr>
+        <tr><td>明显微小错报临界值</td><td class="num">—</td><td class="num">OM×5%</td><td class="num">{{ audit.trivial|num }}</td><td>低于该金额的错报可累计不单独调整</td></tr>
+      </table>
+    </div>
+    <div class="table-note">口径：示例公司为虚构建安企业，金额均为示例；准则参考《中国注册会计师审计准则第 1221 号——重要性》。</div>
+  </div>
+
+  <div class="card">
+    <h3>风险矩阵 <span class="hint">固有风险 × 控制有效性 → 剩余风险</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th style="width:6%">ID</th><th style="width:10%">流程</th><th style="width:22%">风险描述</th>
+          <th style="width:10%">固有风险</th><th style="width:13%">控制有效性</th><th style="width:9%">剩余风险</th>
+          <th style="width:10%">认定</th><th>审计应对</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in audit.risks %}
+        <tr{% if r.fraud %} class="fraud"{% endif %}>
+          <td><b>{{ r.id }}</b></td>
+          <td>{{ r.process }}</td>
+          <td>{{ r.desc }}</td>
+          <td>{% if r.level == '高' %}<span class="pill red">高</span>{% elif r.level == '中高' %}<span class="pill amber">中高</span>{% else %}<span class="pill gray">中</span>{% endif %}</td>
+          <td>{{ r.control }}</td>
+          <td>{% if r.residual == '高' %}<span class="pill red">高</span>{% elif r.residual == '中高' %}<span class="pill amber">中高</span>{% else %}<span class="pill gray">中</span>{% endif %}</td>
+          <td>{{ r.assertion }}</td>
+          <td>{{ r.response }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">风险等级 = 影响程度 × 可能性；首列红色竖线为舞弊风险；“控制有效性”未测试不得写成“有效”。</div>
+  </div>
+
+  <div class="card">
+    <h3>审计程序与抽样 <span class="hint">每条程序必须对应风险 ID</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:6%">ID</th><th style="width:8%">对应风险</th><th style="width:11%">程序类型</th><th>程序描述</th><th style="width:10%">样本量</th><th style="width:10%">时间</th><th style="width:9%">底稿索引</th></tr>
+        {% for p in audit.programs %}
+        <tr><td><b>{{ p.id }}</b></td><td>{{ p.risk }}</td><td>{{ p.type }}</td><td>{{ p.desc }}</td><td class="num">{{ p.sample }}</td><td>{{ p.timing }}</td><td>{{ p.wp }}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="table-note">抽样总体：{{ audit.sampling.total }}；方法：{{ audit.sampling.method }}；样本量依据：{{ audit.sampling.basis }}；误差推断：{{ audit.sampling.inference }}。</div>
+  </div>
+
+  <div class="card">
+    <h3>时间表与分工 <span class="hint">10 周 · 5 阶段</span></h3>
+    <div class="gantt" style="grid-template-columns:18mm repeat(10,1fr)">
+      <div class="label">阶段</div>
+      {% for i in range(1, 11) %}<div class="cell tiny center">{{ i }}</div>{% endfor %}
+      {% for ph in audit.phases %}
+      <div class="label">{{ ph.name }}</div>
+      {% for i in range(1, 11) %}
+        {% if i >= ph.start and i <= ph.end %}
+          <div class="bar {{ ph.color }}"></div>
+        {% else %}
+          <div class="cell"></div>
+        {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+    <div class="table-note">角色与工时：{% for t in audit.team %}{{ t.role }} {{ t.count }} 人 / {{ t.days }} 人天{% if not loop.last %} · {% endif %}{% endfor %}。里程碑：W1 方案批准、W2 进场、W7 初稿、W8 复核、W9 报告、W10 整改跟踪。</div>
+  </div>
+
+  <div class="footer">
+    <span>交付物：审计方案 · 工作底稿 · 问题清单 · 审计报告 · 整改跟踪表 · 归档包</span>
+    <span>示例数据 · 非真实企业 · 方法论演示，不构成审计意见或鉴证结论</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>内控矩阵与整改闭环（示例）</h1>
+      <div class="sub">COSO 五要素 · KCP 控制矩阵 · 缺陷三档 · 整改验证</div>
+    </div>
+    <div class="right">示例数据 · 脱敏模拟<br>非执业审计 · 方法论演示</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="v">{{ audit.control_count }}</div><div class="l">控制点（KCP {{ audit.kcp_count }} 个）</div></div>
+    <div class="kpi"><div class="v">{{ audit.def_count }}</div><div class="l">缺陷：重大 {{ audit.def_counts.major }} / 重要 {{ audit.def_counts.significant }} / 一般 {{ audit.def_counts.general }}</div></div>
+    <div class="kpi green"><div class="v">{{ audit.rect_rate|pct }}</div><div class="l">整改完成率（已验证关闭 / 缺陷总数）</div></div>
+    <div class="kpi red"><div class="v">{{ audit.untested_count }}</div><div class="l">未测试控制 · 不得评价为“有效”</div></div>
+  </div>
+
+  <div class="card">
+    <h3>评价头信息 <span class="hint">先声明口径，再给结论</span></h3>
+    <div class="grid-3">
+      <div><b>主体类型：</b>{{ audit.ic.entity_type }}</div>
+      <div><b>适用框架：</b>{{ audit.ic.framework }}</div>
+      <div><b>评价目的：</b>{{ audit.ic.purpose }}</div>
+      <div><b>评价期间：</b>{{ audit.ic.period }}</div>
+      <div><b>评价范围：</b>{{ audit.ic.scope }}</div>
+      <div><b>评价方法：</b>{{ audit.ic.method }}</div>
+    </div>
+    <div class="table-note"><b>口径声明：</b>{{ audit.ic.statement }}</div>
+  </div>
+
+  <div class="card">
+    <h3>COSO 五要素评价 <span class="hint">每个评级必须可追溯到证据</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th style="width:12%">要素</th><th style="width:22%">关键原则</th><th style="width:25%">评价问题</th><th style="width:20%">证据</th><th style="width:10%">评级</th><th>说明</th></tr>
+        {% for c in audit.coso %}
+        <tr>
+          <td><b>{{ c.element }}</b></td><td>{{ c.principles }}</td><td>{{ c.question }}</td><td>{{ c.evidence }}</td>
+          <td>{% if c.rating == '有效' %}<span class="pill green">有效</span>{% elif c.rating == '部分有效' %}<span class="pill amber">部分有效</span>{% else %}<span class="pill gray">未测试</span>{% endif %}</td>
+          <td>{{ c.note }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="table-note">五个要素独立评价，不能用其他要素的优势补偿；无证据时只能写“未测试——无法评价”。</div>
+  </div>
+
+  <div class="card">
+    <h3>控制矩阵摘录 <span class="hint">2 个流程 · {{ audit.control_count }} 个控制点</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th style="width:6%">ID</th><th style="width:10%">流程</th><th style="width:14%">风险</th><th style="width:22%">控制描述</th>
+          <th style="width:8%">类型</th><th style="width:7%">方式</th><th style="width:7%">频率</th><th style="width:6%">KCP</th>
+          <th style="width:9%">测试/样本</th><th style="width:7%">结果</th><th>缺陷</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for c in audit.controls %}
+        <tr>
+          <td><b>{{ c.id }}</b></td><td>{{ c.process }}</td><td>{{ c.risk }}</td><td>{{ c.control }}</td>
+          <td>{% if c.type == '预防' %}<span class="pill blue">预防</span>{% else %}<span class="pill purple">发现</span>{% endif %}</td>
+          <td>{{ c.mode }}</td><td>{{ c.freq }}</td><td>{% if c.kcp == '是' %}<span class="pill amber">KCP</span>{% else %}—{% endif %}</td>
+          <td>{{ c.test }}</td>
+          <td>{% if c.result == '通过' %}<span class="pill green">通过</span>{% elif c.result == '例外' %}<span class="pill red">例外</span>{% else %}<span class="pill gray">未测试</span>{% endif %}</td>
+          <td>{{ c.deficiency or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>缺陷登记与整改跟踪 <span class="hint">发现 → 定级 → 整改 → 验证关闭</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+        <tr>
+          <th style="width:5%">ID</th><th style="width:24%">缺陷描述</th><th style="width:6%">等级</th>
+          <th style="width:13%">认定标准 / 补偿控制</th><th style="width:20%">整改措施</th><th style="width:8%">责任人</th>
+          <th style="width:6%">期限</th><th style="width:8%">状态</th><th>验证</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in audit.deficiencies %}
+        <tr>
+          <td><b>{{ d.id }}</b></td><td>{{ d.desc }}</td>
+          <td>{% if d.severity == '重大' %}<span class="pill red">重大</span>{% elif d.severity == '重要' %}<span class="pill amber">重要</span>{% else %}<span class="pill gray">一般</span>{% endif %}</td>
+          <td>{{ d.standard }}{% if d.compensating %}<br><span class="muted">补偿：{{ d.compensating }}</span>{% endif %}</td>
+          <td>{{ d.action }}</td><td>{{ d.owner }}</td><td>{{ d.due }}</td>
+          <td>{% if d.status == '已验证关闭' %}<span class="pill green">已验证关闭</span>{% elif d.status == '整改中' %}<span class="pill amber">整改中</span>{% else %}<span class="pill red">未开始</span>{% endif %}</td>
+          <td>{{ d.verification }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+    </div>
+    <div class="table-note">企业口径下重大缺陷须经董事会最终认定；本页仅展示流程，不替企业下最终结论。整改完成率 = 已验证关闭 {{ audit.closed_count }} / 缺陷总数 {{ audit.def_count }} = {{ audit.rect_rate|pct }}。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>审计 × 分析交叉验证 <span class="hint">总监视角的差异化</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th style="width:18%">维度</th><th>审计结论</th><th>分析结论</th><th style="width:16%">处理</th></tr>
+          {% for x in audit.cross %}
+          <tr><td><b>{{ x.item }}</b></td><td>{{ x.audit }}</td><td>{{ x.analysis }}</td><td>{% if x.cls == 'green' %}<span class="pill green">{{ x.conclusion }}</span>{% elif x.cls == 'red' %}<span class="pill red">{{ x.conclusion }}</span>{% else %}<span class="pill amber">{{ x.conclusion }}</span>{% endif %}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <b>诚实边界</b><br>
+      ① 数据属性：示例数据 / 脱敏模拟，非真实账套；② 方法来源：公开审计准则、COSO 2013、企业内部控制规范体系，非任何事务所专有方法；③ 资质边界：本人未持 CPA/CIA，本作品为方法论演示，不构成审计意见或鉴证结论；④ 结论边界：风险评级与缺陷等级为示例推演，真实项目须结合现场证据与职业判断；⑤ 工具边界：脚本只做机械核对，不替代人工判断，<code>UNDECIDABLE</code> ≠ <code>FAIL</code>。
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>可复现命令：<code>python3 unified-skills/risk-based-audit/scripts/casting_check.py --demo</code> ｜ <code>python3 unified-skills/internal-control-assessment/scripts/ic_scope_check.py --demo</code></span>
+    <span>依据：ISA 315/320/240/330 · COSO 2013 · 财会〔2008〕7号 · 财会〔2010〕11号</span>
+  </div>
+</div>
+{% endblock %}
