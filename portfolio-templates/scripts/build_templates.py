@@ -711,14 +711,14 @@ def build_case(raw: dict) -> dict:
         {"name": "税金及附加 / 收入", "formula": "税金及附加 ÷ 营业收入", "value": f"{c['tax_surcharge_ratio']*100:.2f}%", "threshold": "1%–2%（房企参考）", "note": "含土增税、附加税等"},
         {"name": "所得税费用 / 利润总额", "formula": "同有效税率", "value": f"{c['etr']*100:.2f}%", "threshold": "25%", "note": "含递延所得税"},
         {"name": "递延所得税资产 / 总资产", "formula": "DTA ÷ 总资产", "value": f"{c['dta_pct']*100:.2f}%", "threshold": "< 3%", "note": "关注可转回性"},
-        {"name": "合同负债 / 收入", "formula": "合同负债 ÷ 营业收入", "value": f"{c['contract_ratio']:.2f}x", "threshold": "1.5–3x", "note": "预收与结转时点"},
+        {"name": "合同负债 / 收入", "formula": "合同负债 ÷ 营业收入", "value": f"{c['contract_ratio']:.2f}x", "threshold": "1.5–3x（年化）", "note": "预收与结转时点；本期用半年收入"},
         {"name": "少数股东损益 / 净利润", "formula": "少数股东损益 ÷ 净利润", "value": f"{c['minority_ratio']*100:.2f}%", "threshold": "< 30%", "note": "合作项目占比偏高"},
         {"name": "应收账款 / 收入", "formula": "应收账款 ÷ 营业收入", "value": f"{c['ar_ratio']*100:.2f}%", "threshold": "< 10%", "note": "地产以预收为主"},
         {"name": "存货 / 总资产", "formula": "存货 ÷ 总资产", "value": f"{c['inventory_pct']*100:.2f}%", "threshold": "40%–60%", "note": "去化与减值压力"},
         {"name": "经营现金流 / 净利润", "formula": "OCF ÷ 净利润", "value": f"{c['ocf_to_net']:.2f}x", "threshold": "> 1", "note": "利润有现金支撑"},
         {"name": "本期土地增值税", "formula": "税金及附加附注", "value": f"{c['land_vat_current']:.2f} 亿", "threshold": "—", "note": "附注已披露；项目级清算表未公开"},
         {"name": "应交土地增值税", "formula": "应交税费附注", "value": f"{c['land_vat_payable']:.2f} 亿", "threshold": "—", "note": "期末应交余额"},
-        {"name": "递延所得税费用", "formula": "所得税费用附注", "value": f"{c['deferred_tax_expense']:.2f} 亿", "threshold": "—", "note": "当期所得税 23.38 亿"},
+        {"name": "递延所得税费用", "formula": "所得税费用附注", "value": f"{c['deferred_tax_expense']:.2f} 亿", "threshold": "—", "note": f"当期所得税 {c['income_tax_current']:.2f} 亿"},
     ]
     c["tax_risks"] = [
         {"risk": "有效税率偏高", "evidence": f"所得税 {inc['income_tax']:,.2f} 亿（当期 {c['income_tax_current']:,.2f} + 递延 {c['deferred_tax_expense']:,.2f}）；调整表中本期未确认 DTA +{c['etr_main_driver']:,.2f} 亿", "action": "核对未确认 DTA 的项目构成与转回假设"},

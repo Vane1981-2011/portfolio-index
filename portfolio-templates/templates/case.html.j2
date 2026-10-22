@@ -120,7 +120,7 @@
     <h3>四年同期趋势 <span class="hint">2023H1–2026H1 · 单位：亿元</span></h3>
     <div class="table-wrap">
       <table>
-        <tr><th>期间</th><th class="num">营业收入</th><th class="num">同比</th><th class="num">归母净利</th><th class="num">同比</th><th class="num">毛利率</th><th class="num">经营现金流</th></tr>
+        <tr><th>期间</th><th class="num">营业总收入</th><th class="num">同比</th><th class="num">归母净利</th><th class="num">同比</th><th class="num">毛利率</th><th class="num">经营现金流</th></tr>
         {% for t in c.trend %}
         <tr><td><b>{{ t.period }}</b></td><td class="num">{{ t.revenue|num }}</td><td class="num">{{ t.revenue_yoy|pct }}</td><td class="num">{{ t.attributable|num }}</td><td class="num">{{ t.attrib_yoy|pct }}</td><td class="num">{{ t.gm|pct }}</td><td class="num">{{ t.ocf|num }}</td></tr>
         {% endfor %}
@@ -185,7 +185,7 @@
   </div>
 
   <div class="footer">
-    <span>数据源：{{ case.source }} · 采集 {{ case.collected_at }}</span>
+    <span>数据源：{{ case.source }} · 2026 半年报附注（CNINFO）· 采集 {{ case.collected_at }}</span>
     <span>Public-Data Case · Finance Lens · 2026-10</span>
   </div>
 </div>
@@ -211,7 +211,7 @@
   </div>
 
   <div class="card">
-    <h3>税负与结构指标 <span class="hint">10 项 · 公开数据可计算</span></h3>
+    <h3>税负与结构指标 <span class="hint">{{ c.tax_indicators|length }} 项 · 公开数据可计算</span></h3>
     <div class="table-wrap">
       <table>
         <thead>
@@ -253,7 +253,7 @@
   </div>
 
   <div class="callout blue">
-    <p><b>核心判断：</b>有效税率 {{ c.etr|pct }}，比法定 25% 高 {{ c.etr_gap|pct }}。附注已拆分当期所得税 {{ c.income_tax_current|num }} 亿元与递延 {{ c.deferred_tax_expense|num }} 亿元；调整表中“本期未确认递延所得税资产”贡献 +{{ c.etr_main_driver|num2 }} 亿元（占利润总额 {{ c.etr_main_driver_pct|pct }}），是有效税率偏高的主因。合同负债 {{ c.contract_liab|num }} 亿元对应预缴与结转时点；少数股东损益占净利润 {{ c.minority_ratio|pct }}，合作项目是税务与关联交易的交汇点。</p>
+    <p><b>核心判断：</b>有效税率 {{ c.etr|pct }}，比法定 25% 高 {{ c.etr_gap|pct }}。附注已拆分当期所得税 {{ c.income_tax_current|num2 }} 亿元与递延 {{ c.deferred_tax_expense|num2 }} 亿元（精确值 23.3836 + 0.5741 = 23.9577，尾差为四舍五入）；调整表中“本期未确认递延所得税资产”贡献 +{{ c.etr_main_driver|num2 }} 亿元（占利润总额 {{ c.etr_main_driver_pct|pct }}），是有效税率偏高的主因。合同负债 {{ c.contract_liab|num }} 亿元对应预缴与结转时点；少数股东损益占净利润 {{ c.minority_ratio|pct }}，合作项目是税务与关联交易的交汇点。</p>
   </div>
 
   <div class="card">
@@ -267,7 +267,7 @@
         <tr><td><b>合作项目协议与同期资料</b></td><td>关联定价、明股实债、少数股东安排</td><td>无法评估关联交易调整风险</td></tr>
       </table>
     </div>
-    <div class="table-note">这四类数据都不在公开报表中；本页只做指标筛查，不能替代项目层面的税务复核。</div>
+    <div class="table-note">这四类项目级明细均不在公开报表中；本页只做指标筛查，不能替代项目层面的税务复核。</div>
   </div>
 
   <div class="disclaimer">

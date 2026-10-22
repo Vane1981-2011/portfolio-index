@@ -50,7 +50,7 @@ portfolio-templates/
 │   └── case.html.j2
 └── scripts/
     ├── build_templates.py      # 计算派生值 → 渲染 HTML → Chrome 导出 PDF
-    ├── validate_templates.py   # 173 项交付前检查
+    ├── validate_templates.py   # 177 项交付前检查
     └── measure_pages.py        # 打印媒体下每页高度测量（排查溢出用）
 ```
 
@@ -67,7 +67,7 @@ python3 scripts/build_templates.py
 # 只生成 HTML，不导出 PDF
 python3 scripts/build_templates.py --no-pdf
 
-# 2. 验证：173 项，失败即 rc=1
+# 2. 验证：177 项，失败即 rc=1
 python3 scripts/validate_templates.py
 
 # 3. 排查分页：打印媒体下每页实际高度（可用 277mm）
@@ -170,12 +170,12 @@ python3 scripts/measure_pages.py
 
 ---
 
-## 五、173 项校验覆盖什么
+## 五、177 项校验覆盖什么
 
 `scripts/validate_templates.py` 分四组：
 
 1. **版式**：每份 PDF 恰好 2 页、A4 尺寸（209.9×297.0mm）、HTML 无 `{{ }}` / `Undefined` / `AUTO` 占位。
-2. **数值**：审计 14 项、财务 25 项（13 周 15 + 集团 10）、税务 31 项、公开数据案例 17 项，含分类复算、情景方向与跨页一致性。
+2. **数值**：审计 14 项、财务 25 项（13 周 15 + 集团 10）、税务 31 项、公开数据案例 21 项，含分类复算、情景方向与跨页一致性。
 3. **声明**：每份含两处以上“示例数据”与“非真实”边界；审计明示“非执业审计 / 未持 CPA / CIA”；税务明示“不构成税务意见”且 2026 年第 3 号公告标注“核对原文”；禁用“我曾为…”“持有 CPA”等虚假表述。
 4. **打印**：`@page A4 portrait`、`thead` 跨页重复、行与卡片不跨页、颜色强制打印、打印态覆盖窄屏媒体查询、窄屏单列。
 
@@ -187,7 +187,7 @@ python3 scripts/measure_pages.py
 
 1. **改数据**：只改 `data/*.json` 的原始输入。名称保留“项目公司 A–T”这类代号，不要在模板里写真实客户名。
 2. **重算**：`python3 scripts/build_templates.py`。派生值自动进 `data/derived.json`。
-3. **验证**：`python3 scripts/validate_templates.py`，必须 173/173。
+3. **验证**：`python3 scripts/validate_templates.py`，必须 177/177。
 4. **导出**：Chrome headless 已自动生成 PDF；如需重新导出，删除旧 PDF 后重跑。
 5. **打印**：A4 纵向、边距 10mm×11mm；页面按 2 页设计，**不要**在打印对话框里勾选“缩放以适应”。
 
