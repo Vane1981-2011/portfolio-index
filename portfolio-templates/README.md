@@ -72,7 +72,15 @@ python3 scripts/validate_templates.py
 
 # 3. 排查分页：打印媒体下每页实际高度（可用 277mm）
 python3 scripts/measure_pages.py
+
+# 4. 导出简历落地页 PDF（A4 单页，链接改写为公开 HTTPS）
+python3 scripts/export_landing_pdf.py \
+  --out "$HOME/Desktop/保利发展 2026 半年报分析.pdf"
 ```
+
+> Chrome 直接 `--print-to-pdf` 会把页面链接保存为 `file:///...` 本地路径，换机即失效；
+> `export_landing_pdf.py` 在导出后把 5 个链接统一改写为
+> `https://vane1981-2011.github.io/portfolio-index/portfolio-templates/...`。
 
 依赖：Python 3.10+、Jinja2、pypdf；PDF 导出使用本机 Chrome/Chromium/Edge（headless）。
 测量脚本额外依赖 Playwright（`channel="chrome"` 复用本机 Chrome）。
