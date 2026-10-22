@@ -253,7 +253,16 @@ def check_case() -> None:
     check("案例: 明示不构成审计意见", "不构成审计意见" in html)
     check("案例: 明示不构成税务意见", "不构成税务意见" in html)
     check("案例: 明示未持 CPA/CIA", "未持 CPA / CIA" in html)
-    check("案例: 土增税标注未披露", "未披露" in html and "土增税" in html)
+    td = raw["tax_detail"]
+    check("案例: 当期所得税 + 递延 = 所得税费用",
+          close(td["income_tax_current"] + td["deferred_tax_expense"], inc["income_tax"], 0.02),
+          f"{td['income_tax_current'] + td['deferred_tax_expense']:.4f} vs {inc['income_tax']:.4f}")
+    check("案例: 所得税调整表合计 = 所得税费用",
+          close(sum(x["amount"] for x in td["reconciliation"]), inc["income_tax"], 0.02),
+          f"{sum(x['amount'] for x in td['reconciliation']):.2f} vs {inc['income_tax']:.2f}")
+    check("案例: 土增税附注金额已展示", "10.51" in html and "87.16" in html)
+    check("案例: 不再声称土增税未披露", "未披露" not in html)
+    check("案例: 有效税率主因已披露", "未确认" in html and "9.98" in html)
     check("案例: 政策 2026 年第 3 号公告待核", "待核" in html and "2026 年第 3 号公告" in html)
 
 

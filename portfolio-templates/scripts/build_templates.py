@@ -630,6 +630,16 @@ def build_case(raw: dict) -> dict:
         "investing": cf["investing"],
     }
     c["etr_gap"] = c["etr"] - 0.25
+    td = raw.get("tax_detail", {})
+    c["land_vat_current"] = td.get("land_vat_current", 0)
+    c["land_vat_payable"] = td.get("land_vat_payable", 0)
+    c["income_tax_current"] = td.get("income_tax_current", inc["income_tax"])
+    c["deferred_tax_expense"] = td.get("deferred_tax_expense", 0)
+    c["tax_reconciliation"] = td.get("reconciliation", [])
+    c["etr_main_driver"] = next(
+        (x["amount"] for x in c["tax_reconciliation"] if x["item"].startswith("本期未确认")), 0
+    )
+    c["etr_main_driver_pct"] = c["etr_main_driver"] / inc["profit_total"]
 
     trend = []
     prev = None
@@ -706,10 +716,12 @@ def build_case(raw: dict) -> dict:
         {"name": "应收账款 / 收入", "formula": "应收账款 ÷ 营业收入", "value": f"{c['ar_ratio']*100:.2f}%", "threshold": "< 10%", "note": "地产以预收为主"},
         {"name": "存货 / 总资产", "formula": "存货 ÷ 总资产", "value": f"{c['inventory_pct']*100:.2f}%", "threshold": "40%–60%", "note": "去化与减值压力"},
         {"name": "经营现金流 / 净利润", "formula": "OCF ÷ 净利润", "value": f"{c['ocf_to_net']:.2f}x", "threshold": "> 1", "note": "利润有现金支撑"},
-        {"name": "土增税单独披露", "formula": "报表附注", "value": "未披露", "threshold": "—", "note": "需项目级清算数据"},
+        {"name": "本期土地增值税", "formula": "税金及附加附注", "value": f"{c['land_vat_current']:.2f} 亿", "threshold": "—", "note": "附注已披露；项目级清算表未公开"},
+        {"name": "应交土地增值税", "formula": "应交税费附注", "value": f"{c['land_vat_payable']:.2f} 亿", "threshold": "—", "note": "期末应交余额"},
+        {"name": "递延所得税费用", "formula": "所得税费用附注", "value": f"{c['deferred_tax_expense']:.2f} 亿", "threshold": "—", "note": "当期所得税 23.38 亿"},
     ]
     c["tax_risks"] = [
-        {"risk": "有效税率偏高", "evidence": f"所得税 {inc['income_tax']:,.2f} 亿 ÷ 利润总额 {inc['profit_total']:,.2f} 亿 = {c['etr']*100:.2f}%", "action": "拆分递延所得税与永久性差异"},
+        {"risk": "有效税率偏高", "evidence": f"所得税 {inc['income_tax']:,.2f} 亿（当期 {c['income_tax_current']:,.2f} + 递延 {c['deferred_tax_expense']:,.2f}）；调整表中本期未确认 DTA +{c['etr_main_driver']:,.2f} 亿", "action": "核对未确认 DTA 的项目构成与转回假设"},
         {"risk": "合同负债预缴", "evidence": f"合同负债 {bal['contract_liab']:,.2f} 亿，为营收 {c['contract_ratio']:.2f}x", "action": "核对预缴与交付结转"},
         {"risk": "合作项目少数股东", "evidence": f"少数股东权益 {bal['minority_equity']:,.2f} 亿，损益占比 {c['minority_ratio']*100:.2f}%", "action": "穿透协议与关联定价"},
     ]

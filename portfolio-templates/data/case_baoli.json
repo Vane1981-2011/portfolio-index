@@ -19,7 +19,7 @@
     "revenue_prior": 1168.567,
     "attributable_prior": 33.1072,
     "net_profit_prior": 72.0597,
-    "gm_prior": 0.1464
+    "gm_prior": 0.1529
   },
   "balance": {
     "cash": 1338.1402,
@@ -193,7 +193,7 @@
       "attributable": 33.1072,
       "net_profit": 72.0597,
       "ocf": 160.172,
-      "gm": 0.1464
+      "gm": 0.1529
     },
     {
       "period": "2026H1",
@@ -203,5 +203,46 @@
       "ocf": 245.5167,
       "gm": 0.1303
     }
-  ]
+  ],
+  "tax_detail": {
+    "land_vat_current": 10.5088,
+    "land_vat_prior": 9.7998,
+    "land_vat_payable": 87.1649,
+    "income_tax_current": 23.3836,
+    "deferred_tax_expense": 0.5741,
+    "reconciliation": [
+      {
+        "item": "按法定税率计算的所得税费用",
+        "amount": 14.07
+      },
+      {
+        "item": "子公司适用不同税率的影响",
+        "amount": -0.21
+      },
+      {
+        "item": "调整以前期间所得税的影响",
+        "amount": 0.76
+      },
+      {
+        "item": "非应税收入的影响",
+        "amount": -0.41
+      },
+      {
+        "item": "不可抵扣的成本、费用和损失",
+        "amount": 0.26
+      },
+      {
+        "item": "使用前期未确认递延所得税资产的可抵扣亏损",
+        "amount": -3.13
+      },
+      {
+        "item": "本期未确认递延所得税资产的可抵扣暂时性差异或可抵扣亏损",
+        "amount": 9.98
+      },
+      {
+        "item": "其他",
+        "amount": 2.64
+      }
+    ]
+  }
 }
