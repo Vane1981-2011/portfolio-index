@@ -146,7 +146,7 @@
       {% for v in group.variance_top %}
       <div class="bar-row"><div class="name">{{ v.name }}</div><div class="track"><div class="fill {{ v.cls }}" style="width:{{ v.width }}%"></div></div><div class="val">{{ v.variance|num }}</div></div>
       {% endfor %}
-      <div class="table-note">偏差 = 实际 − 预算；偏差率 = 偏差 / 预算；完成率 = 实际 / 预算。绿色为超预算，红色为低于预算。</div>
+      <div class="table-note">偏差 = 实际 − 预算；偏差率 = 偏差 ÷ 预算；绿=超预算，红=低于预算。</div>
     </div>
   </div>
 
@@ -164,11 +164,11 @@
           <td>{% if e.light == '绿' %}<span class="pill green">绿</span>{% elif e.light == '黄' %}<span class="pill amber">黄</span>{% else %}<span class="pill red">红</span>{% endif %}</td>
         </tr>
         {% endfor %}
-        <tr class="total"><td>—</td><td>合计 / 合并</td><td class="num">{{ group.totals.revenue|num }}</td><td class="num">{{ group.totals.gm|pct }}</td><td class="num">{{ group.totals.nm|pct }}</td><td class="num">{{ group.totals.ocf|num }}</td><td class="num">{{ group.totals.completion|pct }}</td><td>—</td></tr>
+        <tr class="total"><td>—</td><td>合计 / 合并</td><td class="num">{{ group.totals.revenue|num }}</td><td class="num">{{ group.totals.gm|pct }}</td><td class="num">{{ group.totals.nm|pct }}</td><td class="num">{{ group.totals.ocf|num }}</td><td class="num">{{ group.totals.completion_merged|pct }}</td><td>—</td></tr>
       </tbody>
       </table>
     </div>
-    <div class="table-note">预算完成率 = 20 家收入合计 ÷ 预算合计（未抵消内部交易）；合并口径的完成率需另行以合并收入为分子。</div>
+    <div class="table-note">完成率 = 收入 ÷ 预算；合计行按合并收入 235,120 ÷ 245,200 = <b>95.89%</b>，与顶部 KPI 的 99.40% 分子不同源。</div>
   </div>
 
   <div class="two-col">

@@ -241,12 +241,15 @@ def check_case() -> None:
     check("案例: OM = 四基准孰低", close(d["om"], min(bm)))
     check("案例: PM = OM×60%", close(d["pm"], d["om"] * 0.6))
     check("案例: 明显微小 = OM×5%", close(d["trivial"], d["om"] * 0.05))
-    check("案例: 分区域收入合计 ≈ 合并收入（尾差 <0.1 亿）", abs(d["segment_gap"]) < 0.1,
+    seg_base = raw.get("segment_base", {})
+    seg_rev = seg_base.get("revenue", inc["revenue"])
+    seg_cost = seg_base.get("cost", inc["cost"])
+    check("案例: 分区域收入合计 ≈ 半年报合并收入（尾差 <0.1 亿）", abs(d["segment_gap"]) < 0.1,
           f"gap={d['segment_gap']:.3f}")
     gp_sum = sum(x["revenue"] - x["cost"] for x in raw["segments"])
-    check("案例: 分区域毛利合计 ≈ 合并毛利（尾差 <0.15 亿）",
-          abs(gp_sum - (inc["revenue"] - inc["cost"])) < 0.15,
-          f"{gp_sum:.2f} vs {inc['revenue']-inc['cost']:.2f}")
+    check("案例: 分区域毛利合计 ≈ 半年报合并毛利（尾差 <0.15 亿）",
+          abs(gp_sum - (seg_rev - seg_cost)) < 0.15,
+          f"{gp_sum:.2f} vs {seg_rev-seg_cost:.2f}")
     check("案例: 区域数量 = 18（17 区域 + 其他）", len(raw["segments"]) == 18)
     check("案例: 四年同期趋势 = 4 期", len(raw["trend"]) == 4)
     html = (ROOT / "case-baoli" / "index.html").read_text(encoding="utf-8")
@@ -254,16 +257,19 @@ def check_case() -> None:
     check("案例: 明示不构成税务意见", "不构成税务意见" in html)
     check("案例: 明示未持 CPA/CIA", "未持 CPA / CIA" in html)
     td = raw["tax_detail"]
-    check("案例: 当期所得税 + 递延 = 所得税费用",
-          close(td["income_tax_current"] + td["deferred_tax_expense"], inc["income_tax"], 0.02),
-          f"{td['income_tax_current'] + td['deferred_tax_expense']:.4f} vs {inc['income_tax']:.4f}")
-    check("案例: 所得税调整表合计 = 所得税费用",
-          close(sum(x["amount"] for x in td["reconciliation"]), inc["income_tax"], 0.02),
-          f"{sum(x['amount'] for x in td['reconciliation']):.2f} vs {inc['income_tax']:.2f}")
+    h1_tax = td.get("income_tax_total", inc["income_tax"])
+    check("案例: H1 当期所得税 + 递延 = H1 所得税费用",
+          close(td["income_tax_current"] + td["deferred_tax_expense"], h1_tax, 0.02),
+          f"{td['income_tax_current'] + td['deferred_tax_expense']:.4f} vs {h1_tax:.4f}")
+    check("案例: 所得税调整表合计 = H1 所得税费用",
+          close(sum(x["amount"] for x in td["reconciliation"]), h1_tax, 0.02),
+          f"{sum(x['amount'] for x in td['reconciliation']):.2f} vs {h1_tax:.2f}")
     check("案例: 土增税附注金额已展示", "10.51" in html and "87.16" in html)
-    check("案例: 不再声称土增税未披露", "未披露" not in html)
+    check("案例: 不再声称土增税未披露",
+          "土增税未披露" not in html and "土地增值税未披露" not in html)
     check("案例: 有效税率主因已披露", "未确认" in html and "9.98" in html)
-    check("案例: 政策 2026 年第 3 号公告待核", "待核" in html and "2026 年第 3 号公告" in html)
+    check("案例: 无无法追溯的文号", "2026年第3号" not in html and "2026 年第 3 号" not in html)
+    check("案例: 政策依据可追溯到原文", "印花税法" in html and "187号" in html)
 
 
 
@@ -297,7 +303,10 @@ def check_disclaimers() -> None:
     check("审计: 明示非执业 / 未持证", "非执业审计" in audit_html and "未持 CPA / CIA" in audit_html)
     tax_html = (ROOT / "tax" / "index.html").read_text(encoding="utf-8")
     check("税务: 明示不构成税务意见", "不构成税务意见" in tax_html)
-    check("税务: 2026 年第 3 号公告标注核对原文", "2026年第3号公告" in tax_html and "核对原文" in tax_html)
+    check("税务: 无无法追溯的文号", "2026年第3号" not in tax_html)
+    check("税务: 印花税/附加税费/尾盘均给出可追溯依据",
+          "印花税法" in tax_html and "财综〔2010〕98号" in tax_html
+          and "城市维护建设税法" in tax_html and "清算后再转让" in tax_html)
     fin_html = (ROOT / "finance" / "index.html").read_text(encoding="utf-8")
     check("财务: 标注实际/预测边界", "W1–W2 实际" in fin_html and "W3–W13 预测" in fin_html)
     check("财务: 标注红黄绿灯为示例阈值", "示例阈值" in fin_html)

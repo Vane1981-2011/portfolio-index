@@ -7,7 +7,7 @@ LINK_LAUNCH 注解；文件换一台机器就点不开。本脚本在导出后�
 
 用法:
     python3 scripts/export_landing_pdf.py \
-        --out "/Users/apple/Desktop/保利发展 2026 半年报分析.pdf"
+        --out "/Users/apple/Desktop/保利发展 2026 三季报分析.pdf"
 
 默认源文件为仓库根的 index.html，公开前缀为
 https://vane1981-2011.github.io/portfolio-index/portfolio-templates/

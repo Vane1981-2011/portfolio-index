@@ -333,7 +333,8 @@ def build_group(raw: dict) -> dict:
     conclusions = [
         f"净利前 3 家（{ranked[0]['name']}、{ranked[1]['name']}、{ranked[2]['name']}）合计 "
         f"{fmt_num(top3)} 万元，占 20 家净利合计的 {fmt_pct(top3 / net_sum)}。",
-        f"收入完成率 {fmt_pct(rev_sum / budget_sum)}，但有 {len(neg_ocf)} 家经营现金流为负，"
+        f"20 家合计口径收入完成率 {fmt_pct(rev_sum / budget_sum)}（合并口径 {fmt_pct(revenue / budget_sum)}），"
+        f"但有 {len(neg_ocf)} 家经营现金流为负，"
         f"合计 {fmt_num(sum(e['ocf'] for e in neg_ocf))} 万元；红灯 {len(reds)} 家"
         + (f"（{'、'.join(e['name'] for e in reds)}）" if reds else "") + "。",
         f"内部交易抵消 {fmt_num(raw['internal_rev'])} 万元，月结前须完成对账；"
@@ -357,6 +358,8 @@ def build_group(raw: dict) -> dict:
             "ocf": ocf_sum,
             "cash": raw["cash"],
             "completion": rev_sum / budget_sum if budget_sum else 0.0,
+            # 合计行收入是合并口径，完成率必须同源，否则一行两个数不同源
+            "completion_merged": revenue / budget_sum if budget_sum else 0.0,
             "revenue_sum": rev_sum,
             "cost_sum": cost_sum,
             "internal_rev": raw["internal_rev"],
@@ -639,7 +642,7 @@ def build_case(raw: dict) -> dict:
     c["etr_main_driver"] = next(
         (x["amount"] for x in c["tax_reconciliation"] if x["item"].startswith("本期未确认")), 0
     )
-    c["etr_main_driver_pct"] = c["etr_main_driver"] / inc["profit_total"]
+    c["etr_main_driver_pct"] = c["etr_main_driver"] / td.get("profit_total", inc["profit_total"])
 
     trend = []
     prev = None
@@ -664,6 +667,11 @@ def build_case(raw: dict) -> dict:
     c["pm"] = c["om"] * 0.6
     c["trivial"] = c["om"] * 0.05
 
+    seg_base = raw.get("segment_base", {})
+    segment_base_revenue = seg_base.get("revenue", revenue)
+    c["segment_base_revenue"] = segment_base_revenue
+    c["segment_period"] = seg_base.get("period", raw.get("period", ""))
+
     segs = []
     for s0 in raw["segments"]:
         gp = s0["revenue"] - s0["cost"]
@@ -674,13 +682,13 @@ def build_case(raw: dict) -> dict:
             light = "黄"
         else:
             light = "红"
-        segs.append({**s0, "gross_profit": gp, "gm": gm_s, "share": s0["revenue"] / revenue, "light": light})
+        segs.append({**s0, "gross_profit": gp, "gm": gm_s, "share": s0["revenue"] / segment_base_revenue, "light": light})
     ranked = sorted(segs, key=lambda x: x["gross_profit"], reverse=True)
     for i, x in enumerate(ranked, 1):
         x["rank"] = i
     c["segments"] = ranked
     c["segment_revenue_sum"] = sum(x["revenue"] for x in ranked)
-    c["segment_gap"] = c["segment_revenue_sum"] - revenue
+    c["segment_gap"] = c["segment_revenue_sum"] - segment_base_revenue
 
     top = ranked[:5]
     bottom = ranked[-5:]
@@ -711,17 +719,17 @@ def build_case(raw: dict) -> dict:
         {"name": "税金及附加 / 收入", "formula": "税金及附加 ÷ 营业收入", "value": f"{c['tax_surcharge_ratio']*100:.2f}%", "threshold": "1%–2%（房企参考）", "note": "含土增税、附加税等"},
         {"name": "所得税费用 / 利润总额", "formula": "同有效税率", "value": f"{c['etr']*100:.2f}%", "threshold": "25%", "note": "含递延所得税"},
         {"name": "递延所得税资产 / 总资产", "formula": "DTA ÷ 总资产", "value": f"{c['dta_pct']*100:.2f}%", "threshold": "< 3%", "note": "关注可转回性"},
-        {"name": "合同负债 / 收入", "formula": "合同负债 ÷ 营业收入", "value": f"{c['contract_ratio']:.2f}x", "threshold": "1.5–3x（年化）", "note": "预收与结转时点；本期用半年收入"},
+        {"name": "合同负债 / 收入", "formula": "合同负债 ÷ 营业收入", "value": f"{c['contract_ratio']:.2f}x", "threshold": "1.5–3x（年化）", "note": "预收与结转时点；本期用前三季收入"},
         {"name": "少数股东损益 / 净利润", "formula": "少数股东损益 ÷ 净利润", "value": f"{c['minority_ratio']*100:.2f}%", "threshold": "< 30%", "note": "合作项目占比偏高"},
         {"name": "应收账款 / 收入", "formula": "应收账款 ÷ 营业收入", "value": f"{c['ar_ratio']*100:.2f}%", "threshold": "< 10%", "note": "地产以预收为主"},
         {"name": "存货 / 总资产", "formula": "存货 ÷ 总资产", "value": f"{c['inventory_pct']*100:.2f}%", "threshold": "40%–60%", "note": "去化与减值压力"},
         {"name": "经营现金流 / 净利润", "formula": "OCF ÷ 净利润", "value": f"{c['ocf_to_net']:.2f}x", "threshold": "> 1", "note": "利润有现金支撑"},
-        {"name": "本期土地增值税", "formula": "税金及附加附注", "value": f"{c['land_vat_current']:.2f} 亿", "threshold": "—", "note": "附注已披露；项目级清算表未公开"},
-        {"name": "应交土地增值税", "formula": "应交税费附注", "value": f"{c['land_vat_payable']:.2f} 亿", "threshold": "—", "note": "期末应交余额"},
-        {"name": "递延所得税费用", "formula": "所得税费用附注", "value": f"{c['deferred_tax_expense']:.2f} 亿", "threshold": "—", "note": f"当期所得税 {c['income_tax_current']:.2f} 亿"},
+        {"name": "本期土地增值税", "formula": "税金及附加附注（2026 半年报）", "value": f"{c['land_vat_current']:.2f} 亿", "threshold": "—", "note": "三季报不披露附注明细，沿用 H1 附注"},
+        {"name": "应交土地增值税", "formula": "应交税费附注（2026 半年报）", "value": f"{c['land_vat_payable']:.2f} 亿", "threshold": "—", "note": "H1 期末余额；三季报应交税费合计 165.30 亿"},
+        {"name": "递延所得税费用", "formula": "所得税费用附注（2026 半年报）", "value": f"{c['deferred_tax_expense']:.2f} 亿", "threshold": "—", "note": f"H1 口径；当期所得税 {c['income_tax_current']:.2f} 亿"},
     ]
     c["tax_risks"] = [
-        {"risk": "有效税率偏高", "evidence": f"所得税 {inc['income_tax']:,.2f} 亿（当期 {c['income_tax_current']:,.2f} + 递延 {c['deferred_tax_expense']:,.2f}）；调整表中本期未确认 DTA +{c['etr_main_driver']:,.2f} 亿", "action": "核对未确认 DTA 的项目构成与转回假设"},
+        {"risk": "有效税率偏高", "evidence": f"前三季所得税 {inc['income_tax']:,.2f} 亿；H1 附注：当期 {c['income_tax_current']:,.2f} + 递延 {c['deferred_tax_expense']:,.2f}，调整表中本期未确认 DTA +{c['etr_main_driver']:,.2f} 亿", "action": "核对未确认 DTA 的项目构成与转回假设"},
         {"risk": "合同负债预缴", "evidence": f"合同负债 {bal['contract_liab']:,.2f} 亿，为营收 {c['contract_ratio']:.2f}x", "action": "核对预缴与交付结转"},
         {"risk": "合作项目少数股东", "evidence": f"少数股东权益 {bal['minority_equity']:,.2f} 亿，损益占比 {c['minority_ratio']*100:.2f}%", "action": "穿透协议与关联定价"},
     ]
@@ -801,7 +809,7 @@ def main() -> int:
         ("audit", "audit.html.j2", {"audit": audit}, "风险导向内审方案（示例）· 作品模板"),
         ("finance", "finance.html.j2", {"fin": fin, "group": group}, "13 周现金流预测 + 集团快报（示例）· 作品模板"),
         ("tax", "tax.html.j2", {"tax": tax, "risk": risk}, "土地增值税清算模型 + 税务风险看板（示例）· 作品模板"),
-        ("case-baoli", "case.html.j2", case_ctx, "保利发展 600048 · 2026 半年报公开数据案例"),
+        ("case-baoli", "case.html.j2", case_ctx, "保利发展 600048 · 2026 三季报公开数据案例"),
     ]
 
     rc = 0

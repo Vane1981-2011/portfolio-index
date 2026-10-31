@@ -241,9 +241,11 @@ tr.fraud td:first-child{border-left:2px solid #c62828}
   html,body{background:#fff !important}
   body{font-size:7.8pt;line-height:1.34}
   .page{
-    width:auto;min-height:0;margin:0;padding:0;box-shadow:none;
+    width:auto;min-height:277mm;margin:0;padding:0;box-shadow:none;
+    display:flex;flex-direction:column;
     page-break-after:always;break-after:page;
   }
+  .page > .footer{margin-top:auto}
   .page:last-child{page-break-after:auto;break-after:auto}
   .no-print{display:none !important}
   /* 覆盖窄屏媒体查询：打印时按 A4 实际宽度排 4/2/3 列 */

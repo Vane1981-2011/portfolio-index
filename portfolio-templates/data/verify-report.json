@@ -1,0 +1,1057 @@
+{
+  "generated_at": "2026-10-31",
+  "rules_source": "/Users/apple/Documents/Codex/2026-10-31/qin/outputs/skill-hub/skills/business/tax/tax-policy-engine/data/rules_land_vat.json",
+  "total": 128,
+  "failed": 0,
+  "rows": [
+    {
+      "section": "A 审计",
+      "name": "整体重要性 OM=min(四基准)",
+      "expected": 430.0,
+      "actual": 430.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "实际执行重要性 PM=OM×60%",
+      "expected": 258.0,
+      "actual": 258.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "明显微小错报临界值=OM×5%",
+      "expected": 21.5,
+      "actual": 21.5,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "风险数",
+      "expected": 8,
+      "actual": 8,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "舞弊风险数",
+      "expected": 2,
+      "actual": 2,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "程序数",
+      "expected": 6,
+      "actual": 6,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "控制点数",
+      "expected": 10,
+      "actual": 10,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "关键控制 KCP 数",
+      "expected": 6,
+      "actual": 6,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "未测试控制数",
+      "expected": 1,
+      "actual": 1,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "缺陷合计",
+      "expected": 5,
+      "actual": 5,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "重大缺陷",
+      "expected": 1,
+      "actual": 1,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "重要缺陷",
+      "expected": 3,
+      "actual": 3,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "一般缺陷",
+      "expected": 1,
+      "actual": 1,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "已验证关闭数",
+      "expected": 2,
+      "actual": 2,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "整改完成率",
+      "expected": 0.4,
+      "actual": 0.4,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "A 审计",
+      "name": "OM/税前利润 落在 3%–7%",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": "5.00%"
+    },
+    {
+      "section": "B 现金流",
+      "name": "13 周流入合计",
+      "expected": 52800,
+      "actual": 52800,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "13 周流出合计",
+      "expected": 52250,
+      "actual": 52250,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "净流量",
+      "expected": 550,
+      "actual": 550,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "期末余额=期初+净流量",
+      "expected": 5750,
+      "actual": 5750,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "最低点周次",
+      "expected": 5,
+      "actual": 5,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "最低点余额",
+      "expected": 450,
+      "actual": 450,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "低于保有线周数",
+      "expected": 5,
+      "actual": 5,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "累计缺口",
+      "expected": 9150,
+      "actual": 9150.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "货币资金合计",
+      "expected": 5750,
+      "actual": 5750,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "可用资金=合计−受限",
+      "expected": 4300,
+      "actual": 4300,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "B 现金流",
+      "name": "可用/合计 与 非受限占比自洽",
+      "expected": 0.7478260869565218,
+      "actual": 0.7478260869565218,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "20 家收入合计",
+      "expected": 243720,
+      "actual": 243720,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "合并收入=合计−内部",
+      "expected": 235120,
+      "actual": 235120,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "合并成本=合计−内部",
+      "expected": 213950,
+      "actual": 213950,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "毛利=收入−成本",
+      "expected": 21170,
+      "actual": 21170,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "毛利率",
+      "expected": 0.09003912895542701,
+      "actual": 0.09003912895542701,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "合并净利=合计−内部利润",
+      "expected": 10440,
+      "actual": 10440,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "净利率",
+      "expected": 0.044402858115005106,
+      "actual": 0.044402858115005106,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "归母净利=净利−少数",
+      "expected": 9820,
+      "actual": 9820,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "经营现金流=20 家合计",
+      "expected": 7060,
+      "actual": 7060,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "预算完成率（20 家未抵消口径）",
+      "expected": 0.9939641109298532,
+      "actual": 0.9939641109298532,
+      "ok": true,
+      "note": "页面 KPI 已标注“20 家合计口径”"
+    },
+    {
+      "section": "C 集团",
+      "name": "预算完成率（合并口径，合计行应使用）",
+      "expected": 0.96,
+      "actual": 0.96,
+      "ok": true,
+      "note": "95.89%；与 20 家口径差 3.51%"
+    },
+    {
+      "section": "C 集团",
+      "name": "绿灯数",
+      "expected": 16,
+      "actual": 16,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "黄灯数",
+      "expected": 3,
+      "actual": 3,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "C 集团",
+      "name": "红灯数",
+      "expected": 1,
+      "actual": 1,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "收入合计（已售面积×不含税单价）",
+      "expected": 165380.0,
+      "actual": 165380.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "项目扣除总额 口径A",
+      "expected": 116769.0,
+      "actual": 116769.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "项目扣除总额 口径B（开发费用 10%）",
+      "expected": 118869.0,
+      "actual": 118869.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "已售部分可扣除（按可售面积分摊）",
+      "expected": 109868.18818040435,
+      "actual": 109868.18818040435,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "未售部分对应扣除",
+      "expected": 6900.811819595649,
+      "actual": 6900.811819595649,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅（单独核算） 收入",
+      "expected": 93600.0,
+      "actual": 93600.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅（单独核算） 扣除",
+      "expected": 70824.12130637636,
+      "actual": 70824.12130637636,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅（单独核算） 增值额",
+      "expected": 22775.878693623643,
+      "actual": 22775.878693623643,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅（单独核算） 增值率",
+      "expected": 0.3215836394933588,
+      "actual": 0.3215836394933588,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅（单独核算） 应纳税额",
+      "expected": 6832.7636080870925,
+      "actual": 6832.7636080870925,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "其他业态（合并核算） 收入",
+      "expected": 71780.0,
+      "actual": 71780.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "其他业态（合并核算） 扣除",
+      "expected": 39044.066874027994,
+      "actual": 39044.066874027994,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "其他业态（合并核算） 增值额",
+      "expected": 32735.933125972006,
+      "actual": 32735.933125972006,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "其他业态（合并核算） 增值率",
+      "expected": 0.8384355357138233,
+      "actual": 0.8384355357138233,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "其他业态（合并核算） 应纳税额",
+      "expected": 11142.169906687403,
+      "actual": 11142.169906687403,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "应纳土地增值税合计",
+      "expected": 17974.933514774493,
+      "actual": 17974.933514774493,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "口径B 应纳税额",
+      "expected": 17276.838646967342,
+      "actual": 17276.838646967342,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "应补税额=应纳税额−已预缴",
+      "expected": 11474.933514774493,
+      "actual": 11474.933514774493,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "普通住宅 20% 免征判断（本例不适用）",
+      "expected": false,
+      "actual": false,
+      "ok": true,
+      "note": "增值率 32.16% > 20%"
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[基准] 收入",
+      "expected": 165380.0,
+      "actual": 165380.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[基准] 可扣除",
+      "expected": 109868.18818040435,
+      "actual": 109868.18818040435,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[基准] 应纳税额",
+      "expected": 17974.933514774493,
+      "actual": 17974.933514774493,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[保守] 收入",
+      "expected": 157111.0,
+      "actual": 157111.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[保守] 可扣除",
+      "expected": 113191.03071539657,
+      "actual": 113191.03071539657,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[保守] 应纳税额",
+      "expected": 13961.354024105753,
+      "actual": 13961.354024105753,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[乐观] 收入",
+      "expected": 173649.0,
+      "actual": 173649.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[乐观] 可扣除",
+      "expected": 107909.6535769829,
+      "actual": 107909.6535769829,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景[乐观] 应纳税额",
+      "expected": 21506.49512052877,
+      "actual": 21506.49512052877,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "D 土增税",
+      "name": "情景排序（保守<基准<乐观）",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "E 风险",
+      "name": "指标权重合计=100",
+      "expected": 100,
+      "actual": 100,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "E 风险",
+      "name": "加权得分 = Σ(w×p)/Σw/2×100",
+      "expected": 50.0,
+      "actual": 50.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "E 风险",
+      "name": "等级（≥40 中高）",
+      "expected": "中高",
+      "actual": "中高",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "E 风险",
+      "name": "12 项指标",
+      "expected": 12,
+      "actual": 12,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "毛利率=(收入−成本)/收入",
+      "expected": 0.12775347766776946,
+      "actual": 0.12775347766776946,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "归母净利率",
+      "expected": 0.015052092899229498,
+      "actual": 0.015052092899229498,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "有效税率=所得税/利润总额",
+      "expected": 0.4721293455499203,
+      "actual": 0.4721293455499203,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "经营现金流/净利润",
+      "expected": 2.034690994206306,
+      "actual": 2.034690994206306,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "少数股东损益/净利润",
+      "expected": 0.3852015667750897,
+      "actual": 0.38520156677508977,
+      "ok": true,
+      "note": "净利润 37.94 = 归母 23.32 + 少数 14.61（四舍五入尾差）"
+    },
+    {
+      "section": "F 保利",
+      "name": "归母+少数 = 净利润（±0.01）",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "整体重要性 OM",
+      "expected": 3.593475,
+      "actual": 3.593475,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "实际执行重要性 PM",
+      "expected": 2.156085,
+      "actual": 2.156085,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "明显微小错报临界值",
+      "expected": 0.17967375000000002,
+      "actual": 0.17967375000000002,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "资产负债率=负债/资产",
+      "expected": 0.7168397761741654,
+      "actual": 0.7168397675040015,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "存货/总资产",
+      "expected": 0.5470707846327688,
+      "actual": 0.5470707846327688,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "递延所得税资产/总资产",
+      "expected": 0.01755014612651186,
+      "actual": 0.01755014612651186,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "合同负债/营业收入",
+      "expected": 1.5274229061101656,
+      "actual": 1.5274229061101656,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "现金/短期有息负债",
+      "expected": 1.6437711559504167,
+      "actual": 1.6437711559504167,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "分部收入合计（H1 口径）",
+      "expected": 1028.6033,
+      "actual": 1028.6033,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "F 保利",
+      "name": "分部与 H1 收入尾差 <0.001 亿",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "万科 归母净利率",
+      "expected": -22.8,
+      "actual": -22.8,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "万科 净利润率",
+      "expected": -24.52,
+      "actual": -24.52,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "万科 毛利率",
+      "expected": 6.64,
+      "actual": 6.64,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "万科 ROE（期初期末平均归母净资产）",
+      "expected": -22.8,
+      "actual": -22.8,
+      "ok": true,
+      "note": "与归母净利率同为 -22.80% 属数值巧合，非复制错误"
+    },
+    {
+      "section": "G 七家",
+      "name": "保利 归母净利率",
+      "expected": 1.51,
+      "actual": 1.51,
+      "ok": true,
+      "note": "全精度 23.3241÷1,549.5586=1.5052%→1.51%；用已四舍五入的 23.32÷1,549.56 会得 1.50%，属二次舍入误差"
+    },
+    {
+      "section": "G 七家",
+      "name": "保利 毛利率",
+      "expected": 12.78,
+      "actual": 12.78,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "保利 资产负债率",
+      "expected": 71.68,
+      "actual": 71.68,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "保利 有效税率",
+      "expected": 47.21,
+      "actual": 47.21,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "保利 经营现金流/净利润(含少数)",
+      "expected": 2.03,
+      "actual": 2.03,
+      "ok": true,
+      "note": "净利润 37.94 亿，不是 38.02 亿"
+    },
+    {
+      "section": "G 七家",
+      "name": "美的 归母净利率",
+      "expected": 11.27,
+      "actual": 11.27,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "美的 经营现金流/归母净利",
+      "expected": 0.97,
+      "actual": 0.97,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "格力 归母净利率(营业总收入口径)",
+      "expected": 13.65,
+      "actual": 13.65,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "格力 归母净利率(营业收入口径)",
+      "expected": 13.7,
+      "actual": 13.7,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "格力 有效税率(2026Q3)",
+      "expected": 17.36,
+      "actual": 17.36,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "格力 经营现金流/归母净利",
+      "expected": 1.39,
+      "actual": 1.39,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "海尔 归母净利率",
+      "expected": 6.76,
+      "actual": 6.76,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "海尔 毛利率",
+      "expected": 27.18,
+      "actual": 27.18,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "海尔 资产负债率",
+      "expected": 56.94,
+      "actual": 56.94,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "海尔 有效税率",
+      "expected": 15.9,
+      "actual": 15.9,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "海尔 经营现金流/归母净利",
+      "expected": 0.71,
+      "actual": 0.71,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中际 归母净利率",
+      "expected": 31.98,
+      "actual": 31.98,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中际 ROA(期末总资产)",
+      "expected": 17.14,
+      "actual": 17.14,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中际 两金/总资产",
+      "expected": 31.74,
+      "actual": 31.74,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中际 现金利润保障",
+      "expected": 36.01,
+      "actual": 36.01,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中建 归母净利率",
+      "expected": 2.36,
+      "actual": 2.36,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "G 七家",
+      "name": "中建 有效税率(2025年报)",
+      "expected": 23.73,
+      "actual": 23.73,
+      "ok": true,
+      "note": "2026H1 有效税率 24.3% 为披露值，缺 H1 所得税/利润总额明细，不做复算"
+    },
+    {
+      "section": "H 规则",
+      "name": "土增税率档 ≤0.5",
+      "expected": [
+        0.3,
+        0.0
+      ],
+      "actual": [
+        0.3,
+        0.0
+      ],
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "土增税率档 ≤1.0",
+      "expected": [
+        0.4,
+        0.05
+      ],
+      "actual": [
+        0.4,
+        0.05
+      ],
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "土增税率档 ≤2.0",
+      "expected": [
+        0.5,
+        0.15
+      ],
+      "actual": [
+        0.5,
+        0.15
+      ],
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "土增税率档 ≤None",
+      "expected": [
+        0.6,
+        0.35
+      ],
+      "actual": [
+        0.6,
+        0.35
+      ],
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "城建税 市区7%",
+      "expected": 0.07,
+      "actual": 0.07,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "城建税 县镇5%",
+      "expected": 0.05,
+      "actual": 0.05,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "城建税 其他1%",
+      "expected": 0.01,
+      "actual": 0.01,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "教育费附加 3%",
+      "expected": 0.03,
+      "actual": 0.03,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "地方教育附加 2%",
+      "expected": 0.02,
+      "actual": 0.02,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "印花税 买卖合同 0.03%",
+      "expected": 0.0003,
+      "actual": 0.0003,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "印花税 借款合同 0.005%",
+      "expected": 5e-05,
+      "actual": 5e-05,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "H 规则",
+      "name": "印花税 产权转移书据 0.05%",
+      "expected": 0.0005,
+      "actual": 0.0005,
+      "ok": true,
+      "note": ""
+    }
+  ],
+  "failures": []
+}

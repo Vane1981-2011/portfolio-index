@@ -3,9 +3,9 @@
 <div class="page" id="audit">
 
   <div class="cover">
-    <div class="eyebrow">Public-Data Case · 2026 Interim</div>
+    <div class="eyebrow">Public-Data Case · 2026 Q3</div>
     <h1>保利发展（600048）公开数据案例</h1>
-    <div class="sub">用三份总监岗模板的方法跑一遍真实半年报：重要性水平、区域经营、现金流质量、税负与风险</div>
+    <div class="sub">用三份总监岗模板的方法跑一遍真实三季报：重要性水平、区域经营、现金流质量、税负与风险</div>
     <div class="meta">
       <span>数据源：<b>{{ case.source }}</b></span>
       <span>报告期：<b>{{ case.period }}</b></span>
@@ -39,7 +39,7 @@
         <tr><td>明显微小错报临界值</td><td class="num">—</td><td class="num">OM×5%</td><td class="num">{{ c.trivial|num2 }}</td><td>低于该金额可累计不单独调整</td></tr>
       </table>
     </div>
-    <div class="table-note">基准数据取自 2026 年半年报合并报表；比例是常用区间，不是准则强制值。公开数据只能支持“计划重要性”的测算，不能替代现场判断。</div>
+    <div class="table-note">基准数据取自 2026 年三季报合并报表；比例是常用区间，不是准则强制值。公开数据只能支持“计划重要性”的测算，不能替代现场判断。</div>
   </div>
 
   <div class="card">
@@ -79,7 +79,7 @@
   </div>
 
   <div class="callout">
-    <p><b>分析性程序结论：</b>① 收入连续三年同期下滑（1,392 → 1,169 → 1,029 亿元），归母净利下滑更快（74.2 → 33.1 → 19.6 亿元），收入确认与成本结转是首要风险；② 存货 6,305 亿元、合同负债 2,417 亿元，交付进度与存货跌价是最敏感的两项估计；③ 经营现金流由 2024H1 的 −171 亿元转为 2026H1 的 +246 亿元，现金改善与利润下滑并存，需验证是否来自拿地收缩与以价换量。</p>
+    <p><b>分析性程序结论：</b>① 收入连续四年同期下滑（1,925.5 → 1,827.7 → 1,737.2 → 1,549.6 亿元），归母净利下滑更快（132.9 → 78.1 → 27.8 → 23.3 亿元），收入确认与成本结转是首要风险；② 存货 6,309.81 亿元、合同负债 2,366.83 亿元，交付进度与存货跌价是最敏感的两项估计；③ 经营现金流由 2024 前三季的 −159.8 亿元转为 2026 前三季的 +77.2 亿元，现金改善与利润下滑并存，需验证是否来自拿地收缩与以价换量。</p>
   </div>
 
   <div class="callout red">
@@ -117,7 +117,7 @@
   </div>
 
   <div class="card">
-    <h3>四年同期趋势 <span class="hint">2023H1–2026H1 · 单位：亿元</span></h3>
+    <h3>四年同期趋势 <span class="hint">2023Q3–2026Q3（前三季度累计）· 单位：亿元</span></h3>
     <div class="table-wrap">
       <table>
         <tr><th>期间</th><th class="num">营业总收入</th><th class="num">同比</th><th class="num">归母净利</th><th class="num">同比</th><th class="num">毛利率</th><th class="num">经营现金流</th></tr>
@@ -126,11 +126,11 @@
         {% endfor %}
       </table>
     </div>
-    <div class="table-note">同比为相邻两个半年度的同期比较；2023–2024 为原披露口径，2025H1 为 2026 半年报比较期重述口径；跨期同比仅供参考。2024H1 经营现金流为负，2025H1 起转正并继续改善。</div>
+    <div class="table-note">同比为前三季度累计数的同期比较（2026Q3 = 2026 年 1—9 月）；2023–2024 为原披露口径，2025Q3 为 2026 三季报比较期口径；跨期同比仅供参考。2024 前三季经营现金流为负，2025 起转正。</div>
   </div>
 
   <div class="card">
-    <h3>区域经营快报 <span class="hint">17 个区域 + 其他 · 按毛利贡献排序</span></h3>
+    <h3>区域经营快报 <span class="hint">{{ case.segment_base.period }}分部 · 三季报不披露分区域明细 · 按毛利贡献排序</span></h3>
     <div class="table-wrap">
       <table>
         <thead>
@@ -146,7 +146,7 @@
         </tbody>
       </table>
     </div>
-    <div class="table-note">分区域收入合计 {{ c.segment_revenue_sum|num2 }} 亿元，与合并收入 {{ c.revenue|num }} 亿元差 {{ c.segment_gap|num2 }} 亿元；分项显示值相加可能与合计差 0.1 亿元，为逐项四舍五入。灯：毛利率 ≥15% 绿、10%–15% 黄、&lt;10% 红（示例阈值，非公司制度）。</div>
+    <div class="table-note">本表为 {{ case.segment_base.period }} 主营构成（按地区），分区域收入合计 {{ c.segment_revenue_sum|num2 }} 亿元，与半年报合并收入 {{ c.segment_base_revenue|num }} 亿元差 {{ c.segment_gap|num2 }} 亿元；三季报不披露分区域明细，故区域结构仍用 H1 口径，不与上方前三季 KPI 混用。分项显示值相加可能与合计差 0.1 亿元，为逐项四舍五入。灯：毛利率 ≥15% 绿、10%–15% 黄、&lt;10% 红（示例阈值，非公司制度）。</div>
   </div>
 
   <div class="two-col">
@@ -174,9 +174,9 @@
         </table>
       </div>
       <div class="callout green">
-        <p><b>核心判断：</b>收入与利润双降，但经营现金流同比 {{ c.ocf_yoy|pct }}，回款率 {{ c.sales_cash_ratio|pct }}；这是一份“利润承压、现金改善”的半年报。风险不在当期现金，而在 {{ c.inventory_pct|pct }} 的存货与 {{ c.leverage|pct }} 的杠杆。</p>
+        <p><b>核心判断：</b>收入与利润双降，但经营现金流仍为正（{{ c.ocf|num }} 亿元、同比 {{ c.ocf_yoy|pct }}），回款率 {{ c.sales_cash_ratio|pct }}；这是一份“利润承压、现金为正”的三季报。风险不在当期现金，而在 {{ c.inventory_pct|pct }} 的存货与 {{ c.leverage|pct }} 的杠杆。</p>
       </div>
-      <div class="table-note">“现金 / 短期有息负债”分母为短期借款 + 一年内到期非流动负债；“合同负债 / 收入”用半年收入，未年化。</div>
+      <div class="table-note">“现金 / 短期有息负债”分母为短期借款 + 一年内到期非流动负债；“合同负债 / 收入”用前三季收入，未年化。</div>
     </div>
   </div>
 
@@ -185,7 +185,7 @@
   </div>
 
   <div class="footer">
-    <span>数据源：{{ case.source }} · 2026 半年报附注（CNINFO）· 采集 {{ case.collected_at }}</span>
+    <span>数据源：{{ case.source }} · 2026 三季报（2026-09-30）· 采集 {{ case.collected_at }}</span>
     <span>Public-Data Case · Finance Lens · 2026-10</span>
   </div>
 </div>
@@ -224,7 +224,7 @@
         </tbody>
       </table>
     </div>
-    <div class="table-note">阈值是复核参考（法定税率、行业常见区间），不是官方标准；有效税率含递延所得税，不能直接读成“多缴了 {{ c.etr_gap|pct }}”。</div>
+    <div class="table-note">阈值是复核参考（法定税率、行业常见区间），不是官方标准；有效税率含递延所得税，不能直接读成“多缴了 {{ c.etr_gap|pct }}”。除标注“H1 附注”的三行外，其余指标均为 2026 三季报口径。</div>
   </div>
 
   <div class="two-col">
@@ -253,7 +253,7 @@
   </div>
 
   <div class="callout blue">
-    <p><b>核心判断：</b>有效税率 {{ c.etr|pct }}，比法定 25% 高 {{ c.etr_gap|pct }}。附注已拆分当期所得税 {{ c.income_tax_current|num2 }} 亿元与递延 {{ c.deferred_tax_expense|num2 }} 亿元（精确值 23.3836 + 0.5741 = 23.9577，尾差为四舍五入）；调整表中“本期未确认递延所得税资产”贡献 +{{ c.etr_main_driver|num2 }} 亿元（占利润总额 {{ c.etr_main_driver_pct|pct }}），是有效税率偏高的主因。合同负债 {{ c.contract_liab|num }} 亿元对应预缴与结转时点；少数股东损益占净利润 {{ c.minority_ratio|pct }}，合作项目是税务与关联交易的交汇点。</p>
+    <p><b>核心判断：</b>前三季有效税率 {{ c.etr|pct }}（所得税 {{ c.income_tax|num }} 亿 ÷ 利润总额 {{ case.income.profit_total|num }} 亿），比法定 25% 高 {{ c.etr_gap|pct }}，为近年最高。H1 附注显示：当期所得税 {{ c.income_tax_current|num2 }} 亿元、递延 {{ c.deferred_tax_expense|num2 }} 亿元（合计 23.9577 亿元）；调整表中“本期未确认递延所得税资产”贡献 +{{ c.etr_main_driver|num2 }} 亿元（占 H1 利润总额 {{ c.etr_main_driver_pct|pct }}），是税率偏高的主因，三季报未更新该明细。合同负债 {{ c.contract_liab|num }} 亿元对应预缴与结转时点；少数股东损益占净利润 {{ c.minority_ratio|pct }}，合作项目是税务与关联交易的交汇点。</p>
   </div>
 
   <div class="card">

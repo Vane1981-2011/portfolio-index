@@ -1,50 +1,50 @@
 {
   "company": "保利发展",
   "ticker": "600048.SH",
-  "period": "2026 年半年报（2026-06-30）",
-  "compare_period": "2025 年半年报",
+  "period": "2026 年三季报（2026-09-30）",
+  "compare_period": "2025 年三季报",
   "source": "东方财富 / akshare 公开数据",
-  "collected_at": "2026-10-22",
+  "collected_at": "2026-10-30",
   "unit": "亿元",
   "disclaimer": "本案例仅使用公开披露的合并报表与主营构成数据，不包含任何内部账套、项目级土增税清算或关联交易定价信息；结论仅用于方法演示，不构成审计意见或税务意见。",
   "income": {
-    "revenue": 1028.6031,
-    "cost": 894.5831,
-    "tax_surcharge": 16.4987,
-    "profit_total": 56.2979,
-    "income_tax": 23.9577,
-    "net_profit": 32.3402,
-    "attributable": 19.586,
-    "minority": 12.7542,
-    "revenue_prior": 1168.567,
-    "attributable_prior": 33.1072,
-    "net_profit_prior": 72.0597,
-    "gm_prior": 0.1529
+    "revenue": 1549.5586,
+    "cost": 1351.5971,
+    "tax_surcharge": 26.9544,
+    "profit_total": 71.8695,
+    "income_tax": 33.9317,
+    "net_profit": 37.9378,
+    "attributable": 23.3241,
+    "minority": 14.6137,
+    "revenue_prior": 1737.2168,
+    "attributable_prior": 27.7765,
+    "net_profit_prior": 75.0569,
+    "gm_prior": 0.14
   },
   "balance": {
-    "cash": 1338.1402,
-    "inventory": 6305.0932,
-    "contract_liab": 2416.7055,
-    "accounts_rece": 77.2281,
-    "short_loan": 46.3301,
-    "current_ltd": 650.8591,
-    "total_assets": 11652.2954,
-    "total_liabilities": 8364.881,
-    "equity": 3287.4144,
-    "parent_equity": 1945.7464,
-    "minority_equity": 1341.6681,
-    "deferred_tax_asset": 201.0566,
-    "deferred_tax_liab": 15.5341
+    "cash": 1189.0194,
+    "inventory": 6309.8089,
+    "contract_liab": 2366.8313,
+    "accounts_rece": 91.8115,
+    "short_loan": 42.8094,
+    "current_ltd": 680.5391,
+    "total_assets": 11533.8071,
+    "total_liabilities": 8267.8916,
+    "equity": 3265.9154,
+    "parent_equity": 1952.846,
+    "minority_equity": 1313.0695,
+    "deferred_tax_asset": 202.42,
+    "deferred_tax_liab": 16.811
   },
   "cashflow": {
-    "ocf": 245.5167,
-    "ocf_prior": 160.172,
-    "sales_cash": 1062.9733,
-    "taxes_paid": 123.44,
-    "operating_inflow": 1228.6622,
-    "operating_outflow": 983.1455,
-    "investing": -4.7232,
-    "financing": -134.8589
+    "ocf": 77.1917,
+    "ocf_prior": 69.7747,
+    "sales_cash": 1527.0699,
+    "taxes_paid": 161.3123,
+    "operating_inflow": 1734.4097,
+    "operating_outflow": 1657.218,
+    "investing": -13.1566,
+    "financing": -105.8977
   },
   "segments": [
     {
@@ -146,10 +146,10 @@
       "action": "需项目层面数据，公开报表无法测算"
     },
     {
-      "name": "2026 年第 3 号公告（印花税 / 地方教育附加 / 尾盘销售口径）",
-      "status": "待核",
-      "impact": "可能影响税金及附加与尾盘计算",
-      "action": "引用前核对原文与施行日期"
+      "name": "印花税与附加税费口径（印花税法 · 城市维护建设税法 · 财综〔2010〕98号）",
+      "status": "现行",
+      "impact": "印花税按合同类型 0.005%–0.1%；城建税 7%/5%/1%、教育费附加 3%、地方教育附加 2%",
+      "action": "按合同类型与项目所在地分别核对，先确认可扣范围再进土增税扣除"
     },
     {
       "name": "合作开发并表与权益法（企业会计准则第 33 号）",
@@ -168,40 +168,46 @@
       "status": "现行",
       "impact": "合同负债对应的预缴现金流",
       "action": "按项目核对预缴与结转"
+    },
+    {
+      "name": "清算后再转让（尾盘销售）扣除口径（国税发〔2006〕187号）",
+      "status": "现行",
+      "impact": "按清算时单位建筑面积成本费用×转让面积计算扣除，直接影响尾盘税负",
+      "action": "保留清算时点单位成本底稿，尾盘逐套登记后按月申报"
     }
   ],
   "trend": [
     {
-      "period": "2023H1",
-      "revenue": 1370.267,
-      "attributable": 122.2247,
-      "net_profit": 150.6729,
-      "ocf": 71.4597,
-      "gm": 0.2126
+      "period": "2023Q3",
+      "revenue": 1925.5496,
+      "attributable": 132.9264,
+      "net_profit": 169.1675,
+      "ocf": 68.2412,
+      "gm": 0.1939
     },
     {
-      "period": "2024H1",
-      "revenue": 1392.492,
-      "attributable": 74.1988,
-      "net_profit": 106.9777,
-      "ocf": -171.4801,
-      "gm": 0.1602
+      "period": "2024Q3",
+      "revenue": 1827.7439,
+      "attributable": 78.1255,
+      "net_profit": 122.4178,
+      "ocf": -159.8178,
+      "gm": 0.1592
     },
     {
-      "period": "2025H1",
-      "revenue": 1168.567,
-      "attributable": 33.1072,
-      "net_profit": 72.0597,
-      "ocf": 160.172,
-      "gm": 0.1529
+      "period": "2025Q3",
+      "revenue": 1737.2168,
+      "attributable": 27.7765,
+      "net_profit": 75.0569,
+      "ocf": 69.7747,
+      "gm": 0.14
     },
     {
-      "period": "2026H1",
-      "revenue": 1028.6031,
-      "attributable": 19.586,
-      "net_profit": 32.3402,
-      "ocf": 245.5167,
-      "gm": 0.1303
+      "period": "2026Q3",
+      "revenue": 1549.5586,
+      "attributable": 23.3241,
+      "net_profit": 37.9378,
+      "ocf": 77.1917,
+      "gm": 0.1278
     }
   ],
   "tax_detail": {
@@ -243,6 +249,14 @@
         "item": "其他",
         "amount": 2.64
       }
-    ]
+    ],
+    "period": "2026 年半年报附注（2026-06-30）",
+    "income_tax_total": 23.9577,
+    "profit_total": 56.2979
+  },
+  "segment_base": {
+    "period": "2026 年半年报（2026-06-30）",
+    "revenue": 1028.6031,
+    "cost": 894.5831
   }
 }
