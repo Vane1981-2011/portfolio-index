@@ -28,6 +28,8 @@ WEB = WORK / "work/web"
 PREC = 2
 FAIL: list[dict] = []
 ROWS: list[dict] = []
+DRIFT: list[dict] = []
+SKIP: list[dict] = []
 
 
 def r2(x: float) -> float:
@@ -46,6 +48,23 @@ def check(section: str, name: str, expected, actual, note: str = "") -> None:
                  "actual": actual, "ok": ok, "note": note})
     if not ok:
         FAIL.append(ROWS[-1])
+
+
+def drift(section: str, name: str, shown, refreshed, note: str = "") -> None:
+    """页面展示值与每日刷新的外部快照比对：只提示漂移，不计入失败。
+
+    展示层的数字是某个时点的快照；上游目录每天 20:00 刷新，两者不等属正常演进，
+    但必须显式暴露出来由人决定是否更新页面，禁止静默忽略。
+    """
+    ok = r2(shown) == r2(refreshed) if isinstance(shown, (int, float)) else shown == refreshed
+    row = {"section": section, "name": name, "shown": shown,
+           "refreshed": refreshed, "same": ok, "note": note}
+    if not ok:
+        DRIFT.append(row)
+
+
+def skip(section: str, name: str, reason: str) -> None:
+    SKIP.append({"section": section, "name": name, "reason": reason})
 
 
 def load(name: str) -> dict:
@@ -410,6 +429,72 @@ def verify_rules(brackets: list[dict], source: str) -> None:
               r["property_transfer"]["real_estate"]["rate"])
 
 
+# ------------------------------------------------------------------ I 战略模型概率加权
+def verify_scenario_weight() -> None:
+    """P7 唯一可复算项：三情景 NPV 的概率加权（现金流假设未公开，其余指标不复算）。"""
+    from fractions import Fraction as F
+
+    w = {"乐观": F(1, 4), "基准": F(1, 2), "悲观": F(1, 4)}
+    npv = {"乐观": F(2016), "基准": F(1037), "悲观": F(132)}
+    check("I 情景加权", "三情景权重合计=100%", 1.0, float(sum(w.values())))
+    calc = sum(w[k] * npv[k] for k in w)
+    check("I 情景加权", "概率加权 NPV = 0.25×2,016＋0.50×1,037＋0.25×132",
+          1055.5, float(calc),
+          f"展示 1,055.5 万元；精确值 {calc}（分数运算，无浮点误差）；"
+          "三情景 NPV 取自页面卡片，权重取自页面标注")
+    check("I 情景加权", "加权值落在悲观与乐观之间（单调性）", True,
+          npv["悲观"] < calc < npv["乐观"],
+          f"{float(npv['悲观'])} < {float(calc)} < {float(npv['乐观'])}")
+    check("I 情景加权", "基准情景为主导权重", True,
+          max(w, key=lambda k: w[k]) == "基准")
+    # 卡片以整数万元展示 1,037，计算用同一取整值，口径自洽
+    check("I 情景加权", "加权 NPV ≥ 基准 NPV（上行 2,016 摊薄后仍高于基准）", True,
+          calc >= npv["基准"], f"{float(calc)} ≥ {float(npv['基准'])}")
+
+
+# ------------------------------------------------------------------ J 税务目录加总
+TAX_MANIFEST_CANDIDATES = (
+    Path("/tmp/taxman.json"),
+    WORK / "work/taxman.json",
+    WORK / "outputs/taxlib/manifest.json",
+)
+
+
+def find_tax_manifest() -> Path | None:
+    for p in TAX_MANIFEST_CANDIDATES:
+        if p.exists():
+            return p
+    return None
+
+
+def verify_tax_catalog() -> None:
+    """P9 资料库合计 72,053 = 六类分项加总；分项随上游每日刷新，只做漂移提示。"""
+    f = find_tax_manifest()
+    if f is None:
+        skip("J 税目录", "资料库六类加总", "未找到税目录 manifest（/tmp/taxman.json 等）")
+        return
+    m = json.loads(f.read_text(encoding="utf-8"))
+    lib = {i["kind"]: int(i["n"]) for i in m["lib"]}
+    shown = {"interp": 8524, "qa": 14604, "zsk": 45841, "ksdy": 1588, "kj": 1446, "own": 50}
+    for kind, n in shown.items():
+        drift("J 税目录", f"分项 {kind}", n, lib.get(kind), Path(f).name)
+    total = sum(lib.values())
+    declared = m.get("lib_counts") or {}
+    if isinstance(declared, dict) and "total" in declared:
+        check("J 税目录", "manifest 自述合计=六类加总", int(declared["total"]), total)
+    check("J 税目录", "六类分项均为正数", True, all(v > 0 for v in lib.values()))
+    check("J 税目录", "六类分项数=6", 6, len(lib))
+    drift("J 税目录", "资料库合计 vs 页面 72,053", 72053, total,
+          "页面为 2026-10-28 快照；目录每日刷新，不等时由日报提示是否更新 P9")
+    drift("J 税目录", "政策法规 vs 页面 11,548", 11548, int(m["n"]))
+    freshness = m.get("freshness")
+    check("J 税目录", "快照新鲜度标注存在", True,
+          freshness in {"fresh", "stale", "unknown"}, f"freshness={freshness}")
+    sd = m.get("stale_days")
+    check("J 税目录", "快照滞后天数可解析为非负整数", True,
+          isinstance(sd, int) and sd >= 0, f"stale_days={sd}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", default=str(DATA / "verify-report.json"))
@@ -420,7 +505,8 @@ def main() -> int:
     for fn in (lambda: verify_audit(derived), lambda: verify_finance(derived),
                lambda: verify_group(derived), lambda: verify_tax(derived, brackets),
                lambda: verify_risk(derived), lambda: verify_case(derived),
-               verify_companies, lambda: verify_rules(brackets, source)):
+               verify_companies, lambda: verify_rules(brackets, source),
+               verify_scenario_weight, verify_tax_catalog):
         fn()
 
     by_section: dict[str, list[dict]] = {}
@@ -434,10 +520,20 @@ def main() -> int:
     print(f"\n规则来源: {source}")
     print(f"合计: {len(ROWS) - len(FAIL)}/{len(ROWS)} 通过")
 
+    if DRIFT:
+        print(f"\n漂移提示（不计入失败，上游每日刷新所致）: {len(DRIFT)} 项")
+        for r in DRIFT:
+            print(f"  ~ {r['name']}: 页面 {r['shown']} vs 上游 {r['refreshed']}  {r['note']}")
+    if SKIP:
+        print(f"\n跳过（缺外部数据，不影响结论）: {len(SKIP)} 项")
+        for r in SKIP:
+            print(f"  - {r['name']}: {r['reason']}")
+
     (Path(args.json)).write_text(json.dumps(
         {"generated_at": "2026-10-31", "rules_source": source,
          "total": len(ROWS), "failed": len(FAIL),
-         "rows": ROWS, "failures": FAIL}, ensure_ascii=False, indent=2), encoding="utf-8")
+         "rows": ROWS, "failures": FAIL,
+         "drift": DRIFT, "skipped": SKIP}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"报告: {args.json}")
     return 1 if FAIL else 0
 

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-10-31",
   "rules_source": "/Users/apple/Documents/Codex/2026-10-31/qin/outputs/skill-hub/skills/business/tax/tax-policy-engine/data/rules_land_vat.json",
-  "total": 128,
+  "total": 137,
   "failed": 0,
   "rows": [
     {
@@ -1051,7 +1051,81 @@
       "actual": 0.0005,
       "ok": true,
       "note": ""
+    },
+    {
+      "section": "I 情景加权",
+      "name": "三情景权重合计=100%",
+      "expected": 1.0,
+      "actual": 1.0,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "I 情景加权",
+      "name": "概率加权 NPV = 0.25×2,016＋0.50×1,037＋0.25×132",
+      "expected": 1055.5,
+      "actual": 1055.5,
+      "ok": true,
+      "note": "展示 1,055.5 万元；精确值 2111/2（分数运算，无浮点误差）；三情景 NPV 取自页面卡片，权重取自页面标注"
+    },
+    {
+      "section": "I 情景加权",
+      "name": "加权值落在悲观与乐观之间（单调性）",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": "132.0 < 1055.5 < 2016.0"
+    },
+    {
+      "section": "I 情景加权",
+      "name": "基准情景为主导权重",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "I 情景加权",
+      "name": "加权 NPV ≥ 基准 NPV（上行 2,016 摊薄后仍高于基准）",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": "1055.5 ≥ 1037.0"
+    },
+    {
+      "section": "J 税目录",
+      "name": "六类分项均为正数",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "J 税目录",
+      "name": "六类分项数=6",
+      "expected": 6,
+      "actual": 6,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "section": "J 税目录",
+      "name": "快照新鲜度标注存在",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": "freshness=fresh"
+    },
+    {
+      "section": "J 税目录",
+      "name": "快照滞后天数可解析为非负整数",
+      "expected": true,
+      "actual": true,
+      "ok": true,
+      "note": "stale_days=1"
     }
   ],
-  "failures": []
+  "failures": [],
+  "drift": [],
+  "skipped": []
 }
