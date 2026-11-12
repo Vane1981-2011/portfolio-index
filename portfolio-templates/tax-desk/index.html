@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>税策智库 · 政策检索工作台｜11,736 条快照 · 年份轴 · 摘要级检索｜李霞作品集</title>
+<link rel="stylesheet" href="../assets/report.css">
+<style>
+  .shot{border:1px solid var(--line-2);border-radius:4px;overflow:hidden;background:#fff}
+  .shot img{display:block;width:auto;max-width:100%;max-height:76mm;height:auto;margin:0 auto}
+  .shot-full img{width:100%;max-height:none}
+  .shot-cap{font-size:6.8pt;color:var(--muted);margin-top:1mm;line-height:1.4}
+  .shot-tall img{max-height:66mm}
+  .check-list{margin:0;padding:0;list-style:none}
+  .check-list li{font-size:7.6pt;color:var(--sec);margin:1.1mm 0;padding-left:4.2mm;position:relative;line-height:1.4}
+  .check-list li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:800}
+  .num-badge{display:inline-block;min-width:5.2mm;text-align:center;padding:.3mm 1.2mm;border-radius:3px;background:var(--navy);color:#fff;font-size:6.4pt;font-weight:800;margin-right:1.6mm}
+  .beforeafter{display:grid;grid-template-columns:1fr 1fr;gap:2mm;font-size:7.2pt;color:var(--sec)}
+  .beforeafter div{border:1px solid var(--line);border-radius:3px;padding:1.4mm 2mm;background:var(--paper)}
+  .beforeafter b{display:block;color:var(--navy);font-size:7pt;margin-bottom:.6mm}
+  @media(max-width:820px){.beforeafter{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top-nav no-print">
+  <a href="../index.html">← 返回作品集</a>
+  <span>公开数据工具 · 静态站点演示 · 已上线</span>
+</div>
+
+<div class="page" id="overview">
+  <div class="cover">
+    <div class="eyebrow">Tax Archive Desk · Static Search Workbench</div>
+    <h1>税策智库 · 政策检索工作台</h1>
+    <div class="sub">把政策、官方解读、12366 问答与知识库收进同一个静态检索台：年份轴按年度筛、摘要级全文检索、左列结果右列阅读窗。没有后端，数据包一次下载、本地缓存。</div>
+    <div class="meta">
+      <span>形态：<b>纯静态站点 / 无后端</b></span>
+      <span>数据：<b>政策 11,736 条 · 解读 8,570 条 · 问答 14,661 条</b></span>
+      <span>检索：<b>标题 / 文号 / 正文摘要</b></span>
+      <span>状态：<b>已上线 GitHub Pages</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge green">已上线 · 可公开访问</span>
+      <span class="badge">43 个年度 · 同文合并 5,723 条</span>
+      <span class="badge blue">302 条摘要逐条标模型与时间</span>
+      <span class="badge red">摘要级节选 · 不含完整原文</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">11,736<small>条</small></div><div class="l">政策快照 · 数据截至 2026-12-01</div></div>
+    <div class="kpi"><div class="v">43<small>个</small></div><div class="l">有收录的年度 · 年份轴可点击筛选</div></div>
+    <div class="kpi green"><div class="v">1,306<small>条</small></div><div class="l">「研发费用加计扣除」命中 · 24ms</div></div>
+    <div class="kpi amber"><div class="v">2.7<small>MB</small></div><div class="l">首屏数据包 · 之后走浏览器缓存</div></div>
+  </div>
+
+  <div class="card">
+    <h3>界面总览 <span class="hint">顶栏切换资料类型 · 第二行年份轴 · 左列结果 / 右列阅读</span></h3>
+    <div class="shot shot-full"><img src="assets/desk-home.png" alt="税策智库工作台首页：资料类型、年份轴、结果列表与档案速览"></div>
+    <div class="shot-cap">未选中条目时右栏不空着，先给数据新鲜度、收录总量、现行有效数与最近更新，让首屏就有信息密度；选中后同一位置切换为全文阅读窗。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>年份轴改版 <span class="hint">从“压扁的柱状图”到可读的年度刻度</span></h3>
+      <div class="beforeafter">
+        <div><b>改版前</b>43 个年份平铺，柱体超出格子互相压制，年份标签隔几年才出现一次，读不出量级。</div>
+        <div><b>改版后</b>柱宽限幅 18px、轴高 58→34px、补一条连续基线，柱高即收录量。</div>
+      </div>
+      <ul class="check-list" style="margin-top:1.6mm">
+        <li>年份标签按 5 年一标，近年（最近 3 年）始终显示，避免右侧断层。</li>
+        <li>点击任一柱即按年筛选，再点取消；选中年份用品牌红加粗，与工具栏筛选状态联动。</li>
+        <li>轴右侧常驻「柱高 = 收录量」说明，省掉一次猜测。</li>
+        <li>移动端保留横向滚动，不压缩柱宽，触控目标不小于 14px。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>工具栏 <span class="hint">三行并一行，首条结果上移</span></h3>
+      <ul class="check-list">
+        <li>搜索框、结果数、排序、收藏合并为单行，去掉重复的分组标题。</li>
+        <li>结果数简化为「11,736 条」；检索态显示「1,306 / 11,736 条」并回显关键词。</li>
+        <li>排序与收藏补图标，未选中时不抢视觉；移动端把税种/年份/地区/效力筛成图标胶囊。</li>
+        <li>省下的竖向空间让首条结果整体上移，打开就能看到内容而不是控件。</li>
+      </ul>
+      <div class="table-note">本次只调整版式与视觉层级，未改动数据、分类口径、筛选与检索逻辑。</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><b>设计取舍：</b>没有做成「一堆筛选条件 + 大表格」的法规库。检索是主任务，所以顶栏只留一个输入框、第二行只留年份轴，其余条件收进四个胶囊；右栏始终有内容（概览或阅读），避免点开前是一片空白。代价是同一屏能看到的筛选维度变少，需要点开胶囊才能选税种与效力。</p>
+  </div>
+
+  <div class="footer">
+    <span>税策智库 · 政策检索工作台 · 11,736 条快照 · 年份轴 / 近五年 / 摘要级检索</span>
+    <span>作品页 1 / 3</span>
+  </div>
+</div>
+
+<div class="page" id="detail">
+  <div class="page-head">
+    <div>
+      <h1>检索体验：年份轴、检索态与终端适配</h1>
+      <div class="sub">按年看趋势、按词找依据；同一套界面在手机与墨黑主题下仍然成立</div>
+    </div>
+    <div class="right">静态托管<br>公开数据快照</div>
+  </div>
+
+  <div class="card">
+    <h3>近五年视图 <span class="hint">老年代收录只有个位数时，把横向空间还给近年</span></h3>
+    <div class="shot"><img src="assets/desk-5y.png" alt="近五年视图：2022–2026 完整年份刻度与柱高"></div>
+    <div class="shot-cap">年份轴右侧提供「近 5 年 / 全部」切换，默认记住上次选择。近五年只取最近 5 个<b>有数据</b>的年份，标签直接写全 2022–2026，不要求读者心算 22–26。</div>
+  </div>
+
+  <div class="card">
+    <h3>检索态 <span class="hint">关键词高亮 + 命中计数 + 相关度</span></h3>
+    <div class="shot shot-full"><img src="assets/desk-search.png" alt="检索「研发费用加计扣除」：关键词高亮、1,306/11,736 命中、相关度环"></div>
+    <div class="shot-cap">标题命中词直接高亮；结果数改为「当前 / 总数」并回显关键词；每行右侧的相关度环内嵌 0–100 数值，避免一排空心圆被误读成单选按钮。摘要与问答按相关度排序，政策类可按发布日期排序。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>墨黑模式 <span class="hint">纸 / 墨双主题</span></h3>
+      <div class="shot"><img src="assets/desk-dark.png" alt="税策智库墨黑模式下的检索结果"></div>
+      <div class="shot-cap">深色不是反色：正文与标签重新定权，链接与选中年份改用提亮后的品牌色，长时间阅读不刺眼。</div>
+    </div>
+    <div class="card">
+      <h3>移动端 <span class="hint">列表优先 · 阅读窗改为全屏</span></h3>
+      <div class="shot shot-tall"><img src="assets/desk-mobile.png" alt="税策智库移动端列表"></div>
+      <div class="shot-cap">手机上收起右栏，筛选转成图标胶囊，年份轴横向滚动；点条目进入全屏阅读，返回保留滚动位置。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>税策智库 · 近五年视图 / 检索态 / 纸墨双主题 / 移动端全屏阅读</span>
+    <span>作品页 2 / 3</span>
+  </div>
+</div>
+
+<div class="page" id="delivery">
+  <div class="page-head">
+    <div>
+      <h1>首屏载入与交付自检</h1>
+      <div class="sub">弱网首屏给真实进度；每次构建用脚本复核数量、字段、检索与体积</div>
+    </div>
+    <div class="right">6.59MB 站点<br>上限 8MB</div>
+  </div>
+
+  <div class="card">
+    <h3>首屏载入 <span class="hint">弱网下给真实进度，不给转圈</span></h3>
+    <div class="shot shot-full"><img src="assets/desk-loading.png" alt="首屏载入：百分比、已接收 MB、骨架屏"></div>
+    <div class="shot-cap">2.7MB 数据包在弱网下要几十秒。载入卡显示百分比与「已接收 2.1 / 2.7 MB」，下方骨架屏按结果行的真实行高排布；下载完成后切换为「正在解压并建立索引」，不假装已经可用。</div>
+  </div>
+
+  <div class="card">
+    <h3>交付自检 <span class="hint">每次构建跑一遍，不靠肉眼</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>检查项</th><th class="num">结果</th><th>说明</th></tr>
+        <tr><td><b>数量对账</b></td><td class="num">11,736 / 11,736</td><td>清单与条目逐条对齐</td></tr>
+        <tr><td><b>字段完整</b></td><td class="num">坏链 0</td><td>空标题、超长条款、坏 URL 均为 0</td></tr>
+        <tr><td><b>检索质量</b></td><td class="num">98% / 100%</td><td>100 条查询的 top1 / top5 命中</td></tr>
+        <tr><td><b>摘要出处</b></td><td class="num">302 条</td><td>缺模型 0 · 缺时间 0</td></tr>
+        <tr><td><b>体积护栏</b></td><td class="num">6.59 MB</td><td>上限 8 MB，余量 1.4 MB</td></tr>
+        <tr class="total"><td>构建自检</td><td class="num">V1–V12</td><td>V4 单文件版按构建选项跳过</td></tr>
+      </table>
+    </div>
+    <div class="table-note">自检为项目内脚本，不是第三方认证；通过只说明当前构建在这些检查项上无异常。</div>
+  </div>
+
+  <div class="card">
+    <h3>本次改版清单 <span class="hint">只动版式与视觉，不动数据与检索</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>项目</th><th>改版前</th><th>改版后</th></tr>
+        <tr><td><b>年份轴高度</b></td><td>58px，标签与柱体争空间</td><td>34px，柱体下留出完整刻度行</td></tr>
+        <tr><td><b>柱体宽度</b></td><td>按格子拉伸，相互压制</td><td>上限 18px，补一条连续基线</td></tr>
+        <tr><td><b>年份标签</b></td><td>隔几年才标一次</td><td>5 年一标，近年常显，近五年写全 2022–2026</td></tr>
+        <tr><td><b>年度视图</b></td><td>只有全部年份</td><td>近 5 年 / 全部，记住上次选择</td></tr>
+        <tr><td><b>工具栏</b></td><td>搜索、计数、排序分行</td><td>合并单行，检索态显示「当前 / 总数」</td></tr>
+        <tr><td><b>首屏反馈</b></td><td>静态骨架，看不出进度</td><td>百分比 + 已接收 MB + 解压提示</td></tr>
+      </table>
+    </div>
+    <div class="table-note">计数、分类、筛选与检索逻辑未改动；改版后 27 项回归测试与 V1–V12 构建自检通过。</div>
+  </div>
+
+  <div class="card">
+    <h3>公开演示 <span class="hint">GitHub Pages · 打开即用</span></h3>
+    <div style="display:flex;gap:2mm;flex-wrap:wrap">
+      <a style="display:inline-block;padding:1.7mm 3mm;border-radius:4px;background:var(--navy);color:#fff;font-size:7.5pt;font-weight:800;text-decoration:none" href="https://vane1981-2011.github.io/tax-policy-qa/" target="_blank" rel="noopener">打开税策智库 ↗</a>
+      <a style="display:inline-block;padding:1.7mm 3mm;border-radius:4px;background:#fff;color:var(--navy);border:1px solid var(--line-2);font-size:7.5pt;font-weight:800;text-decoration:none" href="../index.html">返回作品集</a>
+    </div>
+    <div class="table-note">首次打开需下载 2.7MB 数据包，H5 弱网环境下约 10–30 秒；之后走浏览器缓存。静态托管，无账号、无服务端存储。</div>
+  </div>
+
+  <div class="disclaimer">
+    <b>口径与边界：</b>政策 11,736 条、官方解读 8,570 条、12366 问答 14,661 条、税费知识库 45,841 条为快照口径（数据截至 2026-12-01，同文合并 5,723 条），会随来源更新而变化。页面展示为<b>摘要级节选</b>，不含完整原文；302 条模型摘要均标注生成模型与时间，仅用于定位，不能替代原文。本站为个人开发的检索工具，不构成税务意见、法律意见或投资建议，正式适用请以官方发布文本与主管税务机关口径为准。截图中的检索结果均为公开政策数据，不含任何企业内部资料。
+  </div>
+
+  <div class="footer">
+    <span>税策智库 · 政策检索工作台 · 静态站点 / 11,736 条快照 / 302 条摘要标出处</span>
+    <span>作品页 3 / 3</span>
+  </div>
+</div>
+</body>
+</html>
