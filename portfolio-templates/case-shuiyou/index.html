@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>税友股份 603171 · 2026 前三季度量化分析｜李霞作品集</title>
+<link rel="stylesheet" href="../assets/report.css">
+<style>
+  .mini-kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2mm}
+  .mini-kpi{border:1px solid var(--line);border-radius:4px;padding:2mm 2.4mm;background:var(--paper)}
+  .mini-kpi .k{font-size:7pt;color:var(--muted)}
+  .mini-kpi .v{font-size:11.5pt;font-weight:800;color:var(--navy);margin-top:.6mm}
+  .mini-kpi .v small{font-size:6.8pt;color:var(--sec);font-weight:600}
+  .mini-kpi .d{font-size:6.7pt;color:var(--sec);margin-top:.4mm}
+  .insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm}
+  .insight{border:1px solid var(--line);border-top:2.5px solid var(--gold);border-radius:0 0 4px 4px;padding:2.4mm;background:#fff}
+  .insight .n{font-size:7pt;color:var(--gold);font-weight:800;letter-spacing:.08em}
+  .insight .h{font-size:8.2pt;font-weight:800;color:var(--navy);margin:1mm 0}
+  .insight .b{font-size:7pt;color:var(--sec);line-height:1.45}
+  .source-chip{display:inline-block;padding:.8mm 2mm;border:1px solid var(--line);border-radius:3px;background:#fff;font-size:6.8pt;color:var(--sec);margin:.5mm .6mm .5mm 0}
+  .btn-row{display:flex;gap:2mm;flex-wrap:wrap;margin-top:2mm}
+  .btn{display:inline-block;padding:1.7mm 3mm;border-radius:4px;background:var(--navy);color:#fff!important;font-size:7.5pt;font-weight:800;text-decoration:none!important}
+  .btn.gold{background:var(--gold)}
+  .btn.ghost{background:#fff;color:var(--navy)!important;border:1px solid var(--line-2)}
+  .matrix td,.matrix th{text-align:center;padding:1.1mm .8mm}
+  .matrix .neg{background:#fdf1f3;color:var(--red);font-weight:700}
+  .matrix .pos{background:#eef8f4;color:var(--green);font-weight:700}
+  .two-small{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+  @media(max-width:820px){.mini-kpi-grid,.insight-grid,.two-small{grid-template-columns:1fr 1fr}}
+  @media print{.mini-kpi-grid,.insight-grid,.two-small{grid-template-columns:repeat(4,1fr)} .two-small{grid-template-columns:1fr 1fr}}
+  .toc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6mm}
+  .toc{border:1px solid var(--line);border-radius:3px;padding:1.5mm 2mm;background:var(--paper)}
+  .toc .n{font-size:6.4pt;color:var(--gold);font-weight:800;letter-spacing:.04em}
+  .toc .t{font-size:7.4pt;color:var(--navy);font-weight:700;margin-top:.3mm;line-height:1.25}
+  .toc .d{font-size:6.2pt;color:var(--muted);margin-top:.3mm;line-height:1.25}
+  @media(max-width:820px){.toc-grid{grid-template-columns:1fr 1fr}}
+  @media print{.toc-grid{grid-template-columns:repeat(4,1fr)}}
+
+</style>
+</head>
+<body>
+<div class="top-nav no-print">
+  <a href="../index.html">← 返回作品集</a>
+  <span>真实公开数据 · 纯数字量化分析 · 2 页作品导读 + 原报告 13 页</span>
+</div>
+
+<div class="page" id="summary">
+  <div class="cover">
+    <div class="eyebrow">Quant Report · 2026 Q3</div>
+    <h1>税友股份（603171）2026 前三季度量化分析</h1>
+    <div class="sub">13 页纯数字报告：从三表原文取数，到 29 项指标汇总、利润增量拆解、单季校验、现金流与价格 × 销量敏感性；全部数字可按巨潮定期报告逐项复算。</div>
+    <div class="meta">
+      <span>数据源：<b>巨潮资讯网 · 2026 三季报 / 半年报 / 2025 年报</b></span>
+      <span>期间：<b>2026-01-01 至 2026-09-30（273 天）</b></span>
+      <span>金额单位：<b>亿元</b></span>
+      <span>审计状态：<b>三季报未经审计</b></span>
+    </div>
+    <div class="badges">
+      <span class="badge green">公开数据 · 可复核</span>
+      <span class="badge">纯数字 · 不含定性评价</span>
+      <span class="badge red">非审计意见 · 非税务意见 · 非投资建议</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">15.68<small>亿元</small></div><div class="l">营业收入 · 同比 +9.93%</div></div>
+    <div class="kpi red"><div class="v">2.28<small>亿元</small></div><div class="l">归母净利润 · 同比 +106.84%</div></div>
+    <div class="kpi"><div class="v">61.48%</div><div class="l">毛利率 · 同比 +2.30pp</div></div>
+    <div class="kpi amber"><div class="v">-1.76<small>亿元</small></div><div class="l">经营现金流 · 同比改善 0.70 亿元</div></div>
+  </div>
+
+  <div class="callout">
+    <p><b>一眼看清：</b>收入增长 9.93%、归母净利润翻倍，但归母增量并非全部来自主营：非经常性损益 0.84 亿元，占归母净利润 36.63%；营业利润增量中，资产处置收益贡献 55.20%。累计经营现金流仍为 -1.76 亿元，但 2026 年第三季度单季已转正 1.22 亿元。所有拆解均在报告中按科目逐项列示，差额可回到 0.00 元。</p>
+  </div>
+
+  <div class="card">
+    <h3>核心指标 <span class="hint">29 项汇总中的 12 项 · 年初至报告期末口径</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>指标</th><th class="num">本期</th><th class="num">同比 / 较年初</th><th>指标</th><th class="num">本期</th><th class="num">同比 / 较年初</th></tr></thead>
+        <tbody>
+          <tr><td><b>营业收入</b></td><td class="num">15.68 亿元</td><td class="num">+9.93%</td><td><b>归母净利润</b></td><td class="num">2.28 亿元</td><td class="num">+106.84%</td></tr>
+          <tr><td><b>扣非归母净利润</b></td><td class="num">1.45 亿元</td><td class="num">+47.50%</td><td><b>非经常性损益</b></td><td class="num">0.84 亿元</td><td class="num">占归母 36.63%</td></tr>
+          <tr><td><b>毛利率</b></td><td class="num">61.48%</td><td class="num">+2.30pp</td><td><b>归母净利率</b></td><td class="num">14.57%</td><td class="num">+6.83pp</td></tr>
+          <tr><td><b>期间费用率</b></td><td class="num">51.07%</td><td class="num">-0.72pp</td><td><b>研发强度</b></td><td class="num">22.88%</td><td class="num">-0.76pp</td></tr>
+          <tr><td><b>经营现金流净额</b></td><td class="num">-1.76 亿元</td><td class="num">改善 0.70 亿元</td><td><b>收现比</b></td><td class="num">88.02%</td><td class="num">-3.38pp</td></tr>
+          <tr><td><b>应收账款</b></td><td class="num">4.47 亿元</td><td class="num">较年初 +103.47%</td><td><b>合同负债</b></td><td class="num">8.58 亿元</td><td class="num">较年初 -7.92%</td></tr>
+          <tr><td><b>资产负债率</b></td><td class="num">37.63%</td><td class="num">较年初 -1.53pp</td><td><b>加权平均 ROE</b></td><td class="num">8.71%</td><td class="num">+4.32pp</td></tr>
+          <tr><td><b>有息负债</b></td><td class="num">2.93 亿元</td><td class="num">较年初 +128.88%</td><td><b>净现金</b></td><td class="num">3.44 亿元</td><td class="num">货币资金 - 有息负债</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-note">pp = 百分点。数据取自 2026 年三季报合并报表；2026Q3 指 1—9 月累计，不是单季。金额保留两位小数，比率按元口径计算后四舍五入。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>利润表：成本率下降是主线 <span class="hint">单位：亿元</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">2026 前三季</th><th class="num">2025 同期</th><th class="num">变动</th></tr>
+          <tr><td>营业收入</td><td class="num">15.68</td><td class="num">14.26</td><td class="num">+9.93%</td></tr>
+          <tr><td>营业成本</td><td class="num">6.04</td><td class="num">5.82</td><td class="num">+3.74%</td></tr>
+          <tr><td><b>毛利</b></td><td class="num"><b>9.64</b></td><td class="num">8.44</td><td class="num">+14.20%</td></tr>
+          <tr><td>营业利润</td><td class="num">2.36</td><td class="num">1.11</td><td class="num">+111.81%</td></tr>
+          <tr><td>归母净利润</td><td class="num">2.28</td><td class="num">1.10</td><td class="num">+106.84%</td></tr>
+        </table>
+      </div>
+      <div class="table-note">毛利增量 +1.1989 亿元。三因素拆解：收入规模效应 69.93%、毛利率效应 27.35%、交叉项 2.72%。</div>
+    </div>
+    <div class="card">
+      <h3>资产与现金：两组方向相反的信号 <span class="hint">期末 / 本期</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">数值</th><th>读法</th></tr>
+          <tr><td>应收账款周转天数</td><td class="num">77.80 天</td><td>2025 年度 39.02 天</td></tr>
+          <tr><td>现金循环周期</td><td class="num">63.81 天</td><td>应收 + 存货 - 应付</td></tr>
+          <tr><td>两金 / 总资产</td><td class="num">13.07%</td><td>两金合计 5.66 亿元</td></tr>
+          <tr><td>可动用资金 / 总资产</td><td class="num">49.38%</td><td>可动用资金 21.40 亿元</td></tr>
+          <tr><td>年化 ROE</td><td class="num">11.66%</td><td>披露加权 ROE 8.71%</td></tr>
+        </table>
+      </div>
+      <div class="table-note">现金双口径并排：货币资金 6.37 亿元；现金及现金等价物 15.12 亿元，两者相差 8.75 亿元。</div>
+    </div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight"><div class="n">01 · 口径</div><div class="h">先锁边界，再算指标</div><div class="b">三季累计、单季推算、半年报分部、2025 年末员工数分栏标注，不跨口径混算。</div></div>
+    <div class="insight"><div class="n">02 · 拆解</div><div class="h">利润增量回到科目</div><div class="b">毛利、资产处置、费用、减值逐项列示；分项加总与营业利润增量差额 0.00 元。</div></div>
+    <div class="insight"><div class="n">03 · 校验</div><div class="h">单季推算可对回披露值</div><div class="b">前三季减半年报得 5.56 亿元，与三季报“本报告期”差额 0.00 元。</div></div>
+    <div class="insight"><div class="n">04 · 压力</div><div class="h">价格 × 销量矩阵</div><div class="b">单变量 5 档 + 4×4 双变量矩阵 + 两项归零触发点，模型假设与结果同页列示。</div></div>
+  </div>
+
+  <div class="card">
+    <h3>报告结构：13 页 / 12 个章节 <span class="hint">口径 → 三表 → 拆解 → 压力 → 汇总</span></h3>
+    <div class="toc-grid">
+      <div class="toc"><div class="n">P01</div><div class="t">封面与摘要</div><div class="d">期间 / 单位 / 边界</div></div>
+      <div class="toc"><div class="n">P02</div><div class="t">计算口径</div><div class="d">折算规则与时间边界</div></div>
+      <div class="toc"><div class="n">P03</div><div class="t">核心指标</div><div class="d">12 项，含同比</div></div>
+      <div class="toc"><div class="n">P04</div><div class="t">利润表结构</div><div class="d">逐科目变动率</div></div>
+      <div class="toc"><div class="n">P05</div><div class="t">单季拆解</div><div class="d">累计减半年报</div></div>
+      <div class="toc"><div class="n">P06</div><div class="t">利润构成</div><div class="d">扣非与非经常性</div></div>
+      <div class="toc"><div class="n">P07</div><div class="t">成本费用</div><div class="d">费用率与人效</div></div>
+      <div class="toc"><div class="n">P08</div><div class="t">资产负债</div><div class="d">期末对年初</div></div>
+      <div class="toc"><div class="n">P09</div><div class="t">现金流</div><div class="d">三项净额与周转</div></div>
+      <div class="toc"><div class="n">P10</div><div class="t">分部结构</div><div class="d">2026 半年报口径</div></div>
+      <div class="toc"><div class="n">P11</div><div class="t">研发投入</div><div class="d">强度与资本化</div></div>
+      <div class="toc"><div class="n">P12</div><div class="t">敏感性</div><div class="d">5 档 + 4×4 矩阵</div></div>
+      <div class="toc"><div class="n">P13</div><div class="t">汇总表</div><div class="d">指标 / 公式 / 占比</div></div>
+      <div class="toc" style="border-style:dashed"><div class="n">注释</div><div class="t">不写定性结论</div><div class="d">只呈现数值与口径</div></div>
+    </div>
+    <div class="table-note">章节顺序固定，任何一页的数字都能回溯到上一页的口径或原始报表科目；报告正文不含评级、目标价或投资建议。</div>
+  </div>
+
+  <div class="footer">
+    <span>税友软件集团股份有限公司（603171.SH）· 2026 年前三季度 · 数据源：巨潮资讯网定期报告（未经审计）</span>
+    <span>作品导读 1 / 2</span>
+  </div>
+</div>
+
+<div class="page" id="decomposition">
+  <div class="page-head">
+    <div>
+      <h1>利润、现金流与敏感性：三个必须拆开的口径</h1>
+      <div class="sub">累计与单季分开 · 主营与非经常性损益分开 · 基准与压力情景分开</div>
+    </div>
+    <div class="right">2026 三季报 · 合并口径<br>未经审计 · 单位：亿元</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi gold"><div class="v">5.56</div><div class="l">2026Q3 单季营业收入 · +10.32%</div></div>
+    <div class="kpi red"><div class="v">1.34</div><div class="l">单季归母净利润 · +240.98%</div></div>
+    <div class="kpi"><div class="v">0.55</div><div class="l">单季扣非归母 · +53.48%</div></div>
+    <div class="kpi green"><div class="v">1.22</div><div class="l">单季经营现金流 · +60.61%</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>归母净利润：63.37% 来自扣非 <span class="hint">单位：亿元</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">金额</th><th class="num">占归母</th><th>说明</th></tr>
+          <tr><td><b>归母净利润</b></td><td class="num">2.28</td><td class="num">100.00%</td><td>合并利润表</td></tr>
+          <tr><td>扣非归母净利润</td><td class="num">1.45</td><td class="num">63.37%</td><td>披露值</td></tr>
+          <tr class="total"><td>非经常性损益</td><td class="num">0.8368</td><td class="num">36.63%</td><td>归母 - 扣非</td></tr>
+          <tr><td>其中：资产处置损益</td><td class="num">0.6822</td><td class="num">29.86%</td><td>占非经常性损益 81.52%</td></tr>
+          <tr><td>其中：政府补助</td><td class="num">0.1315</td><td class="num">5.76%</td><td>计入当期损益</td></tr>
+          <tr><td>其中：其他及所得税影响</td><td class="num">0.0231</td><td class="num">1.01%</td><td>含少数股东影响</td></tr>
+        </table>
+      </div>
+      <div class="table-note">勾稽：（归母 - 扣非）- 非经常性损益明细合计 = 0.00 元。不能把 +106.84% 的归母增速直接等同于主营增速。</div>
+    </div>
+
+    <div class="card">
+      <h3>营业利润增量：毛利与资产处置双驱动 <span class="hint">增量合计 +1.2455 亿元</span></h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>增减项</th><th class="num">影响（亿元）</th><th class="num">占增量</th></tr>
+          <tr><td><b>毛利</b></td><td class="num">+1.1989</td><td class="num">96.26%</td></tr>
+          <tr><td><b>资产处置收益</b></td><td class="num">+0.6875</td><td class="num">55.20%</td></tr>
+          <tr><td>研发费用</td><td class="num">-0.2163</td><td class="num">-17.37%</td></tr>
+          <tr><td>管理费用</td><td class="num">-0.1645</td><td class="num">-13.21%</td></tr>
+          <tr><td>销售费用</td><td class="num">-0.1515</td><td class="num">-12.17%</td></tr>
+          <tr><td>信用减值损失</td><td class="num">-0.0920</td><td class="num">-7.39%</td></tr>
+          <tr><td>其他项合计</td><td class="num">-0.0166</td><td class="num">-1.33%</td></tr>
+          <tr class="total"><td>营业利润增量</td><td class="num">+1.2455</td><td class="num">100.00%</td></tr>
+        </table>
+      </div>
+      <div class="table-note">资产处置收益从 0.00 增至 0.69 亿元，不是可持续的经营性增量；报告把它单独拆出，不与毛利混读。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>现金流与营运资本：累计为负，单季转正 <span class="hint">单位：亿元；周转天数按 273 天口径</span></h3>
+    <div class="two-col">
+      <div class="table-wrap">
+        <table>
+          <tr><th>项目</th><th class="num">本期</th><th class="num">上期 / 参照</th><th>读法</th></tr>
+          <tr><td>经营现金流净额</td><td class="num">-1.76</td><td class="num">-2.46</td><td>改善 0.70 亿元</td></tr>
+          <tr><td>2026Q3 单季经营现金流</td><td class="num">1.22</td><td class="num">0.76</td><td>+60.61%，方向反转</td></tr>
+          <tr><td>销售收现 / 营业收入</td><td class="num">88.02%</td><td class="num">91.40%</td><td>收现比 -3.38pp</td></tr>
+          <tr><td>净现比</td><td class="num">-0.7703x</td><td class="num">—</td><td>归母与 CFO 差 4.04 亿元</td></tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>营运资本</th><th class="num">本期</th><th>变化 / 参照</th></tr>
+          <tr><td>应收账款</td><td class="num">4.47</td><td>较年初 +103.47%</td></tr>
+          <tr><td>应收账款周转天数</td><td class="num">77.80 天</td><td>2025 年度 39.02 天</td></tr>
+          <tr><td>存货周转天数</td><td class="num">53.03 天</td><td>应付账款周转 67.02 天</td></tr>
+          <tr><td>现金循环周期</td><td class="num">63.81 天</td><td>应收 + 存货 - 应付</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="table-note">两金合计 5.66 亿元、占总资产 13.07%。报告另给 5%、10%、20% 三档两金释放测算；资金成本 4.1171% 为假设值，不是披露值或实时市场利率。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>敏感性：价格 × 销量双变量矩阵 <span class="hint">单元格：净利润（亿元）</span></h3>
+      <div class="table-wrap">
+        <table class="matrix">
+          <tr><th>价格 \ 销量</th><th>-15%</th><th>-10%</th><th>0</th><th>+10%</th></tr>
+          <tr><th>-15%</th><td class="neg">-1.1605</td><td class="neg">-0.7961</td><td class="neg">-0.0674</td><td class="pos">0.6614</td></tr>
+          <tr><th>-10%</th><td class="neg">-0.4942</td><td class="neg">-0.0906</td><td class="pos">0.7165</td><td class="pos">1.5237</td></tr>
+          <tr><th>0</th><td class="pos">0.8384</td><td class="pos">1.3203</td><td class="pos"><b>2.2843</b></td><td class="pos">3.2482</td></tr>
+          <tr><th>+10%</th><td class="pos">2.1710</td><td class="pos">2.7313</td><td class="pos">3.8520</td><td class="pos">4.9727</td></tr>
+        </table>
+      </div>
+      <div class="table-note">矩阵四角：价格 -15% × 销量 -15% 时净利润 -1.1605 亿元；价格 +10% × 销量 +10% 时 4.9727 亿元；极差 6.1332 亿元。基准净利 2.2843 亿元。</div>
+    </div>
+    <div class="card">
+      <h3>两条归零线 <span class="hint">单变量压力测试</span></h3>
+      <div class="mini-kpi-grid" style="grid-template-columns:1fr 1fr">
+        <div class="mini-kpi"><div class="k">价格下降</div><div class="v">14.57%<small> 净利归零</small></div><div class="d">价格每降 1%，净利降 6.86%</div></div>
+        <div class="mini-kpi"><div class="k">销量下降</div><div class="v">23.70%<small> 净利归零</small></div><div class="d">销量每降 1%，净利降 4.22%</div></div>
+      </div>
+      <div class="callout red" style="margin-bottom:1mm">
+        <p><b>模型边界：</b>固定成本 7.3550 亿元、可变成本率 38.52% 均按基准期反推；只做单变量与价格 × 销量双变量，不含汇率、税率变动与产品结构变化。</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn gold" href="税友股份-2026Q3-量化分析报告.pdf" download>下载原报告 PDF（13 页）</a>
+        <a class="btn ghost" href="税友股份-2026Q3-量化分析报告-图片版.pdf" download>图片兼容版</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>复算校验：五项差额均为 0.00 元 <span class="hint">按元口径计算，展示值四舍五入到亿元</span></h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>校验项</th><th>勾稽关系</th><th class="num">差额</th><th>说明</th></tr>
+        <tr><td><b>资产负债表</b></td><td>资产合计 = 负债合计 + 所有者权益合计</td><td class="num">0.00</td><td>期末余额</td></tr>
+        <tr><td><b>利润归属</b></td><td>净利润 = 归母净利润 + 少数股东损益</td><td class="num">0.00</td><td>本期累计</td></tr>
+        <tr><td><b>非经常性损益</b></td><td>归母净利润 − 扣非归母 = 明细合计</td><td class="num">0.00</td><td>含所得税与少数股东影响</td></tr>
+        <tr><td><b>营业利润增量</b></td><td>各分项增量合计 = 营业利润同比增量</td><td class="num">0.00</td><td>合计 +1.2455 亿元</td></tr>
+        <tr><td><b>单季倒推</b></td><td>前三季累计 − 半年报累计 = 三季报“本报告期”</td><td class="num">0.00</td><td>营收 5.56 亿元</td></tr>
+      </table>
+    </div>
+    <div class="table-note">校验在元口径完成后再四舍五入展示，因此表中两位小数直接相加可能出现 ±0.01 的显示差；差额列以未舍入值为准。</div>
+  </div>
+
+  <div class="disclaimer">
+    <b>口径与边界：</b>2026Q3 指 2026 年 1—9 月累计，不是单季；三季报未经审计。单季数据用前三季度累计减 2026 半年报累计推算，并与三季报“本报告期”披露值校验，差额为 0.00 元。分部数据取 2026 半年报，三季报不披露分部；员工人数 6,263 人为 2025-12-31 口径，人均指标为代理口径。报告只呈现数值、口径、占比、变化率、趋势与结构，不构成审计意见、税务意见或投资建议。
+  </div>
+
+  <div class="footer">
+    <span>税友股份（603171.SH）· 2026 前三季度 · 数据源：巨潮资讯网定期报告（未经审计）· 生成：2026-11-10</span>
+    <span>作品导读 2 / 2</span>
+  </div>
+</div>
+</body>
+</html>
